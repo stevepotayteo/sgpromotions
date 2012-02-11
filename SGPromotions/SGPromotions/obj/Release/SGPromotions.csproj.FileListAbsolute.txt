@@ -1,0 +1,14 @@
+D:\Projects\WP7\SGPromotions\SGPromotions\Bin\Release\ApplicationIcon.png
+D:\Projects\WP7\SGPromotions\SGPromotions\Bin\Release\Background.png
+D:\Projects\WP7\SGPromotions\SGPromotions\Bin\Release\SGPromotions.dll
+D:\Projects\WP7\SGPromotions\SGPromotions\Bin\Release\SGPromotions.pdb
+D:\Projects\WP7\SGPromotions\SGPromotions\Bin\Release\AppManifest.xaml
+D:\Projects\WP7\SGPromotions\SGPromotions\Bin\Release\SGPromotions.xap
+D:\Projects\WP7\SGPromotions\SGPromotions\Bin\Release\WP7GapClassLib.dll
+D:\Projects\WP7\SGPromotions\SGPromotions\obj\Release\ResolveAssemblyReference.cache
+D:\Projects\WP7\SGPromotions\SGPromotions\obj\Release\App.g.i.cs
+D:\Projects\WP7\SGPromotions\SGPromotions\obj\Release\MainPage.g.i.cs
+D:\Projects\WP7\SGPromotions\SGPromotions\obj\Release\SGPromotions.g.resources
+D:\Projects\WP7\SGPromotions\SGPromotions\obj\Release\SGPromotions.dll
+D:\Projects\WP7\SGPromotions\SGPromotions\obj\Release\SGPromotions.pdb
+D:\Projects\WP7\SGPromotions\SGPromotions\obj\Release\XapCacheFile.xml
