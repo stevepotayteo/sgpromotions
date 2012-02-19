@@ -21,8 +21,10 @@ function displayNearby(data) {
 			var item = nearby[n];
 			nearbyHtml += '<li>';
 			nearbyHtml += '<a href="'+ item.url +'">';
-			nearbyHtml += '<img src="'+ item.pic +'" width="16" height="16" class="ui-li-icon"/>'; // have to manual specify the width/height
-			nearbyHtml += item.name;
+			nearbyHtml += '<img src="'+ item.pic +'" width="24" height="24" class="ui-li-icon"/>'; // have to manual specify the width/height
+			nearbyHtml += '<h3>' + item.name + '</h3>';
+			nearbyHtml += '<p>' + item.promo + '</p>';
+			nearbyHtml += '<span class="ui-li-count">' + item.distance + 'm</span>';
 			nearbyHtml += '</a>';
 			nearbyHtml += '</li>';
 		}

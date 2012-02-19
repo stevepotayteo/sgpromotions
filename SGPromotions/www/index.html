@@ -62,7 +62,7 @@
 		<ul data-role="listview" data-inset="true" data-filter="false">
 			<li><a href="#nearby">Display All Nearby Promotions</a></li>
 			<li><a href="#category">Display Nearby Promotions By Category</a></li>
-			<li><a href="http://www.google.com">Display Promotions By Location</a></li>
+			<li><a href="#location">Display Promotions By Location</a></li>
 		</ul>	
 	</div>
 </div>
@@ -73,7 +73,7 @@
 	</div>
 
 	<div data-role="content" id="nearby-content">
-		<p>Nearby Promotions is currently loading...</p>
+		<p>Nearby Promotions are currently loading...</p>
 	</div>
 </div>
 
@@ -83,8 +83,25 @@
 	</div>
 
 	<div data-role="content" id="category-content">
-		<p>Categories is currently loading...</p>
+		<p>Categories are currently loading...</p>
 	</div>
 </div>
+
+<div data-role="page" id="promotion">
+	<div data-role="header">
+		<h1>Display Particular Promotion</h1>
+	</div>
+
+	<div data-role="content" id="promotion-content">
+		<p>Promotion is currently loading...</p>
+	</div>
+</div>
+
+
+<!--$('div[id="categories"] ul[data-role="listview"] a').live("click", function() {  
+    var dataurl = $(this).attr("data-url");  
+    if (dataurl != null)  
+        $.mobile.changePage("articles.htm" + dataurl);  
+});  -->
 </body>
 </html>
