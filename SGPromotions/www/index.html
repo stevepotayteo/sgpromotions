@@ -19,6 +19,14 @@
 				$.mobile.page.prototype.options.backBtnText = "Back";
 				$.mobile.page.prototype.options.backBtnTheme = "b";
 			
+				$('#nearby').live('pagebeforeshow', function (event, ui) {
+					// have internet connection
+					if(true) {
+						getNearby();
+					} else {
+					}
+				});
+				
 				$('#category').live('pagebeforeshow', function (event, ui) {
 					// have internet connection
 					if(true) {
@@ -52,20 +60,30 @@
 
 	<div data-role="content">	
 		<ul data-role="listview" data-inset="true" data-filter="false">
-			<li><a href="#category">Display Promotions By Category</a></li>
+			<li><a href="#nearby">Display All Nearby Promotions</a></li>
+			<li><a href="#category">Display Nearby Promotions By Category</a></li>
 			<li><a href="http://www.google.com">Display Promotions By Location</a></li>
-			<li><a href="#">Display Nearby Promotions</a></li>
 		</ul>	
+	</div>
+</div>
+
+<div data-role="page" id="nearby">
+	<div data-role="header">
+		<h1>Display All Nearby Promotions</h1>
+	</div>
+
+	<div data-role="content" id="nearby-content">
+		<p>Nearby Promotions is currently loading...</p>
 	</div>
 </div>
 
 <div data-role="page" id="category">
 	<div data-role="header">
-		<h1>Display Promotions By Category</h1>
+		<h1>Display Nearby Promotions By Category</h1>
 	</div>
 
 	<div data-role="content" id="category-content">
-		<p id="hello">Hello World</p>
+		<p>Categories is currently loading...</p>
 	</div>
 </div>
 </body>
