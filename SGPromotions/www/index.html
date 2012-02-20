@@ -35,6 +35,15 @@
 					} else {
 					}
 				});
+				
+				$('#promotion').live('pagebeforeshow', function (event, ui) {
+					var $item = $(this);
+					if($(this).jqmData('category') != null) {
+						$.each(promotion_parameters, function(index, value) {
+							$('#promotion-' + value).text($item.jqmData(value));
+						});
+					}
+				});
 			});
 		</script>
         <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
@@ -94,15 +103,29 @@
 	</div>
 
 	<div data-role="content" id="promotion-content">
-		<p>Promotion is currently loading...</p>
+	<p id="promotion-category"></p>
+	<p id="promotion-distance"></p>
+	<p id="promotion-contact_number"></p>
+	<p id="promotion-contact_number_link"></p>
+	<p id="promotion-name"></p>
+	<p id="promotion-promo"></p>
+	<p id="promotion-pic"></p>
+	<p id="promotion-operating_hours"></p>
+	<p id="promotion-url"></p>
+	<p id="promotion-expiry_date"></p>
+	<p id="promotion-address"></p>
+	<p id="promotion-lat"></p>
+	<p id="promotion-lng"></p>
+
+<!--		<p>Promotion is currently loading...</p>-->
 	</div>
 </div>
 
 <script id="NearbyTemplate" type="text/x-jquery-tmpl">
 	<ul data-role="listview" id="nearby-list" data-theme="c" data-inset="true" data-filter="true">
 		{{#each results}}
-		<li>
-			<a href="{{=url}}"><img src="{{=pic}}" width="24" height="24" class="ui-li-icon"/>
+		<li data-category="{{=category}}" data-distance="{{=distance}}" data-contact_number="{{=contact_number}}" data-contact_number_link="{{=contact_number_link}}" data-name="{{=name}}" data-promo="{{=promo}}" data-pic="{{=pic}}" data-operating_hours="{{=operating_hours}}" data-url="{{=url}}" data-expiry_date="{{=expiry_date}}" data-address="{{=address}}" data-lat="{{=lat}}" data-lng="{{=lng}}">
+			<a href="#promotion"><img src="{{=pic}}" width="24" height="24" class="ui-li-icon"/>
 				<h3>{{=name}}</h3>
 				<p>{{=promo}}</p>
 				<span class="ui-li-count">{{=distance}}m</span>
@@ -121,6 +144,19 @@
 		{{/each}}
 	</ul>
 </script>
+
+<!--
+$(document).ready(function() {
+	$('a[name=submit_button]').click(function(){
+		var inputVal = $('input[name=text_input]').val();
+		$("#mainPage").data("inputVal", inputVal);
+	})
+});
+$('#mainPage').live('pageshow', function(){
+	var inputVal = $(this).data('inputVal') ? $(this).data('inputVal') : "";
+	$('div p').text("Data from dialog: "+inputVal);
+});
+-->
 
 <!--$('div[id="categories"] ul[data-role="listview"] a').live("click", function() {  
     var dataurl = $(this).attr("data-url");  
