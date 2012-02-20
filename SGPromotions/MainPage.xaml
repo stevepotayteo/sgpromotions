@@ -23,7 +23,7 @@
            x:Name="splashImage">
             <Image.Resources>
                 <Storyboard x:Name="fadeOut"
-                    BeginTime="0:0:1.0"
+                    BeginTime="0:0:2.0"
                     Completed="fadeOut_Completed">
                     <DoubleAnimation
                  Storyboard.TargetName="splashImage"
