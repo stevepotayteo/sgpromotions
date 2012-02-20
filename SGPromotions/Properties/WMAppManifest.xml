@@ -2,9 +2,9 @@
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
   <App xmlns="" ProductID="{423e5326-90c3-4a65-a2ee-c7f24b72a8bd}" Title="SGPromotions" 
        RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  
-       Author="SGPromotions author" 
-       Description="PhoneGap for Windows Phone 7" 
-       Publisher="SGPromotions">
+       Author="Steve Teo" 
+       Description="SGPromotions is an application that locates all nearby promotions in Singapore." 
+       Publisher="Kaos Foundry">
     
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>

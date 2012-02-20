@@ -1,15 +1,15 @@
-﻿<xapCache source="D:\Projects\WP7\SGPromotions\SGPromotions\Bin\Release\SGPromotions.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="20/2/2012 6:05:46 PM">
-  <file source="D:\Projects\WP7\SGPromotions\SGPromotions\Bin\Release\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="20/2/2012 6:02:48 PM" />
-  <file source="D:\Projects\WP7\SGPromotions\SGPromotions\Background.png" archivePath="Background.png" lastWriteTime="10/2/2012 8:03:50 PM" />
-  <file source="D:\Projects\WP7\SGPromotions\SGPromotions\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="10/2/2012 8:03:50 PM" />
+﻿<xapCache source="D:\Projects\WP7\SGPromotions\SGPromotions\Bin\Release\SGPromotions.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="20/2/2012 8:18:30 PM">
+  <file source="D:\Projects\WP7\SGPromotions\SGPromotions\Bin\Release\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="20/2/2012 8:18:24 PM" />
+  <file source="D:\Projects\WP7\SGPromotions\SGPromotions\Background.png" archivePath="Background.png" lastWriteTime="20/2/2012 8:18:21 PM" />
+  <file source="D:\Projects\WP7\SGPromotions\SGPromotions\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="20/2/2012 7:51:55 PM" />
   <file source="D:\Projects\WP7\SGPromotions\SGPromotions\obj\Release\SGPromotions.dll" archivePath="SGPromotions.dll" lastWriteTime="20/2/2012 6:02:48 PM" />
   <file source="D:\Projects\WP7\SGPromotions\SGPromotions\GapLib\WP7GapClassLib.dll" archivePath="WP7GapClassLib.dll" lastWriteTime="10/2/2012 8:03:50 PM" />
   <file source="D:\Projects\WP7\SGPromotions\SGPromotions\GapLib\WP7GapClassLib.dll" archivePath="GapLib\WP7GapClassLib.dll" lastWriteTime="10/2/2012 8:03:50 PM" />
-  <file source="D:\Projects\WP7\SGPromotions\SGPromotions\GapSourceDictionary.xml" archivePath="GapSourceDictionary.xml" lastWriteTime="20/2/2012 6:05:46 PM" />
+  <file source="D:\Projects\WP7\SGPromotions\SGPromotions\GapSourceDictionary.xml" archivePath="GapSourceDictionary.xml" lastWriteTime="20/2/2012 8:18:30 PM" />
   <file source="D:\Projects\WP7\SGPromotions\SGPromotions\www\jsrender.js" archivePath="www\jsrender.js" lastWriteTime="20/2/2012 3:17:33 PM" />
   <file source="D:\Projects\WP7\SGPromotions\SGPromotions\www\phonegap-1.4.1.js" archivePath="www\phonegap-1.4.1.js" lastWriteTime="10/2/2012 8:03:50 PM" />
   <file source="D:\Projects\WP7\SGPromotions\SGPromotions\www\promotions.js" archivePath="www\promotions.js" lastWriteTime="20/2/2012 6:02:25 PM" />
-  <file source="D:\Projects\WP7\SGPromotions\SGPromotions\www\index.html" archivePath="www\index.html" lastWriteTime="20/2/2012 6:05:42 PM" />
+  <file source="D:\Projects\WP7\SGPromotions\SGPromotions\www\index.html" archivePath="www\index.html" lastWriteTime="20/2/2012 6:29:21 PM" />
   <file source="D:\Projects\WP7\SGPromotions\SGPromotions\www\master.css" archivePath="www\master.css" lastWriteTime="10/2/2012 8:03:50 PM" />
   <file source="D:\Projects\WP7\SGPromotions\SGPromotions\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="10/2/2012 8:03:50 PM" />
   <file source="D:\Projects\WP7\SGPromotions\SGPromotions\Bin\Release\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="10/2/2012 9:28:26 PM" />
