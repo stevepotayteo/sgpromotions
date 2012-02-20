@@ -40,7 +40,7 @@ function getCategory() {
 
 	$.ajax({
 		url: yql_uri,
-		cache: true,
+		cache: false,
         dataType: 'jsonp',
         jsonpCallback: 'displayCategory'
 		// success: displayCategory

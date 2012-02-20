@@ -10,7 +10,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True" d:DesignHeight="768" d:DesignWidth="480" xmlns:my="clr-namespace:WP7GapClassLib;assembly=WP7GapClassLib">
+    shell:SystemTray.IsVisible="False" d:DesignHeight="800" d:DesignWidth="480" xmlns:my="clr-namespace:WP7GapClassLib;assembly=WP7GapClassLib">
     <Grid x:Name="LayoutRoot" Background="Transparent" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -19,6 +19,19 @@
                    Margin="0,0,0,0"  
                    Name="PGView" 
                    VerticalAlignment="Stretch" />
+        <Image Source="/SplashScreenImage.jpg"
+           x:Name="splashImage">
+            <Image.Resources>
+                <Storyboard x:Name="fadeOut"
+                    BeginTime="0:0:1.0"
+                    Completed="fadeOut_Completed">
+                    <DoubleAnimation
+                 Storyboard.TargetName="splashImage"
+                 Storyboard.TargetProperty="Opacity"
+                 From="1.0" To="0.0" Duration="0:0:0.3"/>
+                </Storyboard>
+            </Image.Resources>
+        </Image>
     </Grid>
 
 </phone:PhoneApplicationPage>
