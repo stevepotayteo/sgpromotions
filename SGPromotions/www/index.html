@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
-	<head
+    <head>
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 		
@@ -49,7 +49,8 @@
         <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
         
 		<script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
-		<script type="text/javascript">
+        
+        <script type="text/javascript">
 			document.addEventListener("deviceready",onDeviceReady,false);
 			// once the device ready event fires, you can safely do your thing! -jm
 			function onDeviceReady() {
@@ -78,7 +79,7 @@
 </div>
 
 <div data-role="page" id="nearby">
-	<div data-role="header">
+	<div data-role="header" data-position="fixed">
 		<h1>Display All Nearby Promotions</h1>
 	</div>
 
@@ -87,7 +88,7 @@
 	</div>
 </div>
 
-<div data-role="page" id="category">
+<div data-role="page" id="category" data-position="fixed">
 	<div data-role="header">
 		<h1>Display Nearby Promotions By Category</h1>
 	</div>
@@ -97,7 +98,7 @@
 	</div>
 </div>
 
-<div data-role="page" id="promotion">
+<div data-role="page" id="promotion" data-position="fixed">
 	<div data-role="header">
 		<h1>Display Particular Promotion</h1>
 	</div>
@@ -122,7 +123,7 @@
 </div>
 
 <script id="NearbyTemplate" type="text/x-jquery-tmpl">
-	<ul data-role="listview" id="nearby-list" data-theme="c" data-inset="true" data-filter="true">
+	<ul data-role="listview" id="nearby-list" data-theme="c" data-inset="false" data-filter="true">
 		{{#each results}}
 		<li data-category="{{=category}}" data-distance="{{=distance}}" data-contact_number="{{=contact_number}}" data-contact_number_link="{{=contact_number_link}}" data-name="{{=name}}" data-promo="{{=promo}}" data-pic="{{=pic}}" data-operating_hours="{{=operating_hours}}" data-url="{{=url}}" data-expiry_date="{{=expiry_date}}" data-address="{{=address}}" data-lat="{{=lat}}" data-lng="{{=lng}}">
 			<a href="#promotion"><img src="{{=pic}}" width="24" height="24" class="ui-li-icon"/>

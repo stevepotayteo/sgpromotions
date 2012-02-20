@@ -10,7 +10,9 @@ function getNearby() {
 	$.ajax({
 		url: yql_uri,
 		cache: false,
-		success: displayNearby
+        dataType: 'jsonp',
+		jsonpCallback: 'displayNearby'
+		// success: displayNearby - this only works in chrome
 	});
 }
 
@@ -39,7 +41,9 @@ function getCategory() {
 	$.ajax({
 		url: yql_uri,
 		cache: true,
-		success: displayCategory
+        dataType: 'jsonp',
+        jsonpCallback: 'displayCategory'
+		// success: displayCategory
 	});
 }
 
