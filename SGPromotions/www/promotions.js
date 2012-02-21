@@ -3,8 +3,14 @@ var chalkboard_api_nearby_uri = 'http://api.yourchalkboard.com/promo/api/nearby/
 var chalkboard_api_category_uri = 'http://api.yourchalkboard.com/category/api/all/?token=' + chalkboard_api_token;
 var promotion_parameters = ["category","distance","contact_number", "contact_number_link", "name", "promo", "pic", "operating_hours", "url", "expiry_date", "address", "lat", "lng"];
 
-function getNearby() {		
-	var yql_str = 'select * from json where url="'+ chalkboard_api_nearby_uri +'"';	// YQL string. Similar to SQL
+function getNearby() {
+    var category_selection = sessionStorage.getItem("categorySelect");
+    var additionalParameters = '';
+    if(category_selection != null && category_selection != "all") {
+        additionalParameters += '&category=' + category_selection;
+    }
+
+	var yql_str = 'select * from json where url="'+ chalkboard_api_nearby_uri + additionalParameters +'"';	// YQL string. Similar to SQL
 	var yql_uri = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(yql_str) + '&format=json';	// YQL public URI string
 
 	$.ajax({
@@ -19,6 +25,7 @@ function getNearby() {
 function displayNearby(data) {
 	if(data.query.results.json != null){
 		var nearby = data.query.results.json;
+
 		$("#nearby-content").html($("#NearbyTemplate").render(nearby));
 		$('#nearby-content > ul').listview();
 		
@@ -32,7 +39,9 @@ function displayNearby(data) {
 		    
 		    // $.mobile.changePage('#promotion');
 		});
-	}
+	} else {
+        $("#nearby-content").html($("#EmptyNearbyTemplate").render());
+    }
 }
 
 function getCategory() {		
@@ -49,9 +58,17 @@ function getCategory() {
 }
 
 function displayCategory(data) {
-	if(data.query.results.json != null){
+    if (data.query.results.json != null) {
+        data.query.results.json.results.splice(0, 0, // insert at the beginning
+            { category: "All", categorytag: "all", iconurl: "images/all.png" }
+        );
+
 		var category = data.query.results.json;
 		$("#category-content").html($("#CategoryTemplate").render(category)); // trigger("pagecreate").trigger("refresh"); // alternative method for multiple generated items
 		$('#category-content > ul').listview();
+
+        $('#category-list').delegate("li", "click", function (event) {
+            sessionStorage.setItem("categorySelect", $(this).jqmData("category_tag"));
+        });
 	}
 }

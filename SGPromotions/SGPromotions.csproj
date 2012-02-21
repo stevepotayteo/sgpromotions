@@ -88,6 +88,9 @@
     <Content Include="GapLib\WP7GapClassLib.dll" />
     <Content Include="GapSourceDictionary.xml" />
     <Content Include="www\category.html" />
+    <Content Include="www\images\all.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="www\jsrender.js" />
     <Content Include="www\nearby.html" />
     <Content Include="www\phonegap-1.4.1.js" />

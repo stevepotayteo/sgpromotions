@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
@@ -52,8 +52,8 @@
 <script id="CategoryTemplate" type="text/x-jquery-tmpl">
     <ul data-role="listview" id="category-list" data-theme="c" data-inset="false" data-filter="true">
         {{#each results}}
-        <li>
-            <a href="{{=categorytag}}"><img src="{{=iconurl}}" width="16" height="16" class="ui-li-icon"/>{{=category}}</a>
+        <li data-category_tag="{{=categorytag}}">
+            <a href="nearby.html" rel="external"><img src="{{=iconurl}}" width="16" height="16" class="ui-li-icon"/>{{=category}}</a>
         </li>
         {{/each}}
     </ul>
