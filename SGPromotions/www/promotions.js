@@ -26,7 +26,8 @@ function displayNearby(data) {
 			var $item = $(this);
 		
 			$.each(promotion_parameters, function(index, value) {
-				$('#promotion').jqmData(value, $item.jqmData(value));
+                sessionStorage.setItem(value, $item.jqmData(value));
+				// $('#promotion').jqmData(value, $item.jqmData(value)); // all external links now so jqmData is pointless
 			});
 		    
 		    // $.mobile.changePage('#promotion');

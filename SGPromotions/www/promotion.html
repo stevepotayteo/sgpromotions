@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+
+    <title>SG Promotions</title>
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="jsrender.js"></script>
+    <script type="text/javascript" src="promotions.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).bind("mobileinit", function() {
+            $('#promotion').live('pagebeforeshow', function (event, ui) {
+                if(sessionStorage.getItem(promotion_parameters[0]) != null) {
+                    // was thinking of having something here to remove a promotion not found if it doesn't exist. just in case?
+                    $.each(promotion_parameters, function(index, value) {
+                        $('#promotion-' + value).text(sessionStorage.getItem(value));
+                    });
+                }
+
+                // jqmData implementation below pointless since links are external now
+                // var $item = $(this);
+
+//                if($(this).jqmData('category') != null) {
+//                    $.each(promotion_parameters, function(index, value) {
+//                        $('#promotion-' + value).text($item.jqmData(value));
+//                    });
+//                }
+            });
+        });
+    </script>
+    <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener("deviceready",onDeviceReady,false);
+        // once the device ready event fires, you can safely do your thing! -jm
+        function onDeviceReady() {
+            //document.getElementById("welcomeMsg").innerHTML += "PhoneGap is ready! version=" + window.device.phonegap;
+            //console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
+        }
+    </script>
+</head>
+<body>
+<div data-role="page" id="promotion" data-position="fixed">
+    <div data-role="header">
+        <h1>Display Particular Promotion</h1>
+        <a href="index.html" rel="external" data-role="button" data-icon="home" data-iconpos="notext" data-theme="c" class="ui-btn-right jqm-home" data-iconshadow="false"></a>
+    </div>
+
+    <div data-role="content" id="promotion-content">
+        <p id="promotion-category"></p>
+        <p id="promotion-distance"></p>
+        <p id="promotion-contact_number"></p>
+        <p id="promotion-contact_number_link"></p>
+        <p id="promotion-name"></p>
+        <p id="promotion-promo"></p>
+        <p id="promotion-pic"></p>
+        <p id="promotion-operating_hours"></p>
+        <p id="promotion-url"></p>
+        <p id="promotion-expiry_date"></p>
+        <p id="promotion-address"></p>
+        <p id="promotion-lat"></p>
+        <p id="promotion-lng"></p>
+
+        <!--		<p>Promotion is currently loading...</p>-->
+    </div>
+</div>
+
+</body>
+</html>

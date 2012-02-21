@@ -87,8 +87,12 @@
   <ItemGroup>
     <Content Include="GapLib\WP7GapClassLib.dll" />
     <Content Include="GapSourceDictionary.xml" />
+    <Content Include="www\category.html" />
     <Content Include="www\jsrender.js" />
+    <Content Include="www\nearby.html" />
     <Content Include="www\phonegap-1.4.1.js" />
+    <Content Include="www\phonegapMock.js" />
+    <Content Include="www\promotion.html" />
     <Content Include="www\promotions.js" />
     <None Include="ManifestProcessor.js" />
     <Content Include="www\index.html">

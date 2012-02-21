@@ -2,14 +2,17 @@
 <!-- This file is auto-generated, do not edit! -jm -->
 <GapSourceDictionary>
     <FilePath Value="www\.gitignore"/>
+    <FilePath Value="www\category.html"/>
     <FilePath Value="www\index.html"/>
     <FilePath Value="www\jquery-1.6.4.min.js"/>
     <FilePath Value="www\jquery.mobile-1.0.1.min.css"/>
     <FilePath Value="www\jquery.mobile-1.0.1.min.js"/>
     <FilePath Value="www\jsrender.js"/>
     <FilePath Value="www\master.css"/>
+    <FilePath Value="www\nearby.html"/>
     <FilePath Value="www\phonegap-1.4.1.js"/>
     <FilePath Value="www\phonegapMock.js"/>
+    <FilePath Value="www\promotion.html"/>
     <FilePath Value="www\promotions.js"/>
     <FilePath Value="www\.idea\.name"/>
     <FilePath Value="www\.idea\encodings.xml"/>
