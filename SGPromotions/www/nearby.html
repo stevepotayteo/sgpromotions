@@ -22,26 +22,27 @@
 				});
 			});
 		</script>
-        <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
-        
-		<script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
-		<script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>
-        
+        <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+        <!-- <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script> -->
+
         <script type="text/javascript">
-			document.addEventListener("deviceready",onDeviceReady,false);
-			// once the device ready event fires, you can safely do your thing! -jm
-			function onDeviceReady() {
-			//document.getElementById("welcomeMsg").innerHTML += "PhoneGap is ready! version=" + window.device.phonegap;
-			//console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
-			}
-		</script>
+            document.addEventListener("deviceready",onDeviceReady,false);
+            // once the device ready event fires, you can safely do your thing! -jm
+            function onDeviceReady() {
+                //document.getElementById("welcomeMsg").innerHTML += "PhoneGap is ready! version=" + window.device.phonegap;
+                //console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
+            }
+        </script>
+        <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+
+
 	</head>
 <body>
 
 <div data-role="page" id="nearby">
 	<div data-role="header" data-position="fixed">
 	    <h1>Display All Nearby Promotions</h1>
-        <a href="index.html" rel="external" data-role="button" data-icon="home" data-iconpos="notext" data-theme="c" class="ui-btn-right jqm-home" data-iconshadow="false"></a>
+        <a href="index.html" data-role="button" data-icon="home" data-iconpos="notext" data-theme="c" class="ui-btn-right jqm-home" data-iconshadow="false"></a>
 	</div>
 
 	<div data-role="content" id="nearby-content">
@@ -53,7 +54,7 @@
 	<ul data-role="listview" id="nearby-list" data-theme="c" data-inset="false" data-filter="true">
 		{{#each results}}
 		<li data-category="{{=category}}" data-distance="{{=distance}}" data-contact_number="{{=contact_number}}" data-contact_number_link="{{=contact_number_link}}" data-name="{{=name}}" data-promo="{{=promo}}" data-pic="{{=pic}}" data-operating_hours="{{=operating_hours}}" data-url="{{=url}}" data-expiry_date="{{=expiry_date}}" data-address="{{=address}}" data-lat="{{=lat}}" data-lng="{{=lng}}">
-			<a href="promotion.html" rel="external"><img src="{{=pic}}" width="24" height="24" class="ui-li-icon" style="top: 25px"/>
+			<a href="promotion.html"><img src="{{=pic}}" width="24" height="24" class="ui-li-icon" style="top: 25px"/>
 				<h3>{{=name}}</h3>
 				<p>{{=promo}}</p>
 				<span class="ui-li-count">{{=distance}}m</span>

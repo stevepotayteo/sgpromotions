@@ -25,14 +25,14 @@
     <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 
     <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
-    <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>
+    <!-- <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script> -->
 
     <script type="text/javascript">
         document.addEventListener("deviceready",onDeviceReady,false);
         // once the device ready event fires, you can safely do your thing! -jm
         function onDeviceReady() {
-            //document.getElementById("welcomeMsg").innerHTML += "PhoneGap is ready! version=" + window.device.phonegap;
-            //console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
+            navigator.notification.alert("was here1");
+            navigator.geolocation.getCurrentPosition(onSuccess, onError);
         }
     </script>
 </head>
@@ -41,7 +41,7 @@
 <div data-role="page" id="category" data-position="fixed">
     <div data-role="header">
         <h1>Display Nearby Promotions By Category</h1>
-        <a href="index.html" rel="external" data-role="button" data-icon="home" data-iconpos="notext" data-theme="c" class="ui-btn-right jqm-home" data-iconshadow="false"></a>
+        <a href="index.html" data-role="button" data-icon="home" data-iconpos="notext" data-theme="c" class="ui-btn-right jqm-home" data-iconshadow="false"></a>
     </div>
 
     <div data-role="content" id="category-content">
@@ -53,7 +53,7 @@
     <ul data-role="listview" id="category-list" data-theme="c" data-inset="false" data-filter="true">
         {{#each results}}
         <li data-category_tag="{{=categorytag}}">
-            <a href="nearby.html" rel="external"><img src="{{=iconurl}}" width="16" height="16" class="ui-li-icon"/>{{=category}}</a>
+            <a href="nearby.html"><img src="{{=iconurl}}" width="16" height="16" class="ui-li-icon"/>{{=category}}</a>
         </li>
         {{/each}}
     </ul>
