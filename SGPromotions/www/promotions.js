@@ -28,7 +28,7 @@ function getNearby() {
         additionalParameters += '&lat=' + current_lat + '&lng=' + current_lng;
     } else {
         // return;
-        additionalParameters += '&lat=' + default_lat + '&lng=' + default_lng;
+        additionalParameters += '&lat=' + default_lat + '&lng=' + default_lng; // for debug purposes
     }
 
     var category_selection = sessionStorage.getItem("categorySelect");
