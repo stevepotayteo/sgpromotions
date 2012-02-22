@@ -39,32 +39,59 @@ function getNearby() {
 	var yql_str = 'select * from json where url="'+ chalkboard_api_nearby_uri + additionalParameters +'"';	// YQL string. Similar to SQL
 	var yql_uri = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(yql_str) + '&format=json';	// YQL public URI string
 
-	$.ajax({
+	req = $.ajax({
 		url: yql_uri,
 		cache: false,
         dataType: 'jsonp',
 		jsonpCallback: 'displayNearby'
 		// success: displayNearby - this only works in chrome
 	});
+
+    req.error(function() {
+        $("#nearby-content").html($("#NearbyErrorTemplate").render());
+    });
 }
 
 /* GPS Section */
 // onSuccess Geolocation
 //
+function SetCurrentLocation() {
+    navigator.geolocation.getCurrentPosition(onGeolocationSuccess, onGeolocationError,{maximumAge:0, timeout:15000});
+}
+
 function onGeolocationSuccess(position) {
-    navigator.notification.alert(position.coords.latitude + ' ' + position.coords.longitude);
+    // navigator.notification.alert('GPS Found: ' + position.coords.latitude + ' ' + position.coords.longitude);
     sessionStorage.setItem("current_lat", position.coords.latitude);
     sessionStorage.setItem("current_lng", position.coords.longitude);
+    $.mobile.hidePageLoadingMsg();
+
+    $('#SubmitLocation').submit();
 }
 
 // onError Callback receives a PositionError object
 //
 function onGeolocationError(error) {
-	//PositionError.PERMISSION_DENIED
-	//PositionError.POSITION_UNAVAILABLE
-	//PositionError.TIMEOUT
-    navigator.notification.alert("code: "    + error.code    + '\n' +
-        'message: ' + error.message + '\n');
+    var sErrMsg;
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            sErrMsg = "In order for sg.promotions to search for nearby promotions, GPS must be enabled so that your current location can be determined.";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            sErrMsg = "We were unable to retrieve your current position. Please try again.";
+            break;
+        case error.TIMEOUT:
+            sErrMsg = "We were unable to retrieve your current position. Please try again.";
+            break;
+        default:
+            sErrMsg = "We were unable to retrieve your current position. Please try again.";
+            break;
+    };
+
+    $.mobile.hidePageLoadingMsg();
+
+    navigator.notification.beep(1);
+    navigator.notification.vibrate(1000);
+    navigator.notification.alert(sErrMsg);
 }
 
 function displayNearby(data) {
@@ -85,7 +112,7 @@ function displayNearby(data) {
 		    // $.mobile.changePage('#promotion');
 		});
 	} else {
-        $("#nearby-content").html($("#EmptyNearbyTemplate").render());
+        $("#nearby-content").html($("#NearbyEmptyTemplate").render());
     }
 }
 
@@ -93,13 +120,17 @@ function getCategory() {
 	var yql_str = 'select * from json where url="'+ chalkboard_api_category_uri +'"';	// YQL string. Similar to SQL
 	var yql_uri = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(yql_str) + '&format=json';	// YQL public URI string
 
-	$.ajax({
+	req = $.ajax({
 		url: yql_uri,
 		cache: false,
         dataType: 'jsonp',
-        jsonpCallback: 'displayCategory'
-		// success: displayCategory
+        jsonpCallback: 'displayCategory',
+        timeout : 10000
 	});
+
+    req.error(function() {
+        $("#category-content").html($("#CategoryErrorTemplate").render());
+    });
 }
 
 function displayCategory(data) {

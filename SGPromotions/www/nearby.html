@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
         
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+        <script type="text/javascript" src="jquery.jsonp-2.2.1.js"></script>
         <script type="text/javascript" src="jsrender.js"></script>
         <script type="text/javascript" src="promotions.js" type="text/javascript"></script>
 		<script type="text/javascript">
@@ -64,8 +65,12 @@
 	</ul>
 </script>
 
-<script id="EmptyNearbyTemplate" type="text/x-jquery-tmpl">
+<script id="NearbyEmptyTemplate" type="text/x-jquery-tmpl">
     <p>There are no results. Please choose another <a href="javascript:history.back()">category</a>.</p>
+</script>
+
+<script id="NearbyErrorTemplate" type="text/x-jquery-tmpl">
+    <p>An error occured while loading, please <a href="nearby.html">reload</a> to try again or go <a href="javascript:history.back()">back</a>.</p>
 </script>
 </body>
 </html>

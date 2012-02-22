@@ -13,13 +13,23 @@
         <script type="text/javascript" src="promotions.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			$(document).bind("mobileinit", function() {
+                $.mobile.loadingMessage = "Getting current location..."
 			});
 		</script>
         <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
-        
-		<script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
-		<!-- <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script> -->
-        
+        <script type="text/javascript">
+            $('#home').live('pageinit', function(event) {
+                $('#nearby').click(function (e) {
+                    e.preventDefault();
+                    $.mobile.showPageLoadingMsg();
+                    SetCurrentLocation();
+                });
+
+            });
+        </script>
+
+        <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+        <!-- <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script> -->
         <script type="text/javascript">
 			document.addEventListener("deviceready",onDeviceReady,false);
 			// once the device ready event fires, you can safely do your thing! -jm
@@ -29,7 +39,7 @@
                 if(networkState == Connection.UNKNOWN || networkState == Connection.NONE) {
                     navigator.notification.beep(1);
                     navigator.notification.vibrate(1000);
-                    navigator.notification.alert("Data connection is currently disabled or unknown. As sg.promotions requires a connection to the Internet. please ensure that you enable your data connection before using it..");
+                    navigator.notification.alert("Data connection is currently disabled or unknown. Please ensure that you enable your data connection before using sg.promotions.");
                 }
 			//document.getElementById("welcomeMsg").innerHTML += "PhoneGap is ready! version=" + window.device.phonegap;
 			//console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
@@ -38,7 +48,7 @@
 	</head>
 <body>
 
-    <div data-role="page">
+    <div data-role="page" id="home">
         <!--
             <div data-role="header">
                 <h1>SG Promotions</h1>
@@ -46,16 +56,14 @@
             </div>
             -->
 
-        <div data-role="content">	
-            <ul data-role="listview" data-inset="true" data-filter="false">
-                <li><a href="category.html">Nearby Promotions</a></li>
-                <li><a href="location.html">Display Promotions By Location</a></li>
-            </ul>
+        <div data-role="content">
         
             <div class="ui-grid-a">
-                <div class="ui-block-a"><a href="category.html">Nearby Promotions</a></div>
+                <div class="ui-block-a"><a href="javascript:void(0)" id="nearby">Nearby Promotions</a></div>
                 <div class="ui-block-b"><a href="location.html">Promotions By Location</a></div>
             </div>
+
+            <form action="category.html" id="SubmitLocation" method="get"></form>
             <!--<div class="ui-grid-a">-->
                 <!--<div class="ui-block-a"><a href="location.html">Display Promotions By Location</a></div>-->
             <!--</div>-->
