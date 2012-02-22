@@ -15,6 +15,7 @@ using System.IO;
 using System.Windows.Media.Imaging;
 using System.Windows.Resources;
 using SGPromotions.Util;
+using Microsoft.Phone.Shell;
 
 
 namespace SGPromotions
@@ -58,14 +59,36 @@ namespace SGPromotions
             {
                 _browserHelper.ScrollDisabled = true;
             }
+
+            // <button onclick="window.external.Notify('clearTextBox');">clear textbox</button> <- can do real shit here.
+            // app bar code
         }
 
         private void fadeOut_Completed(object sender, EventArgs e)
         {
             splashImage.Visibility = Visibility.Collapsed;
+            ApplicationBar = ((ApplicationBar) this.Resources["MainAppBar"]);
+            ApplicationBar.IsVisible = true;
         }
 
         private void GapBrowser_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        // Appbar section
+
+        private void AppbarButtonHome_Click(object sender, EventArgs e)
+        {
+            PGView.Browser.InvokeScript("appbar_home");
+        }
+
+        private void AppbarButtonCenterme_Click(object sender, EventArgs e)
+        {
+            PGView.Browser.InvokeScript("appbar_home");
+        }
+
+        private void AboutApp_Click(object sender, EventArgs e)
         {
 
         }

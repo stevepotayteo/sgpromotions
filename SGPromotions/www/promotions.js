@@ -149,3 +149,8 @@ function displayCategory(data) {
         });
 	}
 }
+
+// Application Bar
+function appbar_home() {
+    window.location.href="index.html";
+}
