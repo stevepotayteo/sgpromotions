@@ -21,13 +21,14 @@ $(document).bind("mobileinit", function() {
 });
 
 function getNearby() {
-    var currentLat = sessionStorage.getItem("current_lat");
-    var currentLng = sessionStorage.getItem("current_lng");
+    var current_lat = sessionStorage.getItem("current_lat");
+    var current_lng = sessionStorage.getItem("current_lng");
     var additionalParameters = '';
-    if(currentLat != null && currentLng != null) {
-        additionalParameters += '&lat=' + currentLat + '&lng=' + currentLng;
+    if(current_lat != null && current_lng != null) {
+        additionalParameters += '&lat=' + current_lat + '&lng=' + current_lng;
     } else {
-        return;
+        // return;
+        additionalParameters += '&lat=' + default_lat + '&lng=' + default_lng;
     }
 
     var category_selection = sessionStorage.getItem("categorySelect");
@@ -50,7 +51,7 @@ function getNearby() {
 /* GPS Section */
 // onSuccess Geolocation
 //
-function onSuccess(position) {
+function onGeolocationSuccess(position) {
     navigator.notification.alert(position.coords.latitude + ' ' + position.coords.longitude);
     sessionStorage.setItem("current_lat", position.coords.latitude);
     sessionStorage.setItem("current_lng", position.coords.longitude);
@@ -58,7 +59,10 @@ function onSuccess(position) {
 
 // onError Callback receives a PositionError object
 //
-function onError(error) {
+function onGeolocationError(error) {
+	//PositionError.PERMISSION_DENIED
+	//PositionError.POSITION_UNAVAILABLE
+	//PositionError.TIMEOUT
     navigator.notification.alert("code: "    + error.code    + '\n' +
         'message: ' + error.message + '\n');
 }

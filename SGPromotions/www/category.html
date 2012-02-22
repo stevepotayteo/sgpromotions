@@ -31,8 +31,8 @@
         document.addEventListener("deviceready",onDeviceReady,false);
         // once the device ready event fires, you can safely do your thing! -jm
         function onDeviceReady() {
-            navigator.notification.alert("was here1");
-            navigator.geolocation.getCurrentPosition(onSuccess, onError);
+            // navigator.notification.alert("was here1");
+            navigator.geolocation.getCurrentPosition(onGeolocationSuccess, onGeolocationError);
         }
     </script>
 </head>
