@@ -9,7 +9,6 @@
     <FilePath Value="www\jquery.mobile-1.0.1.min.js"/>
     <FilePath Value="www\jsrender.js"/>
     <FilePath Value="www\location.html"/>
-    <FilePath Value="www\master.css"/>
     <FilePath Value="www\nearby.html"/>
     <FilePath Value="www\phonegap-1.4.1.js"/>
     <FilePath Value="www\phonegapMock.js"/>
@@ -23,5 +22,9 @@
     <FilePath Value="www\.idea\workspace.xml"/>
     <FilePath Value="www\.idea\www.iml"/>
     <FilePath Value="www\.idea\scopes\scope_settings.xml"/>
+    <FilePath Value="www\css\sg.promotions.css"/>
+    <FilePath Value="www\css\sg.promotions.custom.css"/>
+    <FilePath Value="www\css\sg.promotions.mainpage.css"/>
     <FilePath Value="www\images\all.png"/>
+    <FilePath Value="www\images\app-header.png"/>
 </GapSourceDictionary>

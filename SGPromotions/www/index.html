@@ -2,11 +2,13 @@
 <html>
     <head>
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
-		<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		
-		<title>SG Promotions</title>    
-        
+		<title>SG Promotions</title>
+        <link rel="stylesheet" href="css/sg.promotions.css" />
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+        <link href="css/sg.promotions.custom.css" rel="stylesheet" type="text/css">
+        <link href="css/sg.promotions.mainpage.css" rel="stylesheet" type="text/css">
         
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
         <script type="text/javascript" src="jsrender.js"></script>
@@ -24,7 +26,18 @@
                     $.mobile.showPageLoadingMsg();
                     SetCurrentLocation();
                 });
-
+                $('#location').click(function (e) {
+                    e.preventDefault();
+                    window.location.href="location.html";
+                });
+                $('#mrt').click(function (e) {
+                    e.preventDefault();
+                    window.location.href="mrt.html";
+                });
+                $('#about').click(function (e) {
+                    e.preventDefault();
+                    window.location.href="about.html";
+                });
             });
         </script>
 
@@ -43,10 +56,15 @@
                 }
 			}
 		</script>
-	</head>
-<body>
+    <style type="text/css">
+    .ui-page {
+		background-color: #CC3333;
+	}
+    </style>
+    </head>
+<body class="custom">
 
-    <div data-role="page" id="home">
+    <div data-role="page" id="home" class="custom" data-theme="f">
         <!--
             <div data-role="header">
                 <h1>SG Promotions</h1>
@@ -55,11 +73,18 @@
             -->
 
         <div data-role="content">
-        
-            <div class="ui-grid-a">
-                <div class="ui-block-a"><a href="javascript:void(0)" id="nearby">Nearby Promotions</a></div>
-                <div class="ui-block-b"><a href="location.html">Search By Location</a></div>
-            </div>
+        <div class="homelogo" data-role="none">
+        	<img src="images/app-header.png" data-role="none">
+        </div>
+        <div class="ui-grid-a">
+            <div align="center" class="ui-block-a"><div class="box" id="nearby"><h3 class="textinbox">nearby promotions</h3></div></div>
+            <div align="center" class="ui-block-b"><div class="box" id="location"><h3 class="textinbox">search by location</h3></div></div>
+        </div>
+        <p></p>
+        <div class="ui-grid-a">
+            <div align="center" class="ui-block-a"><div class="box" id="mrt"><h3 class="textinbox">search by mrt station</h3></div></div>
+            <div align="center" class="ui-block-b"><div class="box" id="about"><h3 class="textinbox">about app</h3></div></div>
+        </div>
 
             <form action="category.html" id="SubmitLocation" method="get"></form>
             <!--<div class="ui-grid-a">-->

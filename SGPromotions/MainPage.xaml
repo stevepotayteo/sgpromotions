@@ -20,10 +20,10 @@
                    Name="PGView" 
                    VerticalAlignment="Stretch" />
         <Image Source="/SplashScreenImage.jpg"
-           x:Name="splashImage">
+           x:Name="splashImage" Stretch="UniformToFill">
             <Image.Resources>
                 <Storyboard x:Name="fadeOut"
-                    BeginTime="0:0:1"
+                    BeginTime="0:0:0.5"
                     Completed="fadeOut_Completed">
                     <DoubleAnimation
                  Storyboard.TargetName="splashImage"
@@ -38,9 +38,9 @@
         <shell:ApplicationBar x:Key="MainAppBar" IsVisible="False" IsMenuEnabled="True" Opacity="1">
             <shell:ApplicationBarIconButton IconUri="/icons/appbar.home.png"
         Text="Home" Click="AppbarButtonHome_Click"/>
-            <shell:ApplicationBarIconButton IconUri="/icons/appbar.centerme.png"
+            <!-- <shell:ApplicationBarIconButton IconUri="/icons/appbar.centerme.png"
         Text="Center Me" Click="AppbarButtonCenterme_Click"/>
-
+-->
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Click="AboutApp_Click" Text="About sg.promotions" />
             </shell:ApplicationBar.MenuItems>

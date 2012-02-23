@@ -5,8 +5,9 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 
     <title>SG Promotions</title>
-
+    <link rel="stylesheet" href="css/sg.promotions.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+    <link rel="stylesheet" href="css/sg.promotions.custom.css" type="text/css">
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
     <script type="text/javascript" src="jquery.jsonp-2.2.1.js"></script>
@@ -52,13 +53,13 @@
 <div data-role="page" id="location">
     <div data-role="header" data-position="fixed">
         <h1>Promotions by Location</h1>
-        <a href="index.html" data-role="button" data-icon="home" data-iconpos="notext" data-theme="c" class="ui-btn-right jqm-home" data-iconshadow="false"></a>
+        <!-- <a href="index.html" data-role="button" data-icon="home" data-iconpos="notext" data-theme="c" class="ui-btn-right jqm-home" data-iconshadow="false"></a> -->
     </div>
 
 	<div data-role="content" id="location-content">
 			<!--<div data-role="fieldcontain">-->
 				<label for="search_location">Search Promotions Around:</label>
-				<input type="search" name="location" id="search_location" value="" data-mini="true" placeholder="Enter an address"/>
+				<input type="search" name="location" id="search_location" value="" data-mini="true" placeholder="eg. Raffles City"/>
 			<!--</div>-->
         <p id="location-result">
 
@@ -67,13 +68,13 @@
 </div>
 
 <script id="LocationTemplate" type="text/x-jquery-tmpl">
-    <ul data-role="listview" id="location-list" data-theme="c" data-inset="true" data-filter="false">
+    <ul data-role="listview" id="location-list" data-theme="c" data-inset="false" data-filter="false">
         {{#each results}}
         <li data-address="{{=formatted_address}}" data-lat="{{=geometry.location.lat}}" data-lng="{{=geometry.location.lng}}">
             <a href="category.html">
                 <h3>{{=formatted_address}}</h3>
                 <!--<h3>{{=formatted_address}}</h3>-->
-                <p>{{=geometry.location.lat}}, {{=geometry.location.lng}}</p>
+                <!--<p>{{=geometry.location.lat}}, {{=geometry.location.lng}}</p> -->
             </a>
         </li>
         {{/each}}

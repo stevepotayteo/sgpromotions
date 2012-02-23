@@ -69,6 +69,7 @@ namespace SGPromotions
             splashImage.Visibility = Visibility.Collapsed;
             ApplicationBar = ((ApplicationBar) this.Resources["MainAppBar"]);
             ApplicationBar.IsVisible = true;
+            SystemTray.IsVisible = true;
         }
 
         private void GapBrowser_Loaded(object sender, RoutedEventArgs e)
@@ -80,7 +81,13 @@ namespace SGPromotions
 
         private void AppbarButtonHome_Click(object sender, EventArgs e)
         {
-            PGView.Browser.InvokeScript("appbar_home");
+            try
+            {
+                PGView.Browser.InvokeScript("appbar_home");
+            }
+            catch (System.Exception ex)
+            {
+            }
         }
 
         private void AppbarButtonCenterme_Click(object sender, EventArgs e)

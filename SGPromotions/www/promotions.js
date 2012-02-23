@@ -183,7 +183,7 @@ function displayLocationResults(data) {
 
         $('#location-list').delegate("li", "click", function (event) {
             var $item = $(this);
-            alert($item.jqmData('lat'), $item.jqmData('lng'));
+            // alert($item.jqmData('lat'), $item.jqmData('lng'));
             sessionStorage.setItem("current_lat", $item.jqmData('lat'));
             sessionStorage.setItem("current_lng", $item.jqmData('lng'));
         });

@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+
+.homelogo {
+	text-align: center;
+	background: #CC3333;
+	margin-bottom:40px;
+}
+
+body.custom {
+/*	margin: 0px;
+	padding: 0px;*/	
+}
+
+div.custom {
+/*	margin: 0px;
+	padding: 0px;	*/
+}
+
+div.box {
+	margin-left:auto;
+	margin-right:auto;
+	padding: 4px 5px 4px 4px;
+	width: 120px;
+	height: 120px;
+	border-style:dashed;
+	border-color:#FFFFFF;
+	text-align: right;
+	vertical-align: bottom;
+	display: table-cell;
+	line-height: 20px;
+}
+
+h3.textinbox {
+	margin: 0px;
+	padding: 0px;
+	font-weight:normal;
+}
