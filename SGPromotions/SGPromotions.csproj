@@ -101,6 +101,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="www\jsrender.js" />
+    <Content Include="www\location.html" />
     <Content Include="www\nearby.html" />
     <Content Include="www\phonegap-1.4.1.js" />
     <Content Include="www\phonegapMock.js" />

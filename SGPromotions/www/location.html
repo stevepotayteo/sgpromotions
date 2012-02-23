@@ -14,24 +14,27 @@
     <script type="text/javascript" src="promotions.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).bind("mobileinit", function() {
-	        $('#hello').submit(function() {
-	          alert('hello');
-	          //alert($(this).serialize());
-	          //return false;
-	        });
-	        
+            $.mobile.loadingMessage = "Searching Location..."
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).bind("mobileinit", function() {
 			$(window).keydown(function(event){
 				if(event.keyCode == 13) {
 					event.preventDefault();
-			  		searchThis();
+                    var location = $.trim($('#search_location').val());
+                    if(location != '') {
+                        $('#location').focus(); // this is needed so the textbox loses focus and the keyboard doesn't block the screen
+                        $.mobile.showPageLoadingMsg();
+                        geocodeLocation(location);
+                    }
+
 			  		return false;
 				}
 			});
         });
         
-        function searchThis() {
-        	alert('zz');
-        }
+
     </script>
     <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 
@@ -43,14 +46,6 @@
         function onDeviceReady() {
         }
     </script>
-    
-    <script type="text/javascript">
-    	$('#hello').submit(function() {
-    	  alert('hello');
-    	  //alert($(this).serialize());
-    	  //return false;
-    	});    
-    </script>
 </head>
 <body>
 
@@ -61,14 +56,37 @@
     </div>
 
 	<div data-role="content" id="location-content">
-		<form id="hello" action="searchThis()" method="post" data-ajax="true">
-			<div data-role="fieldcontain">
-				<label for="search_location">Enter Location:</label>
-				<input type="search" name="location" id="search_location" value="" data-mini="true" />
-			</div>
-		</form>
+			<!--<div data-role="fieldcontain">-->
+				<label for="search_location">Search Promotions Around:</label>
+				<input type="search" name="location" id="search_location" value="" data-mini="true" placeholder="Enter an address"/>
+			<!--</div>-->
+        <p id="location-result">
+
+        </p>
 	</div>
 </div>
+
+<script id="LocationTemplate" type="text/x-jquery-tmpl">
+    <ul data-role="listview" id="location-list" data-theme="c" data-inset="true" data-filter="false">
+        {{#each results}}
+        <li data-address="{{=formatted_address}}" data-lat="{{=geometry.location.lat}}" data-lng="{{=geometry.location.lng}}">
+            <a href="category.html">
+                <h3>{{=formatted_address}}</h3>
+                <!--<h3>{{=formatted_address}}</h3>-->
+                <p>{{=geometry.location.lat}}, {{=geometry.location.lng}}</p>
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+
+<script id="LocationEmptyTemplate" type="text/x-jquery-tmpl">
+    <p>There are no results. Please define your search more clearly.</p>
+</script>
+
+<script id="LocationErrorTemplate" type="text/x-jquery-tmpl">
+    <p>An error occured while loading (NEED TO FILL UP MORE).</p>
+</script>
 
 </body>
 </html>

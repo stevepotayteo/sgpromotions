@@ -1,10 +1,13 @@
 var chalkboard_api_token = 'JVbi0jbTqNVUOiYcdagDO4cvM19aOZdX0rveegKVousCuzt3dY';
 //var chalkboard_api_nearby_uri = 'http://api.yourchalkboard.com/promo/api/nearby/?token=' + chalkboard_api_token + '&lat=1.300&lng=103.86';
 var chalkboard_api_nearby_uri = 'http://api.yourchalkboard.com/promo/api/nearby/?token=' + chalkboard_api_token;
+var google_geocode_uri = 'http://maps.googleapis.com/maps/api/geocode/json?region=SG&sensor=true'; // address needs to be filled up
+
 var default_lat = 1.300;
 var default_lng = 103.86;
 var chalkboard_api_category_uri = 'http://api.yourchalkboard.com/category/api/all/?token=' + chalkboard_api_token;
 var promotion_parameters = ["category","distance","contact_number", "contact_number_link", "name", "promo", "pic", "operating_hours", "url", "expiry_date", "address", "lat", "lng"];
+var location_parameters = ["lat", "lng"];
 
 $(document).bind("mobileinit", function() {
     $.mobile.ajaxEnabled = false;
@@ -95,9 +98,8 @@ function onGeolocationError(error) {
 }
 
 function displayNearby(data) {
-	if(data.query.results.json != null){
-		var nearby = data.query.results.json;
-
+    var nearby = data.query.results.json;
+	if(nearby != null){
 		$("#nearby-content").html($("#NearbyTemplate").render(nearby));
 		$('#nearby-content > ul').listview();
 		
@@ -147,7 +149,47 @@ function displayCategory(data) {
         $('#category-list').delegate("li", "click", function (event) {
             sessionStorage.setItem("categorySelect", $(this).jqmData("category_tag"));
         });
-	}
+	} else {
+        $("#category-content").html($("#CategoryEmptyTemplate").render());
+    }
+}
+
+function geocodeLocation(location) {
+    location += ", Singapore"; // to make it extremely restrictive - might not be a good idea, but good for now
+    var yql_str = encodeURIComponent('select * from json where url="')+ encodeURIComponent(google_geocode_uri) + encodeURIComponent('&address=') + encodeURIComponent(location).replace(/%20/g, '%2B') + encodeURIComponent('"');	// YQL string. Similar to SQL
+    var yql_uri = 'http://query.yahooapis.com/v1/public/yql?q=' + yql_str + '&format=json';	// YQL public URI string
+    // $('#location-result').html(yql_uri); - for pure debugging
+
+    req = $.ajax({
+        url: yql_uri,
+        cache: false,
+        dataType: 'jsonp',
+        jsonpCallback: 'displayLocationResults',
+        timeout : 2000
+    });
+    req.error(function() {
+        $.mobile.hidePageLoadingMsg();
+        $("#location-result").html($("#LocationErrorTemplate").render());
+    });
+}
+
+function displayLocationResults(data) {
+    var locations = data.query.results.json;
+    $.mobile.hidePageLoadingMsg();
+
+    if(locations != null){ // need to double check to see what happens in the result of an empty address
+        $("#location-result").html($("#LocationTemplate").render(locations));
+        $('#location-result > ul').listview();
+
+        $('#location-list').delegate("li", "click", function (event) {
+            var $item = $(this);
+            alert($item.jqmData('lat'), $item.jqmData('lng'));
+            sessionStorage.setItem("current_lat", $item.jqmData('lat'));
+            sessionStorage.setItem("current_lng", $item.jqmData('lng'));
+        });
+    } else {
+        $("#location-result").html($("#LocationEmptyTemplate").render());
+    }
 }
 
 // Application Bar
