@@ -106,6 +106,7 @@
     </Content>
     <Content Include="www\css\sg.promotions.custom.css" />
     <Content Include="www\css\sg.promotions.mainpage.css" />
+    <Content Include="www\css\sg.promotions.restpages.css" />
     <Content Include="www\fav.html" />
     <Content Include="www\images\all.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

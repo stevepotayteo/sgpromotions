@@ -59,6 +59,21 @@ h3.textinbox {
 	margin: 0px;
 	padding: 0px;
 	font-weight:normal;
+	color: #FFFFFF;
+}
+
+h1 {
+	font-weight:normal;
+	color: #FFFFFF;
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+h3 {
+	margin: 0px;
+	padding: 0px;
+	font-weight:normal;
+	color: #000000;
 }
 
 .ui-page {
@@ -67,8 +82,11 @@ h3.textinbox {
 
 #logo-header {
 	font-size: 32px;
+	color: #FFFFFF;
 }
 
 #logo-punchline {
-	font-size: 18px;
+	font-size: 17px;
+	margin-top: -5px;
+	color: #ff9999;
 }

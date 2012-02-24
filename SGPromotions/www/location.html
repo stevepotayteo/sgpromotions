@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/sg.promotions.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
     <link rel="stylesheet" href="css/sg.promotions.custom.css" type="text/css">
-
+    <link href="css/sg.promotions.restpages.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
     <script type="text/javascript" src="jquery.jsonp-2.2.1.js"></script>
     <script type="text/javascript" src="jsrender.js"></script>
@@ -50,25 +50,21 @@
 </head>
 <body>
 
-<div data-role="page" id="location">
-    <div data-role="header" data-position="fixed">
-        <h1>Promotions by Location</h1>
-        <!-- <a href="index.html" data-role="button" data-icon="home" data-iconpos="notext" data-theme="c" class="ui-btn-right jqm-home" data-iconshadow="false"></a> -->
-    </div>
-
+<div data-role="page" id="location" data-theme="c">
 	<div data-role="content" id="location-content">
 			<!--<div data-role="fieldcontain">-->
-				<label for="search_location">Search Promotions Around:</label>
+            <h1>search by location</h1>
+              <label for="search_location">
+            <h3>enter address to search:</h3></label>
 				<input type="search" name="location" id="search_location" value="" data-mini="true" placeholder="eg. Raffles City"/>
 			<!--</div>-->
-        <p id="location-result">
-
-        </p>
+        <div id="location-result"></div>
 	</div>
 </div>
 
 <script id="LocationTemplate" type="text/x-jquery-tmpl">
-    <ul data-role="listview" id="location-list" data-theme="c" data-inset="false" data-filter="false">
+    <br/><h3>locations found: </h3>
+	<ul data-role="listview" id="location-list" data-inset="true" data-filter="false">
         {{#each results}}
         <li data-address="{{=formatted_address}}" data-lat="{{=geometry.location.lat}}" data-lng="{{=geometry.location.lng}}">
             <a href="category.html">
@@ -82,11 +78,13 @@
 </script>
 
 <script id="LocationEmptyTemplate" type="text/x-jquery-tmpl">
-    <p>There are no results. Please define your search more clearly.</p>
+    <h3>no locations found: </h3>
+	<p>There are no results. Please define your search more clearly.</p>
 </script>
 
 <script id="LocationErrorTemplate" type="text/x-jquery-tmpl">
-    <p>An error occured while loading. Your data connection might be down.</p>
+    <h3>error while locating: </h3>
+	<p>An error occured while loading. Your data connection might be down.</p>
 </script>
 
 </body>

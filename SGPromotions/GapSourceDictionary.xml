@@ -28,6 +28,7 @@
     <FilePath Value="www\css\sg.promotions.css"/>
     <FilePath Value="www\css\sg.promotions.custom.css"/>
     <FilePath Value="www\css\sg.promotions.mainpage.css"/>
+    <FilePath Value="www\css\sg.promotions.restpages.css"/>
     <FilePath Value="www\images\all.png"/>
     <FilePath Value="www\images\app-header.png"/>
     <FilePath Value="www\images\fav.png"/>

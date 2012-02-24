@@ -51,7 +51,7 @@ function getNearby() {
 	});
 
     req.error(function() {
-        $("#nearby-content").html($("#NearbyErrorTemplate").render());
+        $("#nearby-result").html($("#NearbyErrorTemplate").render());
     });
 }
 
@@ -100,10 +100,10 @@ function onGeolocationError(error) {
 function displayNearby(data) {
     var nearby = data.query.results.json;
 	if(nearby != null){
-        $("#nearby-content").hide();
-		$("#nearby-content").html($("#NearbyTemplate").render(nearby));
-		$('#nearby-content > ul').listview();
-        $("#nearby-content").show();
+        $("#nearby-result").hide();
+		$("#nearby-result").html($("#NearbyTemplate").render(nearby));
+		$('#nearby-result > ul').listview();
+        $("#nearby-result").show();
 		
 		$('#nearby-list').delegate("li", "click", function (event) {
 			var $item = $(this);
@@ -116,7 +116,7 @@ function displayNearby(data) {
 		    // $.mobile.changePage('#promotion');
 		});
 	} else {
-        $("#nearby-content").html($("#NearbyEmptyTemplate").render());
+        $("#nearby-result").html($("#NearbyEmptyTemplate").render());
     }
 }
 
@@ -133,7 +133,7 @@ function getCategory() {
 	});
 
     req.error(function() {
-        $("#category-content").html($("#CategoryErrorTemplate").render());
+        $("#category-result").html($("#CategoryErrorTemplate").render());
     });
 }
 
@@ -144,16 +144,16 @@ function displayCategory(data) {
         );
 
 		var category = data.query.results.json;
-        $("#category-content").hide();
-		$("#category-content").html($("#CategoryTemplate").render(category)); // trigger("pagecreate").trigger("refresh"); // alternative method for multiple generated items
-		$('#category-content > ul').listview();
-        $("#category-content").show();
+        $("#category-result").hide();
+		$("#category-result").html($("#CategoryTemplate").render(category)); // trigger("pagecreate").trigger("refresh"); // alternative method for multiple generated items
+		$('#category-result > ul').listview();
+        $("#category-result").show();
 
         $('#category-list').delegate("li", "click", function (event) {
             sessionStorage.setItem("categorySelect", $(this).jqmData("category_tag"));
         });
 	} else {
-        $("#category-content").html($("#CategoryEmptyTemplate").render());
+        $("#category-result").html($("#CategoryEmptyTemplate").render());
     }
 }
 
@@ -197,7 +197,7 @@ function displayLocationResults(data) {
     }
 }
 
-// Application Bar
+// Application Barf
 function appbar_home() {
     window.location.href="index.html";
 }
@@ -215,5 +215,5 @@ function appbar_fav() {
 }
 
 function appbar_about() {
-    window.location.href = "fav.html";
+    window.location.href = "about.html";
 }

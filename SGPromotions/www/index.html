@@ -34,10 +34,10 @@
                     e.preventDefault();
                     window.location.href="mrt.html";
                 });
-                $('#fav').click(function (e) {
-                    e.preventDefault();
-                    window.location.href="fav.html";
-                });
+//                $('#fav').click(function (e) {
+//                    e.preventDefault();
+//                    window.location.href="fav.html";
+//                });
             });
         </script>
 
@@ -64,17 +64,12 @@
     </head>
 <body class="custom">
 
-    <div data-role="page" id="home" class="custom" data-theme="f">
-        <!--
-            <div data-role="header">
-                <h1>SG Promotions</h1>
-                <a href="index.html" data-role="button" data-icon="home" data-iconpos="notext" data-theme="c" class="ui-btn-right jqm-home" data-iconshadow="false"></a>
-            </div>
-            -->
-
+    <div data-role="page" id="home" class="custom">
         <div data-role="content">
         <div class="homelogo" data-role="none">
-        	<img src="images/app-header.png" data-role="none">
+        	<div id="logo-header">sg.promotions</div>
+            <div id="logo-punchline">discover nearby promotions</div>
+        	<!-- <img src="images/app-header.png" data-role="none"> -->
         </div>
         <div class="ui-grid-a">
             <div align="center" class="ui-block-a"><div class="box nearbyimg" id="nearby"><h3 class="textinbox">nearby promotions</h3></div></div>
@@ -83,7 +78,7 @@
         <p></p>
         <div class="ui-grid-a">
             <div align="center" class="ui-block-a"><div class="box trainimg" id="mrt"><h3 class="textinbox">search by mrt station</h3></div></div>
-            <div align="center" class="ui-block-b"><div class="box favimg" id="fav"><h3 class="textinbox">favorite promotion</h3></div></div>
+            <!--<div align="center" class="ui-block-b"><div class="box favimg" id="fav"><h3 class="textinbox">favorite promotion</h3></div></div>-->
         </div>
 
             <form action="category.html" id="SubmitLocation" method="get"></form>

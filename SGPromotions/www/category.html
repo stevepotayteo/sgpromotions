@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/sg.promotions.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
     <link rel="stylesheet" href="css/sg.promotions.custom.css" type="text/css">
+    <link href="css/sg.promotions.restpages.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
     <script type="text/javascript" src="jsrender.js"></script>
     <script type="text/javascript" src="promotions.js" type="text/javascript"></script>
@@ -38,21 +39,19 @@
 </head>
 <body>
 
-<div data-role="page" id="category">
-    <div data-role="header" data-position="fixed">
-        <h1>Display Nearby Promotions By Category</h1>
-        <!-- <a href="index.html" data-role="button" data-icon="home" data-iconpos="notext" data-theme="c" class="ui-btn-right jqm-home" data-iconshadow="false"></a> -->
-    </div>
-
+<div data-role="page" id="category" data-theme="c">
     <div data-role="content" id="category-content">
-        <p>Categories are currently loading...</p>
+        <h1>select a category</h1>
+        <div id="category-result">
+        Categories are currently loading...
+    	</div>
     </div>
 </div>
 
 <script id="CategoryTemplate" type="text/x-jquery-tmpl">
-    <ul data-role="listview" id="category-list" data-theme="c" data-inset="false" data-filter="true">
+    <ul data-role="listview" id="category-list" data-inset="true" data-filter="false" data-theme="c">
         {{#each results}}
-        <li data-category_tag="{{=categorytag}}">
+        <li data-category_tag="{{=categorytag}}" data-theme="c">
             <a href="nearby.html"><img src="{{=iconurl}}" width="16" height="16" class="ui-li-icon"/>{{=category}}</a>
         </li>
         {{/each}}
