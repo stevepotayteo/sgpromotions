@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
@@ -8,22 +8,15 @@
     <link rel="stylesheet" href="css/sg.promotions.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
     <link rel="stylesheet" href="css/sg.promotions.custom.css" type="text/css">
+
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="jquery.jsonp-2.2.1.js"></script>
     <script type="text/javascript" src="jsrender.js"></script>
     <script type="text/javascript" src="promotions.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).bind("mobileinit", function() {
-            $('#category').live('pagebeforeshow', function (event, ui) {
-                // have internet connection
-                if(true) {
-                    getCategory();
-                } else {
-                }
-            });
         });
     </script>
-    <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
-
     <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
     <!-- <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script> -->
 
@@ -31,40 +24,25 @@
         document.addEventListener("deviceready",onDeviceReady,false);
         // once the device ready event fires, you can safely do your thing! -jm
         function onDeviceReady() {
-            // navigator.notification.alert("was here1");
-            // navigator.geolocation.getCurrentPosition(onGeolocationSuccess, onGeolocationError);
+            //document.getElementById("welcomeMsg").innerHTML += "PhoneGap is ready! version=" + window.device.phonegap;
+            //console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
         }
     </script>
+    <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+
+
 </head>
 <body>
 
-<div data-role="page" id="category">
+<div data-role="page" id="about">
     <div data-role="header" data-position="fixed">
-        <h1>Display Nearby Promotions By Category</h1>
+        <h1>Not Yet Implemented</h1>
         <!-- <a href="index.html" data-role="button" data-icon="home" data-iconpos="notext" data-theme="c" class="ui-btn-right jqm-home" data-iconshadow="false"></a> -->
     </div>
 
-    <div data-role="content" id="category-content">
-        <p>Categories are currently loading...</p>
+    <div data-role="content" id="about-content">
+        <p>Not Yet Implemented...</p>
     </div>
 </div>
-
-<script id="CategoryTemplate" type="text/x-jquery-tmpl">
-    <ul data-role="listview" id="category-list" data-theme="c" data-inset="false" data-filter="true">
-        {{#each results}}
-        <li data-category_tag="{{=categorytag}}">
-            <a href="nearby.html"><img src="{{=iconurl}}" width="16" height="16" class="ui-li-icon"/>{{=category}}</a>
-        </li>
-        {{/each}}
-    </ul>
-</script>
-
-<script id="CategoryErrorTemplate" type="text/x-jquery-tmpl">
-    <p>An error occured while loading, please <a href="category.html">reload</a> to try again or go <a href="javascript:history.back()">back</a>.</p>
-</script>
-
-<script id="CategoryEmptyTemplate" type="text/x-jquery-tmpl">
-    <p>There are no categories found. Click <a href="javascript:history.back()">here</a> to go back.</p>
-</script>
 </body>
 </html>

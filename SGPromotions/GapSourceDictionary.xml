@@ -2,13 +2,16 @@
 <!-- This file is auto-generated, do not edit! -jm -->
 <GapSourceDictionary>
     <FilePath Value="www\.gitignore"/>
+    <FilePath Value="www\about.html"/>
     <FilePath Value="www\category.html"/>
+    <FilePath Value="www\fav.html"/>
     <FilePath Value="www\index.html"/>
     <FilePath Value="www\jquery-1.6.4.min.js"/>
     <FilePath Value="www\jquery.mobile-1.0.1.min.css"/>
     <FilePath Value="www\jquery.mobile-1.0.1.min.js"/>
     <FilePath Value="www\jsrender.js"/>
     <FilePath Value="www\location.html"/>
+    <FilePath Value="www\mrt.html"/>
     <FilePath Value="www\nearby.html"/>
     <FilePath Value="www\phonegap-1.4.1.js"/>
     <FilePath Value="www\phonegapMock.js"/>
@@ -27,4 +30,9 @@
     <FilePath Value="www\css\sg.promotions.mainpage.css"/>
     <FilePath Value="www\images\all.png"/>
     <FilePath Value="www\images\app-header.png"/>
+    <FilePath Value="www\images\fav.png"/>
+    <FilePath Value="www\images\location.png"/>
+    <FilePath Value="www\images\logo.png"/>
+    <FilePath Value="www\images\nearby.png"/>
+    <FilePath Value="www\images\train.png"/>
 </GapSourceDictionary>

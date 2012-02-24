@@ -31,8 +31,44 @@ div.box {
 	line-height: 20px;
 }
 
+div.nearbyimg {
+	background-image: url(../images/nearby.png);
+	background-repeat: no-repeat;
+	background-position: 5px 5px;
+}
+
+div.locationimg {
+	background-image: url(../images/location.png);
+	background-repeat: no-repeat;
+	background-position: 5px 5px;
+}
+
+div.trainimg {
+	background-image: url(../images/train.png);
+	background-repeat: no-repeat;
+	background-position: 5px 5px;
+}
+
+div.favimg {
+	background-image: url(../images/fav.png);
+	background-repeat: no-repeat;
+	background-position: 5px 0px;
+}
+
 h3.textinbox {
 	margin: 0px;
 	padding: 0px;
 	font-weight:normal;
+}
+
+.ui-page {
+	font-family: "Segoe UI", Verdana, Arial
+}
+
+#logo-header {
+	font-size: 32px;
+}
+
+#logo-punchline {
+	font-size: 18px;
 }

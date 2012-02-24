@@ -38,11 +38,14 @@
         <shell:ApplicationBar x:Key="MainAppBar" IsVisible="False" IsMenuEnabled="True" Opacity="1">
             <shell:ApplicationBarIconButton IconUri="/icons/appbar.home.png"
         Text="Home" Click="AppbarButtonHome_Click"/>
-            <!-- <shell:ApplicationBarIconButton IconUri="/icons/appbar.centerme.png"
-        Text="Center Me" Click="AppbarButtonCenterme_Click"/>
--->
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.nearby.png"
+        Text="Nearby" Click="AppbarButtonNearby_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.location.png"
+        Text="Location" Click="AppbarButtonLocation_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.train.png"
+        Text="MRT" Click="AppbarButtonMRT_Click"/>
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Click="AboutApp_Click" Text="About sg.promotions" />
+                <shell:ApplicationBarMenuItem Click="AppBarMenuItemAbout_Click" Text="About sg.promotions" />
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
         <shell:ApplicationBar x:Key="MainAppBar2" IsVisible="False" IsMenuEnabled="True" Opacity="1">

@@ -100,8 +100,10 @@ function onGeolocationError(error) {
 function displayNearby(data) {
     var nearby = data.query.results.json;
 	if(nearby != null){
+        $("#nearby-content").hide();
 		$("#nearby-content").html($("#NearbyTemplate").render(nearby));
 		$('#nearby-content > ul').listview();
+        $("#nearby-content").show();
 		
 		$('#nearby-list').delegate("li", "click", function (event) {
 			var $item = $(this);
@@ -142,9 +144,10 @@ function displayCategory(data) {
         );
 
 		var category = data.query.results.json;
+        $("#category-content").hide();
 		$("#category-content").html($("#CategoryTemplate").render(category)); // trigger("pagecreate").trigger("refresh"); // alternative method for multiple generated items
 		$('#category-content > ul').listview();
-		$('#category-content > ul').listview();
+        $("#category-content").show();
 
         $('#category-list').delegate("li", "click", function (event) {
             sessionStorage.setItem("categorySelect", $(this).jqmData("category_tag"));
@@ -178,8 +181,10 @@ function displayLocationResults(data) {
     $.mobile.hidePageLoadingMsg();
 
     if(locations != null){ // need to double check to see what happens in the result of an empty address
+        $("#location-result").hide();
         $("#location-result").html($("#LocationTemplate").render(locations));
         $('#location-result > ul').listview();
+        $("#location-result").show();
 
         $('#location-list').delegate("li", "click", function (event) {
             var $item = $(this);
@@ -195,4 +200,20 @@ function displayLocationResults(data) {
 // Application Bar
 function appbar_home() {
     window.location.href="index.html";
+}
+
+function appbar_location() {
+    window.location.href="location.html";
+}
+
+function appbar_mrt() {
+    window.location.href="mrt.html";
+}
+
+function appbar_fav() {
+    window.location.href="fav.html";
+}
+
+function appbar_about() {
+    window.location.href = "fav.html";
 }

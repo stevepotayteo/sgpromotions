@@ -90,14 +90,48 @@ namespace SGPromotions
             }
         }
 
-        private void AppbarButtonCenterme_Click(object sender, EventArgs e)
+        private void AppbarButtonNearby_Click(object sender, EventArgs e)
         {
-            PGView.Browser.InvokeScript("appbar_home");
+            try
+            {
+                PGView.Browser.InvokeScript("appbar_home");
+            }
+            catch (System.Exception ex)
+            {
+            }
         }
 
-        private void AboutApp_Click(object sender, EventArgs e)
+        private void AppbarButtonLocation_Click(object sender, EventArgs e)
         {
+            try
+            {
+                PGView.Browser.InvokeScript("appbar_location");
+            }
+            catch (System.Exception ex)
+            {
+            }
+        }
 
+        private void AppbarButtonMRT_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PGView.Browser.InvokeScript("appbar_mrt");
+            }
+            catch (System.Exception ex)
+            {
+            }
+        }
+
+        private void AppBarMenuItemAbout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PGView.Browser.InvokeScript("appbar_about");
+            }
+            catch (System.Exception ex)
+            {
+            }
         }
     }
 }
