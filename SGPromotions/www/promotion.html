@@ -20,6 +20,36 @@
                     $.each(promotion_parameters, function(index, value) {
                         $('#promotion-' + value).text(sessionStorage.getItem(value));
                     });
+
+//                    var a = [['property_1','value_1'],['property_2', 'value_2']];
+//                    alert("Comienzo..., paso ////"+a+"\\\\\\ a formato JSON");
+//                    var jsonSerialized = array2dToJson(a, 'object');
+//                    alert(jsonSerialized);
+
+                    var temp = "[";
+                    $.each(promotion_parameters, function(index, value) {
+                        temp += "['" + value + "','" +sessionStorage.getItem(value) + "'],";
+                    });
+                    temp = temp.substring(0, temp.length-1);
+                    temp += "]";
+                    alert(temp);
+//                    var jsonSerialized = array2dToJson(temp, 'data');
+                    var jsonSerialized = objtostring(temp);
+                    alert(jsonSerialized);
+                    $("#promotion-result").html($("#PromotionTemplate").render(jsonSerialized));
+
+//                    var promo = '{';
+//                    $.each(promotion_parameters, function(index, value) {
+//                        promo += value + ' : "' + sessionStorage.getItem(value) + '",';
+//                    });
+//                    var promo = promo.substring(0, promo.length-1);
+//                    promo += '}';
+//                    alert(promo);
+//					$("#promotion-result").html($("#PromotionTemplate").render(promo));
+
+//                    var promotion = [
+//                        { Name: "The Red Violin", ReleaseYear: "1998" }
+//                    ];
                 }
 
                 // jqmData implementation below pointless since links are external now
@@ -76,10 +106,16 @@
         <h3>geo-cordinates</h3>
         <p id="promotion-lat"></p>
         <p id="promotion-lng"></p>
+        
+        <div id="promotion-result"></div>
 
         <!--		<p>Promotion is currently loading...</p>-->
     </div>
 </div>
+
+<script id="PromotionTemplate" type="text/x-jquery-tmpl">
+    {{=distance}}
+</script>
 
 </body>
 </html>

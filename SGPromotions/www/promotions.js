@@ -197,6 +197,57 @@ function displayLocationResults(data) {
     }
 }
 
+// Array to JSON: http://stackoverflow.com/questions/459105/convert-a-multidimensional-javascript-array-to-json
+function array2dToJson(a, p, nl) {
+    var i, j, s = '[{"' + p + '":{';
+    nl = nl || '';
+    for (i = 0; i < a.length; ++i) {
+        s += nl + array1dToJson(a[i]);
+        if (i < a.length - 1) {
+            s += ',';
+        }
+    }
+    s += nl + '}}]';
+    return s;
+}
+
+function array1dToJson(a, p) {
+    var i, s = '';
+    for (i = 0; i < a.length; ++i) {
+        if (typeof a[i] == 'string') {
+            s += '"' + a[i] + '"';
+        }
+        else { // assume number type
+            s += a[i];
+        }
+        if (i < a.length - 1) {
+            s += ':';
+        }
+    }
+    s += '';
+    if (p) {
+        return '{"' + p + '":' + s + '}';
+    }
+    return s;
+}
+
+function isArray(a){var g=a.constructor.toString();
+    if(g.match(/function Array()/)){return true;}else{return false;}
+}
+function objtostring(o){var a,k,f,freg=[],txt; if(typeof o!='object'){return false;}
+    if(isArray(o)){a={'t1':'[','t2':']','isarray':true}
+    }else         {a={'t1':'{','t2':'}','isarray':false}}; txt=a.t1;
+    for(k in o){
+        if(!a.isarray)txt+="'"+k+"':";
+        if(typeof o[k]=='string'){txt+="'"+o[k]+"',";
+        }else if(typeof o[k]=='number'||typeof o[k]=='boolean'){txt+=o[k]+",";
+        }else if(typeof o[k]=='function'){f=o[k].toString();freg=f.match(/^function\s+(\w+)\s*\(/);
+            if(freg){txt+=freg[1]+",";}else{txt+=f+",";};
+        }else if(typeof o[k]=='object'){txt+=objtostring(o[k])+",";
+        }
+    }return txt.substr(0,txt.length-1)+a.t2;
+}
+
 // Application Barf
 function appbar_home() {
     window.location.href="index.html";

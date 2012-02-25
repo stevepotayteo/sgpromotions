@@ -73,6 +73,10 @@ h3 {
 	margin: 0px;
 	padding: 0px;
 	font-weight:normal;
+	color: #FFFFFF;
+}
+
+h3.black {
 	color: #000000;
 }
 
@@ -89,4 +93,13 @@ h3 {
 	font-size: 17px;
 	margin-top: -5px;
 	color: #ff9999;
+}
+
+p {
+	color: #1F0808;
+	/*color: #EFBEBE;*/
+}
+
+p.black {
+	color: #000000;
 }

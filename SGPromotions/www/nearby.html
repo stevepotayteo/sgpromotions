@@ -45,7 +45,8 @@
 	<div data-role="content" id="nearby-content">
 		<h1>choose a promotion</h1>
         <div id="nearby-result">
-        Searching for promotions...
+        	<p>Searching for promotions...</p>
+        </div>
 	</div>
 </div>
 
@@ -55,8 +56,8 @@
 		{{#each results}}
 		<li data-category="{{=category}}" data-distance="{{=distance}}" data-contact_number="{{=contact_number}}" data-contact_number_link="{{=contact_number_link}}" data-name="{{=name}}" data-promo="{{=promo}}" data-pic="{{=pic}}" data-operating_hours="{{=operating_hours}}" data-url="{{=url}}" data-expiry_date="{{=expiry_date}}" data-address="{{=address}}" data-lat="{{=lat}}" data-lng="{{=lng}}">
 			<a href="promotion.html"><img src="{{=pic}}" width="24" height="24" class="ui-li-icon" style="top: 25px"/>
-				<h3>{{=name}}</h3>
-				<p>{{=promo}}</p>
+				<h3 class="black">{{=name}}</h3>
+				<p class="black">{{=promo}}</p>
 				<span class="ui-li-count">{{=distance}}m</span>
 			</a>
 		</li>

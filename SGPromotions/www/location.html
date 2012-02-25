@@ -68,8 +68,7 @@
         {{#each results}}
         <li data-address="{{=formatted_address}}" data-lat="{{=geometry.location.lat}}" data-lng="{{=geometry.location.lng}}">
             <a href="category.html">
-                <h3>{{=formatted_address}}</h3>
-                <!--<h3>{{=formatted_address}}</h3>-->
+                {{=formatted_address}}
                 <!--<p>{{=geometry.location.lat}}, {{=geometry.location.lng}}</p> -->
             </a>
         </li>
