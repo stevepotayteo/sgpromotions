@@ -104,12 +104,21 @@ function displayNearby(data) {
 		$("#nearby-result").html($("#NearbyTemplate").render(nearby));
 		$('#nearby-result > ul').listview();
         $("#nearby-result").show();
-		
+        var count = nearby.results.length;
+        if(count == undefined) {
+            count = 1;
+        }
+        $("#count").text(count);
+
 		$('#nearby-list').delegate("li", "click", function (event) {
 			var $item = $(this);
 		
 			$.each(promotion_parameters, function(index, value) {
-                sessionStorage.setItem(value, $item.jqmData(value));
+                if(value == "url" || value == "pic") { // to fix some fuck-ed up bug with storing urls in IE sessionstorage. wasted my time
+                    sessionStorage.setItem(value, encodeURIComponent($item.jqmData(value)));
+                } else {
+                    sessionStorage.setItem(value, $item.jqmData(value));
+                }
 				// $('#promotion').jqmData(value, $item.jqmData(value)); // all external links now so jqmData is pointless
 			});
 		    
@@ -185,6 +194,11 @@ function displayLocationResults(data) {
         $("#location-result").html($("#LocationTemplate").render(locations));
         $('#location-result > ul').listview();
         $("#location-result").show();
+        var count = locations.results.length;
+        if(count == undefined) {
+            count = 1;
+        }
+        $("#count").text(count);
 
         $('#location-list').delegate("li", "click", function (event) {
             var $item = $(this);

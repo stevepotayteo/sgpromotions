@@ -17,39 +17,33 @@
             $('#promotion').live('pagebeforeshow', function (event, ui) {
                 if(sessionStorage.getItem(promotion_parameters[0]) != null) {
                     // was thinking of having something here to remove a promotion not found if it doesn't exist. just in case?
+                    var something = '';
                     $.each(promotion_parameters, function(index, value) {
-                        $('#promotion-' + value).text(sessionStorage.getItem(value));
+//                        $('#promotion-' + value).text(sessionStorage.getItem(value));
+                        something += sessionStorage.getItem(value) + " ";
                     });
 
-//                    var a = [['property_1','value_1'],['property_2', 'value_2']];
-//                    alert("Comienzo..., paso ////"+a+"\\\\\\ a formato JSON");
-//                    var jsonSerialized = array2dToJson(a, 'object');
-//                    alert(jsonSerialized);
+                    //alert(something);
 
-                    var temp = "[";
-                    $.each(promotion_parameters, function(index, value) {
-                        temp += "['" + value + "','" +sessionStorage.getItem(value) + "'],";
-                    });
-                    temp = temp.substring(0, temp.length-1);
-                    temp += "]";
-                    alert(temp);
-//                    var jsonSerialized = array2dToJson(temp, 'data');
-                    var jsonSerialized = objtostring(temp);
-                    alert(jsonSerialized);
-                    $("#promotion-result").html($("#PromotionTemplate").render(jsonSerialized));
+                    var promo = {
+                        'category': sessionStorage.getItem(promotion_parameters[0]),
+                        'distance': sessionStorage.getItem(promotion_parameters[1]),
+                        'contact_number': sessionStorage.getItem(promotion_parameters[2]),
+                        'contact_number_link': sessionStorage.getItem(promotion_parameters[3]),
+                        'name': sessionStorage.getItem(promotion_parameters[4]).toLowerCase(),
+                        'promo': sessionStorage.getItem(promotion_parameters[5]),
+                        'pic': decodeURIComponent(sessionStorage.getItem(promotion_parameters[6])),
+                        'operating_hours': sessionStorage.getItem(promotion_parameters[7]),
+                        'url': decodeURIComponent(sessionStorage.getItem(promotion_parameters[8])),
+                        'expiry_date': sessionStorage.getItem(promotion_parameters[9]),
+                        'address': sessionStorage.getItem(promotion_parameters[10]),
+                        'lat': sessionStorage.getItem(promotion_parameters[11]),
+                        'lng': sessionStorage.getItem(promotion_parameters[12])
+                    };
 
-//                    var promo = '{';
-//                    $.each(promotion_parameters, function(index, value) {
-//                        promo += value + ' : "' + sessionStorage.getItem(value) + '",';
-//                    });
-//                    var promo = promo.substring(0, promo.length-1);
-//                    promo += '}';
-//                    alert(promo);
-//					$("#promotion-result").html($("#PromotionTemplate").render(promo));
+                    //alert(promo);
 
-//                    var promotion = [
-//                        { Name: "The Red Violin", ReleaseYear: "1998" }
-//                    ];
+                    $("#promotion-result").html($("#PromotionTemplate").render(promo));
                 }
 
                 // jqmData implementation below pointless since links are external now
@@ -80,32 +74,32 @@
 <body>
 <div data-role="page" id="promotion" data-position="fixed" data-theme="c">
     <div data-role="content" id="promotion-content">
-        <h1>promotion details</h1>
-        <h3>category</h3>
-        <p id="promotion-category"></p>
-        <h3>distance</h3>
-        <p id="promotion-distance"></p>
-        <h3>contact number</h3>
-        <p id="promotion-contact_number"></p>
-        <h3>contact number link</h3>
-        <p id="promotion-contact_number_link"></p>
-        <h3>name</h3>
-        <p id="promotion-name"></p>
-        <h3>promotion</h3>
-        <p id="promotion-promo"></p>
-        <h3>pic</h3>
-        <p id="promotion-pic"></p>
-        <h3>operating hours</h3>
-        <p id="promotion-operating_hours"></p>
-        <h3>url</h3>
-        <p id="promotion-url"></p>
-        <h3>expiry date</h3>
-        <p id="promotion-expiry_date"></p>
-        <h3>address</h3>
-        <p id="promotion-address"></p>
-        <h3>geo-cordinates</h3>
-        <p id="promotion-lat"></p>
-        <p id="promotion-lng"></p>
+        <h1>promotion details</h1><br/>
+        <!--<h3>category</h3>-->
+        <!--<p id="promotion-category">111111</p>-->
+        <!--<h3>distance</h3>-->
+        <!--<p id="promotion-distance"></p>-->
+        <!--<h3>contact number</h3>-->
+        <!--<p id="promotion-contact_number"></p>-->
+        <!--<h3>contact number link</h3>-->
+        <!--<p id="promotion-contact_number_link"></p>-->
+        <!--<h3>name</h3>-->
+        <!--<p id="promotion-name"></p>-->
+        <!--<h3>promotion</h3>-->
+        <!--<p id="promotion-promo"></p>-->
+        <!--<h3>pic</h3>-->
+        <!--<p id="promotion-pic"></p>-->
+        <!--<h3>operating hours</h3>-->
+        <!--<p id="promotion-operating_hours"></p>-->
+        <!--<h3>url</h3>-->
+        <!--<p id="promotion-url"></p>-->
+        <!--<h3>expiry date</h3>-->
+        <!--<p id="promotion-expiry_date"></p>-->
+        <!--<h3>address</h3>-->
+        <!--<p id="promotion-address"></p>-->
+        <!--<h3>geo-cordinates</h3>-->
+        <!--<p id="promotion-lat"></p>-->
+        <!--<p id="promotion-lng"></p>-->
         
         <div id="promotion-result"></div>
 
@@ -114,7 +108,29 @@
 </div>
 
 <script id="PromotionTemplate" type="text/x-jquery-tmpl">
-    {{=distance}}
+    <img src="{{=pic}}" style="vertical-align:bottom; margin-top:3px" width="24" height="24" />
+    <h3 id="promotion-name">{{=name}}</h3>
+    <p>Category: {{=category}}</p>
+    <h3>promotion</h3>
+    <p>{{=promo}}
+        {{#if expiry_date != 'null'}}
+            <br/>{{=expiry_date}}
+        {{/if}}
+    </p>
+    <h3>where</h3>
+    <p><a href="">{{=address}}</a>
+        {{#if operating_hours != 'null'}}
+            <br /> {{=operating_hours}}
+        {{/if}}
+    </p>
+    <h3>contact</h3>
+    <p>
+        <a href="{{=contact_number_link}}">{{=contact_number}}</a>
+    </p>
+    <h3>url</h3>
+    <p>
+        <a href="{{=url}}">chalkboard url</a>
+    </p>
 </script>
 
 </body>

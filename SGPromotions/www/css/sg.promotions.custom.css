@@ -63,6 +63,7 @@ h3.textinbox {
 }
 
 h1 {
+    font-size: 32px;
 	font-weight:normal;
 	color: #FFFFFF;
 	margin-top: 0px;
@@ -95,11 +96,26 @@ h3.black {
 	color: #ff9999;
 }
 
-p {
-	color: #1F0808;
-	/*color: #EFBEBE;*/
-}
-
 p.black {
 	color: #000000;
+}
+
+#promotion-content h3{
+    font-size: 24px;
+    margin-bottom: 0px;
+}
+
+#promotion-content p {
+    margin-top: 0px;
+    font-size: 13px;
+    color: #F1C9C9;
+}
+
+a:link {color:#360D0D; text-decoration: none;}
+a:active {color:#360D0D; text-decoration: none;}
+a:visited {color:#360D0D; text-decoration: none;}
+a:hover {color:#360D0D; text-decoration: none; }
+
+#promotion-name {
+    display: inline;
 }

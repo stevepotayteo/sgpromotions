@@ -25,7 +25,7 @@
 			});
 		</script>
         <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
-        <!-- <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script> -->
+         <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>
 
         <script type="text/javascript">
             document.addEventListener("deviceready",onDeviceReady,false);
@@ -36,14 +36,12 @@
             }
         </script>
         <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
-
-
 	</head>
 <body>
 
 <div data-role="page" id="nearby" data-theme="c">
 	<div data-role="content" id="nearby-content">
-		<h1>choose a promotion</h1>
+		<h1>choose promotion</h1>
         <div id="nearby-result">
         	<p>Searching for promotions...</p>
         </div>
@@ -51,7 +49,7 @@
 </div>
 
 <script id="NearbyTemplate" type="text/x-jquery-tmpl">
-    <br />
+    <h3><span id="count"></span> promotion(s) found: </h3><p/>
 	<ul data-role="listview" id="nearby-list" data-inset="true" data-filter="true">
 		{{#each results}}
 		<li data-category="{{=category}}" data-distance="{{=distance}}" data-contact_number="{{=contact_number}}" data-contact_number_link="{{=contact_number_link}}" data-name="{{=name}}" data-promo="{{=promo}}" data-pic="{{=pic}}" data-operating_hours="{{=operating_hours}}" data-url="{{=url}}" data-expiry_date="{{=expiry_date}}" data-address="{{=address}}" data-lat="{{=lat}}" data-lng="{{=lng}}">

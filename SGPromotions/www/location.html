@@ -40,7 +40,7 @@
     <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 
     <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
-    <!-- <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script> -->
+     <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>
 
     <script type="text/javascript">
         document.addEventListener("deviceready",onDeviceReady,false);
@@ -63,7 +63,7 @@
 </div>
 
 <script id="LocationTemplate" type="text/x-jquery-tmpl">
-    <br/><h3>locations found: </h3>
+    <br/><h3><span id="count"></span> location(s) found: </h3>
 	<ul data-role="listview" id="location-list" data-inset="true" data-filter="false">
         {{#each results}}
         <li data-address="{{=formatted_address}}" data-lat="{{=geometry.location.lat}}" data-lng="{{=geometry.location.lng}}">
@@ -77,12 +77,12 @@
 </script>
 
 <script id="LocationEmptyTemplate" type="text/x-jquery-tmpl">
-    <h3>no locations found: </h3>
+    <br/><h3>no locations found: </h3>
 	<p>There are no results. Please define your search more clearly.</p>
 </script>
 
 <script id="LocationErrorTemplate" type="text/x-jquery-tmpl">
-    <h3>error while locating: </h3>
+    <br/><h3>error while locating: </h3>
 	<p>An error occured while loading. Your data connection might be down.</p>
 </script>
 
