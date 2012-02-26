@@ -17,37 +17,27 @@
             $('#promotion').live('pagebeforeshow', function (event, ui) {
                 if(sessionStorage.getItem(promotion_parameters[0]) != null) {
                     // was thinking of having something here to remove a promotion not found if it doesn't exist. just in case?
-                    var something = '';
-                    $.each(promotion_parameters, function(index, value) {
-//                        $('#promotion-' + value).text(sessionStorage.getItem(value));
-                        something += sessionStorage.getItem(value) + " ";
-                    });
-
-                    //alert(something);
-
                     var promo = {
-                        'category': sessionStorage.getItem(promotion_parameters[0]),
-                        'distance': sessionStorage.getItem(promotion_parameters[1]),
-                        'contact_number': sessionStorage.getItem(promotion_parameters[2]),
-                        'contact_number_link': sessionStorage.getItem(promotion_parameters[3]),
-                        'name': sessionStorage.getItem(promotion_parameters[4]).toLowerCase(),
-                        'promo': sessionStorage.getItem(promotion_parameters[5]),
+                        'category': decodeURIComponent(sessionStorage.getItem(promotion_parameters[0])),
+                        'distance': decodeURIComponent(sessionStorage.getItem(promotion_parameters[1])),
+                        'contact_number': decodeURIComponent(sessionStorage.getItem(promotion_parameters[2])),
+                        'contact_number_link': decodeURIComponent(sessionStorage.getItem(promotion_parameters[3])),
+                        'name': decodeURIComponent(sessionStorage.getItem(promotion_parameters[4])).toLowerCase(),
+                        'promo': decodeURIComponent(sessionStorage.getItem(promotion_parameters[5])),
                         'pic': decodeURIComponent(sessionStorage.getItem(promotion_parameters[6])),
-                        'operating_hours': sessionStorage.getItem(promotion_parameters[7]),
+                        'operating_hours': decodeURIComponent(sessionStorage.getItem(promotion_parameters[7])),
                         'url': decodeURIComponent(sessionStorage.getItem(promotion_parameters[8])),
-                        'expiry_date': sessionStorage.getItem(promotion_parameters[9]),
-                        'address': sessionStorage.getItem(promotion_parameters[10]),
-                        'lat': sessionStorage.getItem(promotion_parameters[11]),
-                        'lng': sessionStorage.getItem(promotion_parameters[12])
+                        'expiry_date': decodeURIComponent(sessionStorage.getItem(promotion_parameters[9])),
+                        'address': decodeURIComponent(sessionStorage.getItem(promotion_parameters[10])),
+                        'lat': decodeURIComponent(sessionStorage.getItem(promotion_parameters[11])),
+                        'lng': decodeURIComponent(sessionStorage.getItem(promotion_parameters[12]))
                     };
 
-                    //alert(promo);
-
-                    $("#promotion-result").html($("#PromotionTemplate").render(promo));
+                    $("#promotion-result").hide().html($("#PromotionTemplate").render(promo));
                     
                     $('#map').hide();
                     
-                    var mapuri = 'http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=280x280&maptype=roadmap&sensor=true&';
+                    var mapuri = 'http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=280x350&maptype=roadmap&sensor=true&';
                     
                     mapuri += 'center=' + promo.lat + ',' + promo.lng;
                     mapuri += '&markers=label:P%7C' + promo.lat + ',' + promo.lng;
@@ -57,9 +47,11 @@
                     $('#map').attr('src', mapuri);
                     
                     $('#showmap').click(function() {
-                      $('#map').animate({
+                        $('#map').animate({
                         height: "toggle", opacity: "toggle"
-                      }, "slow" );
+                        }, "slow");
+
+                        $('html,body').delay('slow').animate({scrollTop: $('#where').offset().top});
                     });
                 }
 
@@ -72,12 +64,16 @@
 //                    });
 //                }
             });
+
+            $('#promotion').live('pageshow', function (event, ui) {
+                $("#promotion-result").fadeIn(400);
+            });
         });
     </script>
     <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 
     <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
-    <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>
+    <!--<script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>-->
 
     <script type="text/javascript">
         document.addEventListener("deviceready",onDeviceReady,false);
@@ -92,32 +88,7 @@
 <div data-role="page" id="promotion" data-position="fixed" data-theme="c">
     <div data-role="content" id="promotion-content">
         <h1>promotion details</h1><br/>
-        <!--<h3>category</h3>-->
-        <!--<p id="promotion-category">111111</p>-->
-        <!--<h3>distance</h3>-->
-        <!--<p id="promotion-distance"></p>-->
-        <!--<h3>contact number</h3>-->
-        <!--<p id="promotion-contact_number"></p>-->
-        <!--<h3>contact number link</h3>-->
-        <!--<p id="promotion-contact_number_link"></p>-->
-        <!--<h3>name</h3>-->
-        <!--<p id="promotion-name"></p>-->
-        <!--<h3>promotion</h3>-->
-        <!--<p id="promotion-promo"></p>-->
-        <!--<h3>pic</h3>-->
-        <!--<p id="promotion-pic"></p>-->
-        <!--<h3>operating hours</h3>-->
-        <!--<p id="promotion-operating_hours"></p>-->
-        <!--<h3>url</h3>-->
-        <!--<p id="promotion-url"></p>-->
-        <!--<h3>expiry date</h3>-->
-        <!--<p id="promotion-expiry_date"></p>-->
-        <!--<h3>address</h3>-->
-        <!--<p id="promotion-address"></p>-->
-        <!--<h3>geo-cordinates</h3>-->
-        <!--<p id="promotion-lat"></p>-->
-        <!--<p id="promotion-lng"></p>-->
-        
+
         <div id="promotion-result"></div>
 
         <!--		<p>Promotion is currently loading...</p>-->
@@ -126,10 +97,10 @@
 
 <script id="PromotionTemplate" type="text/x-jquery-tmpl">
     <div id="titleContainer">
-    	<div style="float:left"><img src="{{=pic}}" style="vertical-align:bottom; margin-top:3px" width="48" height="48" /></div>
-    	<div style="float:left; margin-left:10px">
+    	<div style="float:left"><img src="{{=pic}}" style="vertical-align:bottom; margin-top:0px" width="48" height="48" /></div>
+    	<div style="width: 230px; float:left; margin-left:10px; margin-top:-7px">
     		<h3 id="promotion-name">{{=name}}</h3>
-    		<p>Category: {{=category}}</p>
+    		<p>Category: {{=category}} <br />Distance: <a href="" id="showdirection">{{=distance}} metres away</a></p>
 		</div>
 		<div style="clear:both"></div>
     </div>	
@@ -139,7 +110,7 @@
             <br/>{{=expiry_date}}
         {{/if}}
     </p>
-    <h3>where</h3>
+    <h3 id="where">where</h3>
     <p><a href="" id="showmap">{{=address}}</a>
         {{#if operating_hours != 'null'}}
             <br />Operating Hours: {{=operating_hours}}

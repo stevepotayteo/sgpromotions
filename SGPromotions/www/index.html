@@ -13,18 +13,17 @@
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
         <script type="text/javascript" src="jsrender.js"></script>
         <script type="text/javascript" src="promotions.js" type="text/javascript"></script>
-		<script type="text/javascript">
-			$(document).bind("mobileinit", function() {
-                $.mobile.loadingMessage = "Getting Current Location..."
-			});
-		</script>
+		<!--<script type="text/javascript">-->
+			<!--$(document).bind("mobileinit", function() {-->
+                <!--$.mobile.loadingMessage = "Getting Current Location..."-->
+			<!--});-->
+		<!--</script>-->
         <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
         <script type="text/javascript">
             $('#home').live('pageinit', function(event) {
                 $('#nearby').click(function (e) {
                     e.preventDefault();
-                    $.mobile.showPageLoadingMsg();
-                    SetCurrentLocation();
+                    appbar_nearby(); // for access from app bar and the menu
                 });
                 $('#location').click(function (e) {
                     e.preventDefault();
@@ -38,11 +37,16 @@
 //                    e.preventDefault();
 //                    window.location.href="fav.html";
 //                });
+
+                // loading animation
+                $('#nearby').hide().fadeIn(600);
+                $('#location').hide().delay(600).fadeIn(600);
+                $('#mrt').hide().delay(1200).fadeIn(600);
             });
         </script>
 
         <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
-         <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>
+        <!--<script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>-->
         <script type="text/javascript">
 			document.addEventListener("deviceready",onDeviceReady,false);
 			// once the device ready event fires, you can safely do your thing! -jm
@@ -66,22 +70,20 @@
 
     <div data-role="page" id="home" class="custom">
         <div data-role="content">
-        <div class="homelogo" data-role="none">
-        	<div id="logo-header">sg.promotions</div>
-            <div id="logo-punchline">discover nearby promotions</div>
-        	<!-- <img src="images/app-header.png" data-role="none"> -->
-        </div>
-        <div class="ui-grid-a">
-            <div align="center" class="ui-block-a"><div class="box nearbyimg" id="nearby"><h3 class="textinbox">nearby promotions</h3></div></div>
-            <div align="center" class="ui-block-b"><div class="box locationimg" id="location"><h3 class="textinbox">search by location</h3></div></div>
-        </div>
-        <br />
-        <div class="ui-grid-a">
-            <div align="center" class="ui-block-a"><div class="box trainimg" id="mrt"><h3 class="textinbox">search by mrt station</h3></div></div>
-            <!--<div align="center" class="ui-block-b"><div class="box favimg" id="fav"><h3 class="textinbox">favorite promotion</h3></div></div>-->
-        </div>
-
-            <form action="category.html" id="SubmitLocation" method="get"></form>
+            <div class="homelogo" data-role="none">
+                <div id="logo-header">sg.promotions</div>
+                <div id="logo-punchline">discover nearby promotions</div>
+                <!-- <img src="images/app-header.png" data-role="none"> -->
+            </div>
+            <div class="ui-grid-a">
+                <div align="center" class="ui-block-a"><div class="box nearbyimg" id="nearby"><h3 class="textinbox">nearby promotions</h3></div></div>
+                <div align="center" class="ui-block-b"><div class="box locationimg" id="location"><h3 class="textinbox">search by location</h3></div></div>
+            </div>
+            <br />
+            <div class="ui-grid-a">
+                <div align="center" class="ui-block-a"><div class="box trainimg" id="mrt"><h3 class="textinbox">search by mrt station</h3></div></div>
+                <!--<div align="center" class="ui-block-b"><div class="box favimg" id="fav"><h3 class="textinbox">favorite promotion</h3></div></div>-->
+            </div>
             <!--<div class="ui-grid-a">-->
                 <!--<div class="ui-block-a"><a href="location.html">Display Promotions By Location</a></div>-->
             <!--</div>-->

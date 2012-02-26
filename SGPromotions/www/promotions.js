@@ -10,6 +10,7 @@ var promotion_parameters = ["category","distance","contact_number", "contact_num
 var location_parameters = ["lat", "lng"];
 
 $(document).bind("mobileinit", function() {
+    $.mobile.loadingMessage = "Getting Current Location..."
     $.mobile.ajaxEnabled = false;
 //                $.support.cors = true;
 //                $.mobile.allowCrossDomainPages = true;
@@ -44,7 +45,7 @@ function getNearby() {
 
 	req = $.ajax({
 		url: yql_uri,
-		cache: false,
+		cache: true,
         dataType: 'jsonp',
 		jsonpCallback: 'displayNearby'
 		// success: displayNearby - this only works in chrome
@@ -68,7 +69,7 @@ function onGeolocationSuccess(position) {
     sessionStorage.setItem("current_lng", position.coords.longitude);
     $.mobile.hidePageLoadingMsg();
 
-    $('#SubmitLocation').submit();
+    window.location.href="category.html";
 }
 
 // onError Callback receives a PositionError object
@@ -99,11 +100,10 @@ function onGeolocationError(error) {
 
 function displayNearby(data) {
     var nearby = data.query.results.json;
-	if(nearby != null){
-        $("#nearby-result").hide();
+    $("#nearby-result").hide();
+    if(nearby != null){
 		$("#nearby-result").html($("#NearbyTemplate").render(nearby));
 		$('#nearby-result > ul').listview();
-        $("#nearby-result").show();
         var count = nearby.results.length;
         if(count == undefined) {
             count = 1;
@@ -114,11 +114,13 @@ function displayNearby(data) {
 			var $item = $(this);
 		
 			$.each(promotion_parameters, function(index, value) {
-                if(value == "url" || value == "pic") { // to fix some fuck-ed up bug with storing urls in IE sessionstorage. wasted my time
-                    sessionStorage.setItem(value, encodeURIComponent($item.jqmData(value)));
-                } else {
-                    sessionStorage.setItem(value, $item.jqmData(value));
-                }
+//                if(value == "url" || value == "pic" || value == "promo") { // to fix some fuck-ed up bug with storing urls in IE sessionstorage. wasted my time
+//                    sessionStorage.setItem(value, encodeURIComponent($item.jqmData(value)));
+//                } else {
+//                    sessionStorage.setItem(value, $item.jqmData(value));
+//                }
+
+                sessionStorage.setItem(value, encodeURIComponent($item.jqmData(value)));
 				// $('#promotion').jqmData(value, $item.jqmData(value)); // all external links now so jqmData is pointless
 			});
 		    
@@ -127,6 +129,7 @@ function displayNearby(data) {
 	} else {
         $("#nearby-result").html($("#NearbyEmptyTemplate").render());
     }
+    $("#nearby-result").fadeIn();
 }
 
 function getCategory() {		
@@ -135,28 +138,27 @@ function getCategory() {
 
 	req = $.ajax({
 		url: yql_uri,
-		cache: false,
+		cache: true,
         dataType: 'jsonp',
         jsonpCallback: 'displayCategory',
         timeout : 10000
 	});
 
     req.error(function() {
-        $("#category-result").html($("#CategoryErrorTemplate").render());
+        $("#category-result").hide().html($("#CategoryErrorTemplate").render()).fadeIn();
     });
 }
 
 function displayCategory(data) {
+    $("#category-result").hide();
     if (data.query.results.json != null) {
         data.query.results.json.results.splice(0, 0, // insert at the beginning
             { category: "All", categorytag: "all", iconurl: "images/all.png" }
         );
 
 		var category = data.query.results.json;
-        $("#category-result").hide();
 		$("#category-result").html($("#CategoryTemplate").render(category)); // trigger("pagecreate").trigger("refresh"); // alternative method for multiple generated items
 		$('#category-result > ul').listview();
-        $("#category-result").show();
 
         $('#category-list').delegate("li", "click", function (event) {
             sessionStorage.setItem("categorySelect", $(this).jqmData("category_tag"));
@@ -164,6 +166,8 @@ function displayCategory(data) {
 	} else {
         $("#category-result").html($("#CategoryEmptyTemplate").render());
     }
+
+    $("#category-result").fadeIn();
 }
 
 function geocodeLocation(location) {
@@ -174,26 +178,25 @@ function geocodeLocation(location) {
 
     req = $.ajax({
         url: yql_uri,
-        cache: false,
+        cache: true,
         dataType: 'jsonp',
         jsonpCallback: 'displayLocationResults',
         timeout : 2000
     });
     req.error(function() {
         $.mobile.hidePageLoadingMsg();
-        $("#location-result").html($("#LocationErrorTemplate").render());
+        $("#location-result").hide().html($("#LocationErrorTemplate").render()).fadeIn();
     });
 }
 
 function displayLocationResults(data) {
     var locations = data.query.results.json;
     $.mobile.hidePageLoadingMsg();
+    $("#location-result").hide();
 
     if(locations != null){ // need to double check to see what happens in the result of an empty address
-        $("#location-result").hide();
         $("#location-result").html($("#LocationTemplate").render(locations));
         $('#location-result > ul').listview();
-        $("#location-result").show();
         var count = locations.results.length;
         if(count == undefined) {
             count = 1;
@@ -209,6 +212,8 @@ function displayLocationResults(data) {
     } else {
         $("#location-result").html($("#LocationEmptyTemplate").render());
     }
+
+    $("#location-result").fadeIn();
 }
 
 // Array to JSON: http://stackoverflow.com/questions/459105/convert-a-multidimensional-javascript-array-to-json
@@ -265,6 +270,12 @@ function objtostring(o){var a,k,f,freg=[],txt; if(typeof o!='object'){return fal
 // Application Barf
 function appbar_home() {
     window.location.href="index.html";
+}
+
+function appbar_nearby() {
+    $.mobile.loadingMessage = "Getting Current Location..."
+    $.mobile.showPageLoadingMsg();
+    SetCurrentLocation();
 }
 
 function appbar_location() {

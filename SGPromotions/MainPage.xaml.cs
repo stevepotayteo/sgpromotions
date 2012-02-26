@@ -94,7 +94,7 @@ namespace SGPromotions
         {
             try
             {
-                PGView.Browser.InvokeScript("appbar_home");
+                PGView.Browser.InvokeScript("appbar_nearby");
             }
             catch (System.Exception ex)
             {
