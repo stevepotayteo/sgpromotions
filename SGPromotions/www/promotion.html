@@ -44,6 +44,23 @@
                     //alert(promo);
 
                     $("#promotion-result").html($("#PromotionTemplate").render(promo));
+                    
+                    $('#map').hide();
+                    
+                    var mapuri = 'http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=280x280&maptype=roadmap&sensor=true&';
+                    
+                    mapuri += 'center=' + promo.lat + ',' + promo.lng;
+                    mapuri += '&markers=label:P%7C' + promo.lat + ',' + promo.lng;
+                    
+                    // alert(mapuri);
+                    
+                    $('#map').attr('src', mapuri);
+                    
+                    $('#showmap').click(function() {
+                      $('#map').animate({
+                        height: "toggle", opacity: "toggle"
+                      }, "slow" );
+                    });
                 }
 
                 // jqmData implementation below pointless since links are external now
@@ -108,21 +125,28 @@
 </div>
 
 <script id="PromotionTemplate" type="text/x-jquery-tmpl">
-    <img src="{{=pic}}" style="vertical-align:bottom; margin-top:3px" width="24" height="24" />
-    <h3 id="promotion-name">{{=name}}</h3>
-    <p>Category: {{=category}}</p>
-    <h3>promotion</h3>
+    <div id="titleContainer">
+    	<div style="float:left"><img src="{{=pic}}" style="vertical-align:bottom; margin-top:3px" width="48" height="48" /></div>
+    	<div style="float:left; margin-left:10px">
+    		<h3 id="promotion-name">{{=name}}</h3>
+    		<p>Category: {{=category}}</p>
+		</div>
+		<div style="clear:both"></div>
+    </div>	
+    <h3>what</h3>
     <p>{{=promo}}
         {{#if expiry_date != 'null'}}
             <br/>{{=expiry_date}}
         {{/if}}
     </p>
     <h3>where</h3>
-    <p><a href="">{{=address}}</a>
+    <p><a href="" id="showmap">{{=address}}</a>
         {{#if operating_hours != 'null'}}
-            <br /> {{=operating_hours}}
+            <br />Operating Hours: {{=operating_hours}}
         {{/if}}
     </p>
+<!--    http://maps.googleapis.com/maps/api/staticmap?center=1.32775,103.92723&zoom=16&size=280x280&maptype=roadmap&sensor=true&markers=label:P%7C1.32775,103.92723 -->
+    <image src="" id="map" />
     <h3>contact</h3>
     <p>
         <a href="{{=contact_number_link}}">{{=contact_number}}</a>

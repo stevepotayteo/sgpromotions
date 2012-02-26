@@ -33,6 +33,13 @@
 			  		return false;
 				}
 			});
+			
+			$('#retry').click(function() {			
+				var e = jQuery.Event("keydown");
+				e.which = 13; // enter key code
+				$('#retry').trigger(e);
+			});
+			
         });
         
 
@@ -56,6 +63,7 @@
             <h1>search by location</h1>
               <label for="search_location">
             <h3>enter address to search:</h3></label>
+            <p>eg. Bugis Street</p>
 				<input type="search" name="location" id="search_location" value="" data-mini="true" placeholder="eg. Raffles City"/>
 			<!--</div>-->
         <div id="location-result"></div>
@@ -82,8 +90,8 @@
 </script>
 
 <script id="LocationErrorTemplate" type="text/x-jquery-tmpl">
-    <br/><h3>error while locating: </h3>
-	<p>An error occured while loading. Your data connection might be down.</p>
+    <br/><h3>error while searching: </h3>
+	<p>An error occurred while search. Please try <a href="" id="retry">again</a>.</p>
 </script>
 
 </body>

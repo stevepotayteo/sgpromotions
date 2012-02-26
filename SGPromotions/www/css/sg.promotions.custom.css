@@ -111,6 +111,12 @@ p.black {
     color: #F1C9C9;
 }
 
+#location-content p {
+    margin-top: 0px;
+    font-size: 13px;
+    color: #F1C9C9;
+}
+
 a:link {color:#360D0D; text-decoration: none;}
 a:active {color:#360D0D; text-decoration: none;}
 a:visited {color:#360D0D; text-decoration: none;}
