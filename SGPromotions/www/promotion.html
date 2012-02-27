@@ -10,11 +10,14 @@
     <link rel="stylesheet" href="css/sg.promotions.custom.css" type="text/css">
     <link href="css/sg.promotions.restpages.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="jsrender.js"></script>
     <script type="text/javascript" src="promotions.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).bind("mobileinit", function() {
             $('#promotion').live('pagebeforeshow', function (event, ui) {
+                stopProgressBar();
+
                 if(sessionStorage.getItem(promotion_parameters[0]) != null) {
                     // was thinking of having something here to remove a promotion not found if it doesn't exist. just in case?
                     var promo = {
@@ -30,28 +33,39 @@
                         'expiry_date': decodeURIComponent(sessionStorage.getItem(promotion_parameters[9])),
                         'address': decodeURIComponent(sessionStorage.getItem(promotion_parameters[10])),
                         'lat': decodeURIComponent(sessionStorage.getItem(promotion_parameters[11])),
-                        'lng': decodeURIComponent(sessionStorage.getItem(promotion_parameters[12]))
+                        'lng': decodeURIComponent(sessionStorage.getItem(promotion_parameters[12])),
+                        'current_position' : sessionStorage.getItem("current_position")
                     };
 
                     $("#promotion-result").hide().html($("#PromotionTemplate").render(promo));
                     
                     $('#map').hide();
                     
-                    var mapuri = 'http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=280x350&maptype=roadmap&sensor=true&';
+                    var mapuri = 'http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=290x370&maptype=roadmap&sensor=true&';
                     
                     mapuri += 'center=' + promo.lat + ',' + promo.lng;
                     mapuri += '&markers=label:P%7C' + promo.lat + ',' + promo.lng;
-                    
+
                     // alert(mapuri);
                     
                     $('#map').attr('src', mapuri);
-                    
+
+                    // animation
+
+                    var isMapHidden = true;
+
                     $('#showmap').click(function() {
                         $('#map').animate({
                         height: "toggle", opacity: "toggle"
                         }, "slow");
 
-                        $('html,body').delay('slow').animate({scrollTop: $('#where').offset().top});
+                        if(isMapHidden) {
+                            $('html,body').delay('slow').animate({scrollTop: $('#where').offset().top});
+                            isMapHidden = false;
+                        } else {
+                            $('html,body').delay('slow').animate({scrollTop: $('#promotion-content').offset().top});
+                            isMapHidden = true;
+                        }
                     });
                 }
 
@@ -87,6 +101,13 @@
 <body>
 <div data-role="page" id="promotion" data-position="fixed" data-theme="c">
     <div data-role="content" id="promotion-content">
+        <div class="progress" id="progress">
+            <div class="pip"></div>
+            <div class="pip"></div>
+            <div class="pip"></div>
+            <div class="pip"></div>
+            <div class="pip"></div>
+        </div>
         <h1>promotion details</h1><br/>
 
         <div id="promotion-result"></div>
@@ -100,7 +121,9 @@
     	<div style="float:left"><img src="{{=pic}}" style="vertical-align:bottom; margin-top:0px" width="48" height="48" /></div>
     	<div style="width: 230px; float:left; margin-left:10px; margin-top:-7px">
     		<h3 id="promotion-name">{{=name}}</h3>
-    		<p>Category: {{=category}} <br />Distance: <a href="" id="showdirection">{{=distance}} metres away</a></p>
+    		<p>Category: {{=category}} <br />
+                Distance: <a href="" id="showdirection">{{=distance}}m from {{=current_position}}</a>
+            </p>
 		</div>
 		<div style="clear:both"></div>
     </div>	
@@ -122,10 +145,10 @@
     <p>
         <a href="{{=contact_number_link}}">{{=contact_number}}</a>
     </p>
-    <h3>url</h3>
-    <p>
-        <a href="{{=url}}">chalkboard url</a>
-    </p>
+    <!--<h3>url</h3>-->
+    <!--<p>-->
+        <!--<a href="{{=url}}">chalkboard url</a>-->
+    <!--</p>-->
 </script>
 
 </body>

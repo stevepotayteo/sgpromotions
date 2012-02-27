@@ -125,3 +125,19 @@ a:hover {color:#360D0D; text-decoration: none; }
 #promotion-name {
     display: inline;
 }
+
+.progress div
+{
+    /*margin-top: -10px;*/
+    width: 3px;
+    height: 3px;
+    overflow: hidden;
+    position: absolute;
+    background: white;
+}
+
+.progress
+{
+    position: relative;
+    height:10px;
+}

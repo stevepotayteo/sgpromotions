@@ -5,3 +5,9 @@
 	background: #CC3333;
 	font-family: "Segoe UI", Verdana, Arial;
 }
+
+.drawingpix {
+    position:absolute;
+    top:-50px;
+    left:-50px;
+}

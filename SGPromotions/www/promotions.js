@@ -52,7 +52,8 @@ function getNearby() {
 	});
 
     req.error(function() {
-        $("#nearby-result").html($("#NearbyErrorTemplate").render());
+        stopProgressBar();
+        $("#nearby-result").delay("slow").html($("#NearbyErrorTemplate").render());
     });
 }
 
@@ -67,6 +68,7 @@ function onGeolocationSuccess(position) {
     // navigator.notification.alert('GPS Found: ' + position.coords.latitude + ' ' + position.coords.longitude);
     sessionStorage.setItem("current_lat", position.coords.latitude);
     sessionStorage.setItem("current_lng", position.coords.longitude);
+    sessionStorage.setItem("current_position", "Current Location");
     $.mobile.hidePageLoadingMsg();
 
     window.location.href="category.html";
@@ -100,9 +102,10 @@ function onGeolocationError(error) {
 
 function displayNearby(data) {
     var nearby = data.query.results.json;
+    stopProgressBar();
     $("#nearby-result").hide();
     if(nearby != null){
-		$("#nearby-result").html($("#NearbyTemplate").render(nearby));
+		$("#nearby-result").delay("slow").html($("#NearbyTemplate").render(nearby));
 		$('#nearby-result > ul').listview();
         var count = nearby.results.length;
         if(count == undefined) {
@@ -127,7 +130,7 @@ function displayNearby(data) {
 		    // $.mobile.changePage('#promotion');
 		});
 	} else {
-        $("#nearby-result").html($("#NearbyEmptyTemplate").render());
+        $("#nearby-result").delay("slow").html($("#NearbyEmptyTemplate").render());
     }
     $("#nearby-result").fadeIn();
 }
@@ -145,11 +148,13 @@ function getCategory() {
 	});
 
     req.error(function() {
-        $("#category-result").hide().html($("#CategoryErrorTemplate").render()).fadeIn();
+        stopProgressBar();
+        $("#category-result").delay("slow").hide().html($("#CategoryErrorTemplate").render()).fadeIn();
     });
 }
 
 function displayCategory(data) {
+    stopProgressBar();
     $("#category-result").hide();
     if (data.query.results.json != null) {
         data.query.results.json.results.splice(0, 0, // insert at the beginning
@@ -157,14 +162,14 @@ function displayCategory(data) {
         );
 
 		var category = data.query.results.json;
-		$("#category-result").html($("#CategoryTemplate").render(category)); // trigger("pagecreate").trigger("refresh"); // alternative method for multiple generated items
+		$("#category-result").delay("slow").html($("#CategoryTemplate").render(category)); // trigger("pagecreate").trigger("refresh"); // alternative method for multiple generated items
 		$('#category-result > ul').listview();
 
         $('#category-list').delegate("li", "click", function (event) {
             sessionStorage.setItem("categorySelect", $(this).jqmData("category_tag"));
         });
 	} else {
-        $("#category-result").html($("#CategoryEmptyTemplate").render());
+        $("#category-result").delay("slow").html($("#CategoryEmptyTemplate").render());
     }
 
     $("#category-result").fadeIn();
@@ -185,6 +190,7 @@ function geocodeLocation(location) {
     });
     req.error(function() {
         $.mobile.hidePageLoadingMsg();
+        stopProgressBar();
         $("#location-result").hide().html($("#LocationErrorTemplate").render()).fadeIn();
     });
 }
@@ -192,6 +198,7 @@ function geocodeLocation(location) {
 function displayLocationResults(data) {
     var locations = data.query.results.json;
     $.mobile.hidePageLoadingMsg();
+    stopProgressBar();
     $("#location-result").hide();
 
     if(locations != null){ // need to double check to see what happens in the result of an empty address
@@ -208,6 +215,7 @@ function displayLocationResults(data) {
             // alert($item.jqmData('lat'), $item.jqmData('lng'));
             sessionStorage.setItem("current_lat", $item.jqmData('lat'));
             sessionStorage.setItem("current_lng", $item.jqmData('lng'));
+            sessionStorage.setItem("current_position", $item.jqmData('address'));
         });
     } else {
         $("#location-result").html($("#LocationEmptyTemplate").render());
@@ -217,55 +225,55 @@ function displayLocationResults(data) {
 }
 
 // Array to JSON: http://stackoverflow.com/questions/459105/convert-a-multidimensional-javascript-array-to-json
-function array2dToJson(a, p, nl) {
-    var i, j, s = '[{"' + p + '":{';
-    nl = nl || '';
-    for (i = 0; i < a.length; ++i) {
-        s += nl + array1dToJson(a[i]);
-        if (i < a.length - 1) {
-            s += ',';
-        }
-    }
-    s += nl + '}}]';
-    return s;
-}
-
-function array1dToJson(a, p) {
-    var i, s = '';
-    for (i = 0; i < a.length; ++i) {
-        if (typeof a[i] == 'string') {
-            s += '"' + a[i] + '"';
-        }
-        else { // assume number type
-            s += a[i];
-        }
-        if (i < a.length - 1) {
-            s += ':';
-        }
-    }
-    s += '';
-    if (p) {
-        return '{"' + p + '":' + s + '}';
-    }
-    return s;
-}
-
-function isArray(a){var g=a.constructor.toString();
-    if(g.match(/function Array()/)){return true;}else{return false;}
-}
-function objtostring(o){var a,k,f,freg=[],txt; if(typeof o!='object'){return false;}
-    if(isArray(o)){a={'t1':'[','t2':']','isarray':true}
-    }else         {a={'t1':'{','t2':'}','isarray':false}}; txt=a.t1;
-    for(k in o){
-        if(!a.isarray)txt+="'"+k+"':";
-        if(typeof o[k]=='string'){txt+="'"+o[k]+"',";
-        }else if(typeof o[k]=='number'||typeof o[k]=='boolean'){txt+=o[k]+",";
-        }else if(typeof o[k]=='function'){f=o[k].toString();freg=f.match(/^function\s+(\w+)\s*\(/);
-            if(freg){txt+=freg[1]+",";}else{txt+=f+",";};
-        }else if(typeof o[k]=='object'){txt+=objtostring(o[k])+",";
-        }
-    }return txt.substr(0,txt.length-1)+a.t2;
-}
+//function array2dToJson(a, p, nl) {
+//    var i, j, s = '[{"' + p + '":{';
+//    nl = nl || '';
+//    for (i = 0; i < a.length; ++i) {
+//        s += nl + array1dToJson(a[i]);
+//        if (i < a.length - 1) {
+//            s += ',';
+//        }
+//    }
+//    s += nl + '}}]';
+//    return s;
+//}
+//
+//function array1dToJson(a, p) {
+//    var i, s = '';
+//    for (i = 0; i < a.length; ++i) {
+//        if (typeof a[i] == 'string') {
+//            s += '"' + a[i] + '"';
+//        }
+//        else { // assume number type
+//            s += a[i];
+//        }
+//        if (i < a.length - 1) {
+//            s += ':';
+//        }
+//    }
+//    s += '';
+//    if (p) {
+//        return '{"' + p + '":' + s + '}';
+//    }
+//    return s;
+//}
+//
+//function isArray(a){var g=a.constructor.toString();
+//    if(g.match(/function Array()/)){return true;}else{return false;}
+//}
+//function objtostring(o){var a,k,f,freg=[],txt; if(typeof o!='object'){return false;}
+//    if(isArray(o)){a={'t1':'[','t2':']','isarray':true}
+//    }else         {a={'t1':'{','t2':'}','isarray':false}}; txt=a.t1;
+//    for(k in o){
+//        if(!a.isarray)txt+="'"+k+"':";
+//        if(typeof o[k]=='string'){txt+="'"+o[k]+"',";
+//        }else if(typeof o[k]=='number'||typeof o[k]=='boolean'){txt+=o[k]+",";
+//        }else if(typeof o[k]=='function'){f=o[k].toString();freg=f.match(/^function\s+(\w+)\s*\(/);
+//            if(freg){txt+=freg[1]+",";}else{txt+=f+",";};
+//        }else if(typeof o[k]=='object'){txt+=objtostring(o[k])+",";
+//        }
+//    }return txt.substr(0,txt.length-1)+a.t2;
+//}
 
 // Application Barf
 function appbar_home() {
@@ -274,6 +282,7 @@ function appbar_home() {
 
 function appbar_nearby() {
     $.mobile.loadingMessage = "Getting Current Location..."
+    startProgressBar();
     $.mobile.showPageLoadingMsg();
     SetCurrentLocation();
 }
@@ -292,4 +301,88 @@ function appbar_fav() {
 
 function appbar_about() {
     window.location.href = "about.html";
+}
+//
+//
+//function getOpacity(elem) {
+//    var ori = $(elem).css('opacity');
+//    var ori2 = $(elem).css('filter');
+//    if (ori2) {
+//        ori2 = parseInt( ori2.replace(')','').replace('alpha(opacity=','') ) / 100;
+//        if (!isNaN(ori2) && ori2 != '') {
+//            ori = ori2;
+//        }
+//    }
+//    return ori;
+//}
+
+function startProgressBar() {
+    $('#progress').css('opacity', 1);
+    startAnimation();
+    var tid = setInterval(startAnimation, 3500);
+}
+
+function stopProgressBar() {
+    $('#progress').css('opacity', 0);
+    $(".pip").each(function () {
+        $(this).stop(true);
+    });
+}
+
+// progress bar
+function startAnimation() {
+    var delay = 200;
+    $(".pip").each(function () {
+        animatePip($(this), delay);
+        delay += 200;
+    });
+}
+
+function animatePip(element, delay) {
+    element.css("left", 0)
+        .hide()
+        .delay(delay)
+        .show()
+        .animate({ left: 240 }, { duration: 1000, easing: "easeOutSine" })
+        .animate({ left: 480 }, { duration: 1000, easing: "easeInSine" });
+}
+
+// source: http://motyar.blogspot.com/2010/03/dream-night-animation-with-jquery.html
+function dream(){
+    //calculating random color of dream
+    var color = 'rgb('+255+','+255+','+255+')';
+
+    //calculating random X position
+    var x = Math.floor(Math.random()*$(window).width());
+
+    //calculating random Y position
+    var y = Math.floor(Math.random()*$(window).height());
+
+    //creating the dream and hide
+    drawingpix = $('<span>').attr({class: 'drawingpix'}).hide();
+
+    //appending it to body
+    $(document.body).append(drawingpix);
+
+    //styling dream.. filling colors.. positioning.. showing.. growing..fading
+    drawingpix.css({
+        'background-color':color,
+        'border-radius':'4px',
+        '-moz-border-radius': '4px',
+        '-webkit-border-radius': '4px',
+        top: y,    //offsets
+        left: x //offsets
+    }).show().animate({
+            height:'20px',
+            width:'20px',
+            'border-radius':'20px',
+            '-moz-border-radius': '20px',
+            '-webkit-border-radius': '20px',
+            opacity: 0.1,
+            top: y-10,    //offsets
+            left: x-10
+        }, 3000).fadeOut(2000);
+
+    //Every dream's end starts a new dream
+    window.setTimeout('dream()',900);
 }

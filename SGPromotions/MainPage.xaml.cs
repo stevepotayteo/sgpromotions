@@ -16,13 +16,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Resources;
 using SGPromotions.Util;
 using Microsoft.Phone.Shell;
-
+using System.Threading;
 
 namespace SGPromotions
 {
     public partial class MainPage : PhoneApplicationPage
     {
         private WebBrowserHelper _browserHelper;
+        private readonly object syncLock = new object();
 
         // Constructor
         public MainPage()
@@ -83,7 +84,10 @@ namespace SGPromotions
         {
             try
             {
-                PGView.Browser.InvokeScript("appbar_home");
+                lock (syncLock)
+                {
+                    PGView.Browser.InvokeScript("appbar_home");
+                }
             }
             catch (System.Exception ex)
             {
@@ -94,7 +98,10 @@ namespace SGPromotions
         {
             try
             {
-                PGView.Browser.InvokeScript("appbar_nearby");
+                lock (syncLock)
+                {
+                    PGView.Browser.InvokeScript("appbar_nearby");
+                }
             }
             catch (System.Exception ex)
             {
@@ -105,7 +112,10 @@ namespace SGPromotions
         {
             try
             {
-                PGView.Browser.InvokeScript("appbar_location");
+                lock (syncLock)
+                {
+                    PGView.Browser.InvokeScript("appbar_location");
+                }
             }
             catch (System.Exception ex)
             {
@@ -116,7 +126,10 @@ namespace SGPromotions
         {
             try
             {
-                PGView.Browser.InvokeScript("appbar_mrt");
+                lock (syncLock)
+                {
+                    PGView.Browser.InvokeScript("appbar_mrt");
+                }
             }
             catch (System.Exception ex)
             {
@@ -127,7 +140,10 @@ namespace SGPromotions
         {
             try
             {
-                PGView.Browser.InvokeScript("appbar_about");
+                lock (syncLock)
+                {
+                    PGView.Browser.InvokeScript("appbar_about");
+                }
             }
             catch (System.Exception ex)
             {

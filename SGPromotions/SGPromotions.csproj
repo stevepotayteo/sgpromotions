@@ -129,6 +129,7 @@
     <Content Include="www\images\train.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="www\jquery.easing.1.3.js" />
     <Content Include="www\jsrender.js" />
     <Content Include="www\location.html" />
     <Content Include="www\mrt.html" />
