@@ -1,4 +1,5 @@
 var chalkboard_api_token = 'JVbi0jbTqNVUOiYcdagDO4cvM19aOZdX0rveegKVousCuzt3dY';
+var bing_credentials = 'Ah8sbb0MRxaQru0Q9Q_ork2-75FG5Li8Qt08V7vlQOCOuDJoL7LbnXtjLlIZLBwr';
 //var chalkboard_api_nearby_uri = 'http://api.yourchalkboard.com/promo/api/nearby/?token=' + chalkboard_api_token + '&lat=1.300&lng=103.86';
 var chalkboard_api_nearby_uri = 'http://api.yourchalkboard.com/promo/api/nearby/?token=' + chalkboard_api_token;
 var google_geocode_uri = 'http://maps.googleapis.com/maps/api/geocode/json?region=SG&sensor=true'; // address needs to be filled up
