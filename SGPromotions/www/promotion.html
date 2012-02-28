@@ -1,43 +1,50 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 
     <title>SG Promotions</title>
-    <link rel="stylesheet" href="css/sg.promotions.css" />
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
-    <link rel="stylesheet" href="css/sg.promotions.custom.css" type="text/css" />
-    <link href="css/sg.promotions.restpages.css" rel="stylesheet" type="text/css" '>
-    <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0">
+    <link rel="stylesheet" href="css/sg.promotions.css"/>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css"/>
+    <link rel="stylesheet" href="css/sg.promotions.custom.css" type="text/css"/>
+    <link href="css/sg.promotions.restpages.css" rel="stylesheet" type="text/css"
+    '>
+    <script charset="UTF-8" type="text/javascript"
+            src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0">
     </script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-    <script type="text/javascript" src="jquery.ui.bmap.min.js"></script>
     <script type="text/javascript" src="jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="jsrender.js"></script>
     <script type="text/javascript" src="promotions.js"></script>
     <script type="text/javascript">
-        $(document).bind("mobileinit", function() {
+        var map = null;
+        var pinInfobox = null;
+
+        $(document).bind("mobileinit", function () {
             $('#promotion').live('pagebeforeshow', function (event, ui) {
                 stopProgressBar();
 
-                if(sessionStorage.getItem(promotion_parameters[0]) != null) {
+                if (sessionStorage.getItem(promotion_parameters[0]) != null) {
                     var promo = {
-                        'category': decodeURIComponent(sessionStorage.getItem(promotion_parameters[0])),
-                        'distance': decodeURIComponent(sessionStorage.getItem(promotion_parameters[1])),
-                        'contact_number': decodeURIComponent(sessionStorage.getItem(promotion_parameters[2])),
-                        'contact_number_link': decodeURIComponent(sessionStorage.getItem(promotion_parameters[3])),
-                        'name': decodeURIComponent(sessionStorage.getItem(promotion_parameters[4])).toLowerCase(),
-                        'promo': decodeURIComponent(sessionStorage.getItem(promotion_parameters[5])),
-                        'pic': decodeURIComponent(sessionStorage.getItem(promotion_parameters[6])),
-                        'operating_hours': decodeURIComponent(sessionStorage.getItem(promotion_parameters[7])),
-                        'url': decodeURIComponent(sessionStorage.getItem(promotion_parameters[8])),
-                        'expiry_date': decodeURIComponent(sessionStorage.getItem(promotion_parameters[9])),
-                        'address': decodeURIComponent(sessionStorage.getItem(promotion_parameters[10])),
-                        'lat': decodeURIComponent(sessionStorage.getItem(promotion_parameters[11])),
-                        'lng': decodeURIComponent(sessionStorage.getItem(promotion_parameters[12])),
-                        'current_position' : sessionStorage.getItem("current_position")
+                        'category':decodeURIComponent(sessionStorage.getItem(promotion_parameters[0])),
+                        'distance':decodeURIComponent(sessionStorage.getItem(promotion_parameters[1])),
+                        'contact_number':decodeURIComponent(sessionStorage.getItem(promotion_parameters[2])),
+                        'contact_number_link':decodeURIComponent(sessionStorage.getItem(promotion_parameters[3])),
+                        'name':decodeURIComponent(sessionStorage.getItem(promotion_parameters[4])).toLowerCase(),
+                        'promo':decodeURIComponent(sessionStorage.getItem(promotion_parameters[5])),
+                        'pic':decodeURIComponent(sessionStorage.getItem(promotion_parameters[6])),
+                        'operating_hours':decodeURIComponent(sessionStorage.getItem(promotion_parameters[7])),
+                        'url':decodeURIComponent(sessionStorage.getItem(promotion_parameters[8])),
+                        'expiry_date':decodeURIComponent(sessionStorage.getItem(promotion_parameters[9])),
+                        'address':decodeURIComponent(sessionStorage.getItem(promotion_parameters[10])),
+                        'lat':decodeURIComponent(sessionStorage.getItem(promotion_parameters[11])),
+                        'lng':decodeURIComponent(sessionStorage.getItem(promotion_parameters[12])),
+                        'current_position':sessionStorage.getItem("current_position")
                     };
+
 
                     $("#promotion-result").hide().html($("#PromotionTemplate").render(promo));
 
@@ -64,35 +71,48 @@
 //                    });
 
                     var coordinates = new Microsoft.Maps.Location(promo.lat, promo.lng);
+                    var mapOptions = {
+                        credentials:bing_credentials,
+                        center:coordinates,
+                        mapTypeId:Microsoft.Maps.MapTypeId.road,
+                        zoom:14,
+                        showScalebar:false,
+                        enableClickableLogo:false,
+                        enableSearchLogo:false
+                    }
 
-                    $('#map_canvas').gmap({'credentials': bing_credentials, 'center': coordinates, 'zoom':14}).hide();
+                    map = new Microsoft.Maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-//                    $('#map_canvas').gmap({'credentials': bing_credentials}).bind('pageinit', function(ev, map) {
-//                        alert('hello');
-//                        centerMap(coordinates);
-//
-//                        $('#map_canvas').gmap('addMarker', { 'location': promo.lat + ',' + promo.lng, 'bounds': true }).click( function() {
-//                            $('#map_canvas').gmap('openInfoWindow', { 'title': 'Hello World!' }, this);
-//                        });
-//
-//
-//                    });
+                    var center = map.getCenter();
+                    var pin = new Microsoft.Maps.Pushpin(center, {text:'P'});
+                    pinInfobox = new Microsoft.Maps.Infobox(pin.getLocation(),
+                            {   title:'My Pushpin',
+                                description:promo.name,
+                                height:100,
+                                width:150,
+                                visible:false,
+                                offset:new Microsoft.Maps.Point(0, 15)});
 
-                    // $('#map_canvas').hide();
+                    Microsoft.Maps.Events.addHandler(pin, 'click', displayInfobox);
+                    Microsoft.Maps.Events.addHandler(map, 'viewchange', hideInfobox);
+                    map.entities.push(pin);
+                    map.entities.push(pinInfobox);
+
+                    $('#map_canvas').hide();
 
                     var isMapHidden = true;
-                    $('#showmap').click(function() {
+                    $('#showmap').click(function () {
                         centerMap(coordinates);
 
                         $('#map_canvas').animate({
-                            height: "toggle", opacity: "toggle"
+                            height:"toggle", opacity:"toggle"
                         }, "slow");
 
-                        if(isMapHidden) {
-                            $('html,body').delay('slow').animate({scrollTop: $('#where').offset().top});
+                        if (isMapHidden) {
+                            $('html,body').delay('slow').animate({scrollTop:$('#where').offset().top});
                             isMapHidden = false;
                         } else {
-                            $('html,body').delay('slow').animate({scrollTop: $('#promotion-content').offset().top});
+                            $('html,body').delay('slow').animate({scrollTop:$('#promotion-content').offset().top});
                             isMapHidden = true;
                         }
                     });
@@ -113,8 +133,18 @@
             });
 
             function centerMap(coordinates) {
-                $('#map_canvas').gmap({'credentials': bing_credentials, 'center': coordinates, 'zoom':14});
-            };
+                map.setView({center:coordinates, zoom:14});
+            }
+
+            ;
+
+            function displayInfobox(e) {
+                pinInfobox.setOptions({ visible:true });
+            }
+
+            function hideInfobox(e) {
+                pinInfobox.setOptions({ visible:false });
+            }
         });
     </script>
     <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
@@ -123,7 +153,7 @@
     <!--<script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>-->
 
     <script type="text/javascript">
-        document.addEventListener("deviceready",onDeviceReady,false);
+        document.addEventListener("deviceready", onDeviceReady, false);
         // once the device ready event fires, you can safely do your thing! -jm
         function onDeviceReady() {
             //document.getElementById("welcomeMsg").innerHTML += "PhoneGap is ready! version=" + window.device.phonegap;
@@ -151,36 +181,42 @@
 
 <script id="PromotionTemplate" type="text/x-jquery-tmpl">
     <div id="titleContainer">
-    	<div style="float:left"><img src="{{=pic}}" style="vertical-align:bottom; margin-top:0px" width="48" height="48" /></div>
-    	<div style="width: 230px; float:left; margin-left:10px; margin-top:-7px">
-    		<h3 id="promotion-name">{{=name}}</h3>
-    		<p>Category: {{=category}} <br />
+        <div style="float:left"><img src="{{=pic}}" style="vertical-align:bottom; margin-top:0px" width="48"
+                                     height="48"/></div>
+        <div style="width: 230px; float:left; margin-left:10px; margin-top:-7px">
+            <h3 id="promotion-name">{{=name}}</h3>
+
+            <p>Category: {{=category}} <br/>
                 Distance: <a href="" id="showdirection">{{=distance}}m from {{=current_position}}</a>
             </p>
-		</div>
-		<div style="clear:both"></div>
-    </div>	
+        </div>
+        <div style="clear:both"></div>
+    </div>
     <h3>what</h3>
+
     <p>{{=promo}}
         {{#if expiry_date != 'null'}}
-            <br/>{{=expiry_date}}
+        <br/>{{=expiry_date}}
         {{/if}}
     </p>
+
     <h3 id="where">where</h3>
+
     <p><a href="" id="showmap">{{=address}}</a>
         {{#if operating_hours != 'null'}}
-            <br />Operating Hours: {{=operating_hours}}
+        <br/>Operating Hours: {{=operating_hours}}
         {{/if}}
     </p>
     <!--<image src="" id="map" />-->
     <div id='map_canvas' style="position:relative; width:290px; height:370px;"></div>
     <h3>contact</h3>
+
     <p>
         <a href="{{=contact_number_link}}">{{=contact_number}}</a>
     </p>
     <!--<h3>url</h3>-->
     <!--<p>-->
-        <!--<a href="{{=url}}">chalkboard url</a>-->
+    <!--<a href="{{=url}}">chalkboard url</a>-->
     <!--</p>-->
 </script>
 
