@@ -14,6 +14,7 @@
     <FilePath Value="www\jsrender.js"/>
     <FilePath Value="www\location.html"/>
     <FilePath Value="www\mrt.html"/>
+    <FilePath Value="www\mrt.json"/>
     <FilePath Value="www\nearby.html"/>
     <FilePath Value="www\phonegap-1.4.1.js"/>
     <FilePath Value="www\phonegapMock.js"/>
@@ -36,6 +37,10 @@
     <FilePath Value="www\images\fav.png"/>
     <FilePath Value="www\images\location.png"/>
     <FilePath Value="www\images\logo.png"/>
+    <FilePath Value="www\images\mrt-CC.png"/>
+    <FilePath Value="www\images\mrt-EW.png"/>
+    <FilePath Value="www\images\mrt-NE.png"/>
+    <FilePath Value="www\images\mrt-NS.png"/>
     <FilePath Value="www\images\nearby.png"/>
     <FilePath Value="www\images\train.png"/>
 </GapSourceDictionary>

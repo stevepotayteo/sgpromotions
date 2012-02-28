@@ -136,6 +136,39 @@ function displayNearby(data) {
     $("#nearby-result").fadeIn();
 }
 
+//function getMRT() {
+//    $.ajax({
+//        url: 'mrt.json',
+//        dataType: 'json',
+//        success: displayMRT,
+//        async: true
+//    });
+//}
+//
+//function displayMRT(data) {
+//    stopProgressBar();
+//    $("#mrt-result").hide();
+//
+//    if (data != null) {
+//        $("#mrt-result").delay("slow").html($("#MRTTemplate").render(data));
+//        $('#mrt-result > ul').listview();
+//
+//        $('#mrt-list').delegate("li", "click", function (event) {
+//            var $item = $(this);
+//            if($item.jqmData('name') != undefined) {
+//                sessionStorage.setItem("current_lat", $item.jqmData('lat'));
+//                sessionStorage.setItem("current_lng", $item.jqmData('lng'));
+//                sessionStorage.setItem("current_position", $item.jqmData('name') + " MRT");
+//            }
+//
+//        });
+//    } else {
+//        $("#mrt-result").delay("slow").html($("#MRTEmptyTemplate").render());
+//    }
+//
+//    $("#mrt-result").fadeIn();
+//}
+
 function getCategory() {		
 	var yql_str = 'select * from json where url="'+ chalkboard_api_category_uri +'"';	// YQL string. Similar to SQL
 	var yql_uri = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(yql_str) + '&format=json';	// YQL public URI string
