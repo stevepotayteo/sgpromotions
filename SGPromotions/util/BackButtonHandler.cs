@@ -1,4 +1,5 @@
-﻿using WP7GapClassLib;
+﻿using System.Collections.Generic;
+using WP7GapClassLib;
 using Microsoft.Phone.Controls;
 using System.ComponentModel;
 using System.Windows.Navigation;
@@ -12,34 +13,59 @@ namespace SGPromotions.Util
     /// </summary>
     public class BackButtonHandler
     {
-        private int _browserHistoryLength = 0;
-        private PGView _phoneGapView;
+        private WebBrowser _browser;
+
+        private List<string> _backStack = new List<string>();
 
         public BackButtonHandler(PhoneApplicationPage page, PGView phoneGapView)
         {
             // subscribe to the hardware back-button
             page.BackKeyPress += Page_BackKeyPress;
 
-            // handle navigation events
-            phoneGapView.Browser.Navigated += Browser_Navigated;
+            _browser = phoneGapView.Browser;
 
-            _phoneGapView = phoneGapView;
+            // handle navigation events
+            _browser.Navigated += Browser_Navigated;
+
         }
 
+        /// <summary>
+        /// Handle navigation in order to update our back-stack
+        /// </summary>
         private void Browser_Navigated(object sender, NavigationEventArgs e)
         {
-            if (e.NavigationMode == NavigationMode.New)
+            string url = _browser.Source.OriginalString;
+
+            // ensure all slashes are the same
+            // app\www/index.html
+            // see: https://issues.apache.org/jira/browse/CB-184
+            url = url.Replace("\\", "/");
+
+            if (_backStack.Count < 2)
             {
-                _browserHistoryLength++;
+                _backStack.Add(url);
+            }
+            else
+            {
+                // check whether the URL represents a backwards navigation
+                string previousPage = _backStack[_backStack.Count - 2];
+                if (previousPage == url)
+                {
+                    _backStack.RemoveAt(_backStack.Count - 1);
+                }
             }
         }
 
+        /// <summary>
+        /// Handle the hardware back-button
+        /// </summary>
         private void Page_BackKeyPress(object sender, CancelEventArgs e)
         {
-            if (_browserHistoryLength > 1)
+            // if we have items in the back-stack, route this event
+            // to the browser
+            if (_backStack.Count > 1)
             {
-                _phoneGapView.Browser.InvokeScript("eval", "history.go(-1)");
-                _browserHistoryLength -= 2;
+                _browser.InvokeScript("eval", "history.go(-1)");
                 e.Cancel = true;
             }
         }
