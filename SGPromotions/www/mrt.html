@@ -180,18 +180,18 @@
             <div class="pip"></div>
         </div>
         <h1>search by mrt</h1>
-        <div id="mrt-result">
+        <div id="mrt-result" style="margin-top: 30px">
             <p>Stations are currently loading...</p>
         </div>
     </div>
 </div>
 
 <script id="MRTTemplate" type="text/x-jquery-tmpl">
-    <ul data-role="listview" id="mrt-list" data-inset="true" data-filter="false" data-theme="c">
+    <ul data-role="listview" id="mrt-list" data-inset="true" data-filter="true" data-theme="c" data-dividertheme="a">
         {{#each MRT}}
 
         {{#if name}}
-            <li data-name="{{=name}}" data-lat="{{=lat}}" data-lng="{{=lng}}" data-theme="c">
+            <li data-name="{{=name}}" data-lat="{{=lat}}" data-lng="{{=lng}}" >
                 <a href="category.html">
                     {{#if line == 'NS'}}
                         <img src="images/mrt-NS.png" class="ui-li-icon" style="margin-top:-1px"/>
