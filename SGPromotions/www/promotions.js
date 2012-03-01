@@ -95,6 +95,7 @@ function onGeolocationError(error) {
     };
 
     $.mobile.hidePageLoadingMsg();
+    stopProgressBar();
 
     navigator.notification.beep(1);
     navigator.notification.vibrate(1000);
