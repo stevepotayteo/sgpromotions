@@ -6,10 +6,10 @@
     <FilePath Value="www\category.html"/>
     <FilePath Value="www\fav.html"/>
     <FilePath Value="www\index.html"/>
-    <FilePath Value="www\jquery-1.6.4.min.js"/>
+    <FilePath Value="www\jquery-1.7.1.js"/>
     <FilePath Value="www\jquery.easing.1.3.js"/>
-    <FilePath Value="www\jquery.mobile-1.0.1.min.css"/>
-    <FilePath Value="www\jquery.mobile-1.0.1.min.js"/>
+    <FilePath Value="www\jquery.mobile-1.1.0-rc.1.css"/>
+    <FilePath Value="www\jquery.mobile-1.1.0-rc.1.js"/>
     <FilePath Value="www\jquery.ui.bmap.min.js"/>
     <FilePath Value="www\jsrender.js"/>
     <FilePath Value="www\location.html"/>

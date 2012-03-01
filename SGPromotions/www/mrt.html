@@ -6,171 +6,153 @@
 		
 		<title>SG Promotions</title>
         <link rel="stylesheet" href="css/sg.promotions.css" />
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
         <link rel="stylesheet" href="css/sg.promotions.custom.css" type="text/css" />
         <link href="css/sg.promotions.restpages.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" src="jsrender.js"></script>
         <script type="text/javascript" src="jquery.easing.1.3.js"></script>
         <script type="text/javascript" src="promotions.js"></script>
-        <script type="text/javascript">
 
-        </script>
-
-		<script type="text/javascript">
-			$(document).bind("mobileinit", function() {
-                $('#mrt').live('pagebeforeshow', function (event, ui) {
-                    stopProgressBar();
-
-                    $("#mrt-result").hide();
-                    var data1 = {"MRT":[{"line":"NS","lineno":"Nouth South Line","name":"","lat":null,"lng":null},
-                        {"line":"NS","lineno":"NS1 / EW24","name":"Jurong East","lat":1.333093,"lng":103.742417},
-                        {"line":"NS","lineno":"NS2","name":"Bukit Batok","lat":1.349032,"lng":103.749563},
-                        {"line":"NS","lineno":"NS3","name":"Bukit Gombak","lat":1.358644,"lng":103.751939},
-                        {"line":"NS","lineno":"NS4 / BP1","name":"Choa Chu Kang","lat":1.385071,"lng":103.744449},
-                        {"line":"NS","lineno":"NS5","name":"Yew Tee","lat":1.397384,"lng":103.74741},
-                        {"line":"NS","lineno":"NS7","name":"Kranji","lat":1.42528,"lng":103.762228},
-                        {"line":"NS","lineno":"NS8","name":"Marsiling","lat":1.432599,"lng":103.774107},
-                        {"line":"NS","lineno":"NS9","name":"Woodlands","lat":1.437021,"lng":103.786565},
-                        {"line":"NS","lineno":"NS10","name":"Admiralty","lat":1.440619,"lng":103.801152},
-                        {"line":"NS","lineno":"NS11","name":"Sembawang","lat":1.449068,"lng":103.820083},
-                        {"line":"NS","lineno":"NS13","name":"Yishun","lat":1.429275,"lng":103.834976},
-                        {"line":"NS","lineno":"NS14","name":"Khatib","lat":1.417487,"lng":103.83306},
-                        {"line":"NS","lineno":"NS15","name":"Yio Chu Kang","lat":1.381753,"lng":103.845029},
-                        {"line":"NS","lineno":"NS16","name":"Ang Mo Kio","lat":1.369974,"lng":103.849576},
-                        {"line":"NS","lineno":"NS17 / CC15","name":"Bishan","lat":1.350845,"lng":103.848137},
-                        {"line":"NS","lineno":"NS18","name":"Braddell","lat":1.34036,"lng":103.847122},
-                        {"line":"NS","lineno":"NS19","name":"Toa Payoh","lat":1.332577,"lng":103.847562},
-                        {"line":"NS","lineno":"NS20","name":"Novena","lat":1.320195,"lng":103.843596},
-                        {"line":"NS","lineno":"NS21","name":"Newton","lat":1.312257,"lng":103.837948},
-                        {"line":"NS","lineno":"NS22","name":"Orchard","lat":1.303906,"lng":103.832202},
-                        {"line":"NS","lineno":"NS23","name":"Somerset","lat":1.300284,"lng":103.839159},
-                        {"line":"NS","lineno":"NS24 / NE6 / CC1","name":"Dhoby Ghaut","lat":1.298803,"lng":103.846348},
-                        {"line":"NS","lineno":"NS25 / EW13","name":"City Hall","lat":1.292879,"lng":103.852571},
-                        {"line":"NS","lineno":"NS26 / EW14","name":"Raffles Place","lat":1.283933,"lng":103.851476},
-                        {"line":"NS","lineno":"NS27 / CE2","name":"Marina Bay","lat":1.276466,"lng":103.854637},
-                        {"line":"EW","lineno":"East West Line","name":"","lat":null,"lng":null},
-                        {"line":"EW","lineno":"EW1","name":"Pasir Ris","lat":1.373022,"lng":103.949215},
-                        {"line":"EW","lineno":"EW2","name":"Tampines","lat":1.353338,"lng":103.945098},
-                        {"line":"EW","lineno":"EW3","name":"Simei","lat":1.343287,"lng":103.953377},
-                        {"line":"EW","lineno":"EW4","name":"Tanah Merah","lat":1.327174,"lng":103.946347},
-                        {"line":"EW","lineno":"EW5","name":"Bedok","lat":1.324001,"lng":103.929985},
-                        {"line":"EW","lineno":"EW6","name":"Kembangan","lat":1.321124,"lng":103.912913},
-                        {"line":"EW","lineno":"EW7","name":"Eunos","lat":1.319802,"lng":103.903297},
-                        {"line":"EW","lineno":"EW8 / CC9","name":"Paya Lebar","lat":1.31819,"lng":103.893074},
-                        {"line":"EW","lineno":"EW9","name":"Aljunied","lat":1.3166,"lng":103.882901},
-                        {"line":"EW","lineno":"EW10","name":"Kallang","lat":1.311474,"lng":103.871309},
-                        {"line":"EW","lineno":"EW11","name":"Lavender","lat":1.307389,"lng":103.862792},
-                        {"line":"EW","lineno":"EW12 /","name":"Bugis","lat":1.300447,"lng":103.855689},
-                        {"line":"EW","lineno":"EW13 / NS25","name":"City Hall","lat":1.292879,"lng":103.852571},
-                        {"line":"EW","lineno":"EW14 / NS26","name":"Raffles Place","lat":1.283933,"lng":103.851476},
-                        {"line":"EW","lineno":"EW15","name":"Tanjong Pagar","lat":1.2766,"lng":103.845854},
-                        {"line":"EW","lineno":"EW16 / NE3","name":"Outram Park","lat":1.281461,"lng":103.839122},
-                        {"line":"EW","lineno":"EW17","name":"Tiong Bahru","lat":1.286206,"lng":103.827057},
-                        {"line":"EW","lineno":"EW18","name":"Redhill","lat":1.289727,"lng":103.816791},
-                        {"line":"EW","lineno":"EW19","name":"Queenstown","lat":1.294618,"lng":103.806075},
-                        {"line":"EW","lineno":"EW20","name":"Commonwealth","lat":1.302599,"lng":103.798353},
-                        {"line":"EW","lineno":"EW21 / CC22","name":"Buona Vista","lat":1.307287,"lng":103.790148},
-                        {"line":"EW","lineno":"EW22","name":"Dover","lat":1.311371,"lng":103.778654},
-                        {"line":"EW","lineno":"EW23","name":"Clementi","lat":1.315198,"lng":103.765165},
-                        {"line":"EW","lineno":"EW24 / NS1","name":"Jurong East","lat":1.333093,"lng":103.742417},
-                        {"line":"EW","lineno":"EW25","name":"Chinese Garden","lat":1.342227,"lng":103.732632},
-                        {"line":"EW","lineno":"EW26","name":"Lakeside","lat":1.344201,"lng":103.720689},
-                        {"line":"EW","lineno":"EW27","name":"Boon Lay","lat":1.338576,"lng":103.706008},
-                        {"line":"EW","lineno":"EW28","name":"Pioneer","lat":1.337636,"lng":103.697184},
-                        {"line":"EW","lineno":"EW29","name":"Joo Koon","lat":1.327742,"lng":103.678551},
-                        {"line":"CG","lineno":"Changi Branch Line","name":"","lat":null,"lng":null},
-                        {"line":"CG","lineno":"CG1","name":"Expo","lat":1.334579,"lng":103.961477},
-                        {"line":"CG","lineno":"CG2","name":"Changi Airport","lat":1.356932,"lng":103.989347},
-                        {"line":"NE","lineno":"North East Line","name":"","lat":null,"lng":null},
-                        {"line":"NE","lineno":"NE1 / CC29","name":"HarbourFront","lat":1.265489,"lng":103.821625},
-                        {"line":"NE","lineno":"NE3 / EW16","name":"Outram Park","lat":1.281488,"lng":103.839154},
-                        {"line":"NE","lineno":"NE4","name":"Chinatown","lat":1.28439,"lng":103.843582},
-                        {"line":"NE","lineno":"NE5","name":"Clarke Quay","lat":1.288318,"lng":103.846602},
-                        {"line":"NE","lineno":"NE6 / NS24 / CC1","name":"Dhoby Ghaut","lat":1.298803,"lng":103.846348},
-                        {"line":"NE","lineno":"NE7","name":"Little India","lat":1.307025,"lng":103.849685},
-                        {"line":"NE","lineno":"NE8","name":"Farrer Park","lat":1.312455,"lng":103.854382},
-                        {"line":"NE","lineno":"NE9","name":"Boon Keng","lat":1.319236,"lng":103.861629},
-                        {"line":"NE","lineno":"NE10","name":"Potong Pasir","lat":1.331616,"lng":103.869091},
-                        {"line":"NE","lineno":"NE11","name":"Woodleigh","lat":1.339291,"lng":103.870796},
-                        {"line":"NE","lineno":"NE12 / CC13","name":"Serangoon","lat":1.349817,"lng":103.873117},
-                        {"line":"NE","lineno":"NE13","name":"Kovan","lat":1.36009,"lng":103.885028},
-                        {"line":"NE","lineno":"NE14","name":"Hougang","lat":1.371297,"lng":103.892443},
-                        {"line":"NE","lineno":"NE15","name":"Buangkok","lat":1.382794,"lng":103.892775},
-                        {"line":"NE","lineno":"NE16 / STC","name":"Sengkang","lat":1.391611,"lng":103.895517},
-                        {"line":"NE","lineno":"NE17 / PTC","name":"Punggol","lat":1.404575,"lng":103.902121},
-                        {"line":"CC","lineno":"Circle Line","name":"","lat":null,"lng":null},
-                        {"line":"CC","lineno":"CC1 / NE6/ NS24","name":"Dhoby Ghaut","lat":1.298803,"lng":103.846348},
-                        {"line":"CC","lineno":"CC2","name":"Bras Basah","lat":1.29688,"lng":103.850597},
-                        {"line":"CC","lineno":"CC3","name":"Esplanade","lat":1.293441,"lng":103.855652},
-                        {"line":"CC","lineno":"CC4 ","name":"Promenade","lat":1.293087,"lng":103.860973},
-                        {"line":"CC","lineno":"CC5","name":"Nicoll Highway","lat":1.300662,"lng":103.864977},
-                        {"line":"CC","lineno":"CC6","name":"Stadium","lat":1.30295,"lng":103.875631},
-                        {"line":"CC","lineno":"CC7","name":"Mountbatten","lat":1.306331,"lng":103.88233},
-                        {"line":"CC","lineno":"CC8","name":"Dakota","lat":1.308338,"lng":103.888563},
-                        {"line":"CC","lineno":"CC9 / EW8","name":"Paya Lebar","lat":1.31819,"lng":103.893074},
-                        {"line":"CC","lineno":"CC10 ","name":"MacPherson","lat":1.326434,"lng":103.890315},
-                        {"line":"CC","lineno":"CC11","name":"Tai Seng","lat":1.335435,"lng":103.888394},
-                        {"line":"CC","lineno":"CC12","name":"Bartley","lat":1.343132,"lng":103.87913},
-                        {"line":"CC","lineno":"CC13 / NE12","name":"Serangoon","lat":1.349817,"lng":103.873117},
-                        {"line":"CC","lineno":"CC14","name":"Lorong Chuan","lat":1.351642,"lng":103.863945},
-                        {"line":"CC","lineno":"CC15 / NS17","name":"Bishan","lat":1.350845,"lng":103.848137},
-                        {"line":"CC","lineno":"CC16","name":"Marymount","lat":1.348645,"lng":103.839463},
-                        {"line":"CC","lineno":"CC17","name":"Caldecott","lat":1.337715,"lng":103.839506},
-                        {"line":"CC","lineno":"CC19","name":"Botanic Gardens","lat":1.322054,"lng":103.815714},
-                        {"line":"CC","lineno":"CC20","name":"Farrer Road","lat":1.317517,"lng":103.80773},
-                        {"line":"CC","lineno":"CC21","name":"Holland Village","lat":1.311811,"lng":103.795825},
-                        {"line":"CC","lineno":"CC22 / EW21","name":"Buona Vista","lat":1.307287,"lng":103.790148},
-                        {"line":"CC","lineno":"CC23","name":"one-north","lat":1.299538,"lng":103.786978},
-                        {"line":"CC","lineno":"CC24","name":"Kent Ridge","lat":1.293119,"lng":103.78439},
-                        {"line":"CC","lineno":"CC25","name":"Haw Par Villa","lat":1.282069,"lng":103.781699},
-                        {"line":"CC","lineno":"CC26","name":"Pasir Panjang","lat":1.275934,"lng":103.79184},
-                        {"line":"CC","lineno":"CC27","name":"Labrador Park","lat":1.272486,"lng":103.802075},
-                        {"line":"CC","lineno":"CC28","name":"Telok Blangah","lat":1.270467,"lng":103.810757},
-                        {"line":"CC","lineno":"CC29 / NE1","name":"HarbourFront","lat":1.265206,"lng":103.821601},
-                        {"line":"CE","lineno":"Circle Line Extension","name":"","lat":null,"lng":null},
-                        {"line":"CE","lineno":"CE1","name":"Bayfront","lat":1.281797,"lng":103.85909},
-                        {"line":"CE","lineno":"CE2 / NS27","name":"Marina Bay","lat":1.276466,"lng":103.854637}]};
-
-                    $("#mrt-result").delay("slow").html($("#MRTTemplate").render(data1));
-                    $('#mrt-result > ul').listview();
-
-                    $('#mrt-list').delegate("li", "click", function (event) {
-                        var $item = $(this);
-                        if($item.jqmData('name') != undefined) {
-                            sessionStorage.setItem("current_lat", $item.jqmData('lat'));
-                            sessionStorage.setItem("current_lng", $item.jqmData('lng'));
-                            sessionStorage.setItem("current_position", $item.jqmData('name') + " MRT");
-                        }
-                    });
-
-                    //$("#mrt-result").fadeIn();
-                });
-			});
-		</script>
-        <script>
-            $('#mrt').live('pageshow', function (event, ui) {
-                $("#mrt-result").fadeIn(900);
-            });
-        </script>
         <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
         <!-- <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script> -->
 
-        <script type="text/javascript">
-            document.addEventListener("deviceready",onDeviceReady,false);
-            // once the device ready event fires, you can safely do your thing! -jm
-            function onDeviceReady() {
-                //document.getElementById("welcomeMsg").innerHTML += "PhoneGap is ready! version=" + window.device.phonegap;
-                //console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
-            }
-        </script>
-        <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
 
 
 	</head>
 <body>
 
 <div data-role="page" id="mrt" data-theme="c">
+    <script type="text/javascript">
+        var data = {"MRT":[{"line":"NS","lineno":"Nouth South Line","name":"","lat":null,"lng":null},
+            {"line":"NS","lineno":"NS1 / EW24","name":"Jurong East","lat":1.333093,"lng":103.742417},
+            {"line":"NS","lineno":"NS2","name":"Bukit Batok","lat":1.349032,"lng":103.749563},
+            {"line":"NS","lineno":"NS3","name":"Bukit Gombak","lat":1.358644,"lng":103.751939},
+            {"line":"NS","lineno":"NS4 / BP1","name":"Choa Chu Kang","lat":1.385071,"lng":103.744449},
+            {"line":"NS","lineno":"NS5","name":"Yew Tee","lat":1.397384,"lng":103.74741},
+            {"line":"NS","lineno":"NS7","name":"Kranji","lat":1.42528,"lng":103.762228},
+            {"line":"NS","lineno":"NS8","name":"Marsiling","lat":1.432599,"lng":103.774107},
+            {"line":"NS","lineno":"NS9","name":"Woodlands","lat":1.437021,"lng":103.786565},
+            {"line":"NS","lineno":"NS10","name":"Admiralty","lat":1.440619,"lng":103.801152},
+            {"line":"NS","lineno":"NS11","name":"Sembawang","lat":1.449068,"lng":103.820083},
+            {"line":"NS","lineno":"NS13","name":"Yishun","lat":1.429275,"lng":103.834976},
+            {"line":"NS","lineno":"NS14","name":"Khatib","lat":1.417487,"lng":103.83306},
+            {"line":"NS","lineno":"NS15","name":"Yio Chu Kang","lat":1.381753,"lng":103.845029},
+            {"line":"NS","lineno":"NS16","name":"Ang Mo Kio","lat":1.369974,"lng":103.849576},
+            {"line":"NS","lineno":"NS17 / CC15","name":"Bishan","lat":1.350845,"lng":103.848137},
+            {"line":"NS","lineno":"NS18","name":"Braddell","lat":1.34036,"lng":103.847122},
+            {"line":"NS","lineno":"NS19","name":"Toa Payoh","lat":1.332577,"lng":103.847562},
+            {"line":"NS","lineno":"NS20","name":"Novena","lat":1.320195,"lng":103.843596},
+            {"line":"NS","lineno":"NS21","name":"Newton","lat":1.312257,"lng":103.837948},
+            {"line":"NS","lineno":"NS22","name":"Orchard","lat":1.303906,"lng":103.832202},
+            {"line":"NS","lineno":"NS23","name":"Somerset","lat":1.300284,"lng":103.839159},
+            {"line":"NS","lineno":"NS24 / NE6 / CC1","name":"Dhoby Ghaut","lat":1.298803,"lng":103.846348},
+            {"line":"NS","lineno":"NS25 / EW13","name":"City Hall","lat":1.292879,"lng":103.852571},
+            {"line":"NS","lineno":"NS26 / EW14","name":"Raffles Place","lat":1.283933,"lng":103.851476},
+            {"line":"NS","lineno":"NS27 / CE2","name":"Marina Bay","lat":1.276466,"lng":103.854637},
+            {"line":"EW","lineno":"East West Line","name":"","lat":null,"lng":null},
+            {"line":"EW","lineno":"EW1","name":"Pasir Ris","lat":1.373022,"lng":103.949215},
+            {"line":"EW","lineno":"EW2","name":"Tampines","lat":1.353338,"lng":103.945098},
+            {"line":"EW","lineno":"EW3","name":"Simei","lat":1.343287,"lng":103.953377},
+            {"line":"EW","lineno":"EW4","name":"Tanah Merah","lat":1.327174,"lng":103.946347},
+            {"line":"EW","lineno":"EW5","name":"Bedok","lat":1.324001,"lng":103.929985},
+            {"line":"EW","lineno":"EW6","name":"Kembangan","lat":1.321124,"lng":103.912913},
+            {"line":"EW","lineno":"EW7","name":"Eunos","lat":1.319802,"lng":103.903297},
+            {"line":"EW","lineno":"EW8 / CC9","name":"Paya Lebar","lat":1.31819,"lng":103.893074},
+            {"line":"EW","lineno":"EW9","name":"Aljunied","lat":1.3166,"lng":103.882901},
+            {"line":"EW","lineno":"EW10","name":"Kallang","lat":1.311474,"lng":103.871309},
+            {"line":"EW","lineno":"EW11","name":"Lavender","lat":1.307389,"lng":103.862792},
+            {"line":"EW","lineno":"EW12 /","name":"Bugis","lat":1.300447,"lng":103.855689},
+            {"line":"EW","lineno":"EW13 / NS25","name":"City Hall","lat":1.292879,"lng":103.852571},
+            {"line":"EW","lineno":"EW14 / NS26","name":"Raffles Place","lat":1.283933,"lng":103.851476},
+            {"line":"EW","lineno":"EW15","name":"Tanjong Pagar","lat":1.2766,"lng":103.845854},
+            {"line":"EW","lineno":"EW16 / NE3","name":"Outram Park","lat":1.281461,"lng":103.839122},
+            {"line":"EW","lineno":"EW17","name":"Tiong Bahru","lat":1.286206,"lng":103.827057},
+            {"line":"EW","lineno":"EW18","name":"Redhill","lat":1.289727,"lng":103.816791},
+            {"line":"EW","lineno":"EW19","name":"Queenstown","lat":1.294618,"lng":103.806075},
+            {"line":"EW","lineno":"EW20","name":"Commonwealth","lat":1.302599,"lng":103.798353},
+            {"line":"EW","lineno":"EW21 / CC22","name":"Buona Vista","lat":1.307287,"lng":103.790148},
+            {"line":"EW","lineno":"EW22","name":"Dover","lat":1.311371,"lng":103.778654},
+            {"line":"EW","lineno":"EW23","name":"Clementi","lat":1.315198,"lng":103.765165},
+            {"line":"EW","lineno":"EW24 / NS1","name":"Jurong East","lat":1.333093,"lng":103.742417},
+            {"line":"EW","lineno":"EW25","name":"Chinese Garden","lat":1.342227,"lng":103.732632},
+            {"line":"EW","lineno":"EW26","name":"Lakeside","lat":1.344201,"lng":103.720689},
+            {"line":"EW","lineno":"EW27","name":"Boon Lay","lat":1.338576,"lng":103.706008},
+            {"line":"EW","lineno":"EW28","name":"Pioneer","lat":1.337636,"lng":103.697184},
+            {"line":"EW","lineno":"EW29","name":"Joo Koon","lat":1.327742,"lng":103.678551},
+            {"line":"CG","lineno":"Changi Branch Line","name":"","lat":null,"lng":null},
+            {"line":"CG","lineno":"CG1","name":"Expo","lat":1.334579,"lng":103.961477},
+            {"line":"CG","lineno":"CG2","name":"Changi Airport","lat":1.356932,"lng":103.989347},
+            {"line":"NE","lineno":"North East Line","name":"","lat":null,"lng":null},
+            {"line":"NE","lineno":"NE1 / CC29","name":"HarbourFront","lat":1.265489,"lng":103.821625},
+            {"line":"NE","lineno":"NE3 / EW16","name":"Outram Park","lat":1.281488,"lng":103.839154},
+            {"line":"NE","lineno":"NE4","name":"Chinatown","lat":1.28439,"lng":103.843582},
+            {"line":"NE","lineno":"NE5","name":"Clarke Quay","lat":1.288318,"lng":103.846602},
+            {"line":"NE","lineno":"NE6 / NS24 / CC1","name":"Dhoby Ghaut","lat":1.298803,"lng":103.846348},
+            {"line":"NE","lineno":"NE7","name":"Little India","lat":1.307025,"lng":103.849685},
+            {"line":"NE","lineno":"NE8","name":"Farrer Park","lat":1.312455,"lng":103.854382},
+            {"line":"NE","lineno":"NE9","name":"Boon Keng","lat":1.319236,"lng":103.861629},
+            {"line":"NE","lineno":"NE10","name":"Potong Pasir","lat":1.331616,"lng":103.869091},
+            {"line":"NE","lineno":"NE11","name":"Woodleigh","lat":1.339291,"lng":103.870796},
+            {"line":"NE","lineno":"NE12 / CC13","name":"Serangoon","lat":1.349817,"lng":103.873117},
+            {"line":"NE","lineno":"NE13","name":"Kovan","lat":1.36009,"lng":103.885028},
+            {"line":"NE","lineno":"NE14","name":"Hougang","lat":1.371297,"lng":103.892443},
+            {"line":"NE","lineno":"NE15","name":"Buangkok","lat":1.382794,"lng":103.892775},
+            {"line":"NE","lineno":"NE16 / STC","name":"Sengkang","lat":1.391611,"lng":103.895517},
+            {"line":"NE","lineno":"NE17 / PTC","name":"Punggol","lat":1.404575,"lng":103.902121},
+            {"line":"CC","lineno":"Circle Line","name":"","lat":null,"lng":null},
+            {"line":"CC","lineno":"CC1 / NE6/ NS24","name":"Dhoby Ghaut","lat":1.298803,"lng":103.846348},
+            {"line":"CC","lineno":"CC2","name":"Bras Basah","lat":1.29688,"lng":103.850597},
+            {"line":"CC","lineno":"CC3","name":"Esplanade","lat":1.293441,"lng":103.855652},
+            {"line":"CC","lineno":"CC4 ","name":"Promenade","lat":1.293087,"lng":103.860973},
+            {"line":"CC","lineno":"CC5","name":"Nicoll Highway","lat":1.300662,"lng":103.864977},
+            {"line":"CC","lineno":"CC6","name":"Stadium","lat":1.30295,"lng":103.875631},
+            {"line":"CC","lineno":"CC7","name":"Mountbatten","lat":1.306331,"lng":103.88233},
+            {"line":"CC","lineno":"CC8","name":"Dakota","lat":1.308338,"lng":103.888563},
+            {"line":"CC","lineno":"CC9 / EW8","name":"Paya Lebar","lat":1.31819,"lng":103.893074},
+            {"line":"CC","lineno":"CC10 ","name":"MacPherson","lat":1.326434,"lng":103.890315},
+            {"line":"CC","lineno":"CC11","name":"Tai Seng","lat":1.335435,"lng":103.888394},
+            {"line":"CC","lineno":"CC12","name":"Bartley","lat":1.343132,"lng":103.87913},
+            {"line":"CC","lineno":"CC13 / NE12","name":"Serangoon","lat":1.349817,"lng":103.873117},
+            {"line":"CC","lineno":"CC14","name":"Lorong Chuan","lat":1.351642,"lng":103.863945},
+            {"line":"CC","lineno":"CC15 / NS17","name":"Bishan","lat":1.350845,"lng":103.848137},
+            {"line":"CC","lineno":"CC16","name":"Marymount","lat":1.348645,"lng":103.839463},
+            {"line":"CC","lineno":"CC17","name":"Caldecott","lat":1.337715,"lng":103.839506},
+            {"line":"CC","lineno":"CC19","name":"Botanic Gardens","lat":1.322054,"lng":103.815714},
+            {"line":"CC","lineno":"CC20","name":"Farrer Road","lat":1.317517,"lng":103.80773},
+            {"line":"CC","lineno":"CC21","name":"Holland Village","lat":1.311811,"lng":103.795825},
+            {"line":"CC","lineno":"CC22 / EW21","name":"Buona Vista","lat":1.307287,"lng":103.790148},
+            {"line":"CC","lineno":"CC23","name":"one-north","lat":1.299538,"lng":103.786978},
+            {"line":"CC","lineno":"CC24","name":"Kent Ridge","lat":1.293119,"lng":103.78439},
+            {"line":"CC","lineno":"CC25","name":"Haw Par Villa","lat":1.282069,"lng":103.781699},
+            {"line":"CC","lineno":"CC26","name":"Pasir Panjang","lat":1.275934,"lng":103.79184},
+            {"line":"CC","lineno":"CC27","name":"Labrador Park","lat":1.272486,"lng":103.802075},
+            {"line":"CC","lineno":"CC28","name":"Telok Blangah","lat":1.270467,"lng":103.810757},
+            {"line":"CC","lineno":"CC29 / NE1","name":"HarbourFront","lat":1.265206,"lng":103.821601},
+            {"line":"CE","lineno":"Circle Line Extension","name":"","lat":null,"lng":null},
+            {"line":"CE","lineno":"CE1","name":"Bayfront","lat":1.281797,"lng":103.85909},
+            {"line":"CE","lineno":"CE2 / NS27","name":"Marina Bay","lat":1.276466,"lng":103.854637}]};
+        $('#mrt').live('pagebeforeshow', function (event, ui) {
+            stopProgressBar();
+
+            $("#mrt-result").hide();
+            $("#mrt-result").delay("slow").html($("#MRTTemplate").render(data));
+            $('#mrt-result > ul').listview();
+
+            $('#mrt-list').delegate("li", "click", function (event) {
+                var $item = $(this);
+                if($item.jqmData('name') != undefined) {
+                    sessionStorage.setItem("current_lat", $item.jqmData('lat'));
+                    sessionStorage.setItem("current_lng", $item.jqmData('lng'));
+                    sessionStorage.setItem("current_position", $item.jqmData('name') + " MRT");
+                }
+            });
+        });
+        $('#mrt').live('pageshow', function (event, ui) {
+            $("#mrt-result").fadeIn(900);
+        });
+    </script>
     <div data-role="content" id="mrt-content">
         <div class="progress" id="progress">
             <div class="pip"></div>
@@ -184,46 +166,45 @@
             <p>Stations are currently loading...</p>
         </div>
     </div>
-</div>
+    <script id="MRTTemplate" type="text/x-jquery-tmpl">
+        <ul data-role="listview" id="mrt-list" data-inset="true" data-filter="true" data-theme="c" data-dividertheme="a">
+            {{#each MRT}}
 
-<script id="MRTTemplate" type="text/x-jquery-tmpl">
-    <ul data-role="listview" id="mrt-list" data-inset="true" data-filter="true" data-theme="c" data-dividertheme="a">
-        {{#each MRT}}
-
-        {{#if name}}
+            {{#if name}}
             <li data-name="{{=name}}" data-lat="{{=lat}}" data-lng="{{=lng}}" >
                 <a href="category.html">
                     {{#if line == 'NS'}}
-                        <img src="images/mrt-NS.png" class="ui-li-icon" style="margin-top:-1px"/>
+                    <img src="images/mrt-NS.png" class="ui-li-icon" style="margin-top:-1px"/>
                     {{/if}}
                     {{#if line == 'EW'}}
-                        <img src="images/mrt-EW.png" class="ui-li-icon" style="margin-top:-1px"/>
+                    <img src="images/mrt-EW.png" class="ui-li-icon" style="margin-top:-1px"/>
                     {{/if}}
                     {{#if line == 'CG'}}
-                        <img src="images/mrt-EW.png" class="ui-li-icon" style="margin-top:-1px"/>
+                    <img src="images/mrt-EW.png" class="ui-li-icon" style="margin-top:-1px"/>
                     {{/if}}
                     {{#if line == 'CC'}}
-                        <img src="images/mrt-CC.png" class="ui-li-icon" style="margin-top:-1px"/>
+                    <img src="images/mrt-CC.png" class="ui-li-icon" style="margin-top:-1px"/>
                     {{/if}}
                     {{#if line == 'CE'}}
-                        <img src="images/mrt-CC.png" class="ui-li-icon" style="margin-top:-1px"/>
+                    <img src="images/mrt-CC.png" class="ui-li-icon" style="margin-top:-1px"/>
                     {{/if}}
                     {{#if line == 'NE'}}
-                        <img src="images/mrt-NE.png" class="ui-li-icon" style="margin-top:-1px"/>
+                    <img src="images/mrt-NE.png" class="ui-li-icon" style="margin-top:-1px"/>
                     {{/if}}
                     ({{=lineno}}) - {{=name}}
                 </a>
             </li>
-        {{else}}
+            {{else}}
             <li data-role="list-divider">{{=lineno}}</li>
-        {{/if}}
-        {{/each}}
-    </ul>
-</script>
+            {{/if}}
+            {{/each}}
+        </ul>
+    </script>
 
-<script id="MRTEmptyTemplate" type="text/x-jquery-tmpl">
-    <p>There are no results.</p>
-</script>
+    <script id="MRTEmptyTemplate" type="text/x-jquery-tmpl">
+        <p>There are no results.</p>
+    </script>
+</div>
 
 </body>
 </html>

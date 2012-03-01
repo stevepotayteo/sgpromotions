@@ -6,48 +6,18 @@
 
 		<title>SG Promotions</title>
         <link rel="stylesheet" href="css/sg.promotions.css" />
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
         <link href="css/sg.promotions.custom.css" rel="stylesheet" type="text/css" />
         <link href="css/sg.promotions.mainpage.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" src="jquery.easing.1.3.js"></script>
         <script type="text/javascript" src="jsrender.js"></script>
         <script type="text/javascript" src="promotions.js"></script>
-		<script type="text/javascript">
-			$(document).bind("mobileinit", function() {
-                $('#home').live('pagebeforeshow', function (event, ui) {
-                    stopProgressBar();
-                });
-			});
-		</script>
-        <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
-        <script type="text/javascript">
-            $('#home').live('pageinit', function(event) {
-                $('#nearby').click(function (e) {
-                    e.preventDefault();
-                    appbar_nearby(); // for access from app bar and the menu
-                });
-                $('#location').click(function (e) {
-                    e.preventDefault();
-                    window.location.href="location.html";
-                });
-                $('#mrt').click(function (e) {
-                    e.preventDefault();
-                    window.location.href="mrt.html";
-                });
-//                $('#fav').click(function (e) {
-//                    e.preventDefault();
-//                    window.location.href="fav.html";
-//                });
-
-                // loading animation
-                $('#nearby').hide().fadeIn(600);
-                $('#location').hide().delay(600).fadeIn(600);
-                $('#mrt').hide().delay(1200).fadeIn(600);
-
-                window.setTimeout('dream()',2000);
-            });
-        </script>
+		<!--<script type="text/javascript">-->
+			<!--$(document).bind("mobileinit", function() {-->
+			<!--});-->
+		<!--</script>-->
+        <script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
 
         <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
         <!--<script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>-->
@@ -64,15 +34,50 @@
                 }
 			}
 		</script>
-    <style type="text/css">
-    .ui-page {
-		background-color: #CC3333;
-	}
-    </style>
     </head>
-<body class="custom">
+<body>
+    <div data-role="page" id="home">
+        <script type="text/javascript">
+            $('#home').live('pageinit', function(event) {
+                $('#nearby').click(function (e) {
+                    e.preventDefault();
+                    appbar_nearby(); // for access from app bar and the menu
+                });
+                $('#location').click(function (e) {
+                    e.preventDefault();
+                    $.mobile.changePage("location.html");
+                });
+                $('#mrt').click(function (e) {
+                    e.preventDefault();
+                    $.mobile.changePage("mrt.html");
+                });
+//                $('#fav').click(function (e) {
+//                    e.preventDefault();
+//                     $.mobile.changePage("fav.html");
+//                });
+            });
 
-    <div data-role="page" id="home" class="custom">
+            $(document.body).live('pagebeforehide', function(event) {
+                stopProgressBar();
+//                $('span[class="drawingpix"]').each(function () {
+//                    $(this).stop(true).remove();
+//                });
+            });
+
+            $('#home').live('pagebeforeshow', function(event) {
+                stopProgressBar();
+                $('#nearby').hide();
+                $('#location').hide();
+                $('#mrt').hide();
+            });
+
+            $('#home').live('pageshow', function(event) {
+                $('#nearby').fadeIn(600);
+                $('#location').delay(600).fadeIn(600);
+                $('#mrt').delay(1200).fadeIn(600);
+                // window.setTimeout('dream()',2000); // loading dream animation after 2 seconds
+            });
+        </script>
         <div data-role="content">
             <div class="progress" id="progress">
                 <div class="pip"></div>
@@ -95,9 +100,6 @@
                 <div align="center" class="ui-block-a"><div class="box trainimg" id="mrt"><h3 class="textinbox">search by<br/>mrt station</h3></div></div>
                 <!--<div align="center" class="ui-block-b"><div class="box favimg" id="fav"><h3 class="textinbox">favorite promotion</h3></div></div>-->
             </div>
-            <!--<div class="ui-grid-a">-->
-                <!--<div class="ui-block-a"><a href="location.html">Display Promotions By Location</a></div>-->
-            <!--</div>-->
         </div>
     </div>
 

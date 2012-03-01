@@ -6,42 +6,35 @@
 
     <title>SG Promotions</title>
     <link rel="stylesheet" href="css/sg.promotions.css" />
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
     <link rel="stylesheet" href="css/sg.promotions.custom.css" type="text/css" />
     <link href="css/sg.promotions.restpages.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="jsrender.js"></script>
     <script type="text/javascript" src="promotions.js"></script>
-    <script type="text/javascript">
-        $(document).bind("mobileinit", function() {
-            $('#category').live('pagebeforeshow', function (event, ui) {
-                startProgressBar();
-                // have internet connection
-                if(true) {
-                    getCategory();
-                } else {
-                }
-            });
-        });
-    </script>
-    <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
 
     <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
     <!--<script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>-->
 
     <script type="text/javascript">
-        document.addEventListener("deviceready",onDeviceReady,false);
-        // once the device ready event fires, you can safely do your thing! -jm
-        function onDeviceReady() {
-            // navigator.notification.alert("was here1");
-            // navigator.geolocation.getCurrentPosition(onGeolocationSuccess, onGeolocationError);
-        }
     </script>
 </head>
 <body>
 
 <div data-role="page" id="category" data-theme="c">
+    <script type="text/javascript">
+        $('#category').live('pagebeforehide', function (event, ui) {
+            stopProgressBar();
+        });
+        $('#category').live('pagebeforeshow', function (event, ui) {
+            getCategory();
+        });
+        $('#category').live('pageshow', function (event, ui) {
+            startProgressBar();
+        });
+    </script>
     <div data-role="content" id="category-content">
         <div class="progress" id="progress">
             <div class="pip"></div>
@@ -55,24 +48,26 @@
         	<p>Categories are currently loading...</p>
     	</div>
     </div>
+
+    <script id="CategoryTemplate" type="text/x-jquery-tmpl">
+        <ul data-role="listview" id="category-list" data-inset="true" data-filter="false" data-theme="c">
+            {{#each results}}
+            <li data-category_tag="{{=categorytag}}" data-theme="c">
+                <a href="nearby.html"><img src="{{=iconurl}}" width="16" height="16" class="ui-li-icon"/>{{=category}}</a>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+
+    <script id="CategoryErrorTemplate" type="text/x-jquery-tmpl">
+        <p>An error occured while loading, please <a href="category.html">reload</a> to try again or go <a href="javascript:history.back()">back</a>.</p>
+    </script>
+
+    <script id="CategoryEmptyTemplate" type="text/x-jquery-tmpl">
+        <p>There are no categories found. Click <a href="javascript:history.back()">here</a> to go back.</p>
+    </script>
 </div>
 
-<script id="CategoryTemplate" type="text/x-jquery-tmpl">
-    <ul data-role="listview" id="category-list" data-inset="true" data-filter="false" data-theme="c">
-        {{#each results}}
-        <li data-category_tag="{{=categorytag}}" data-theme="c">
-            <a href="nearby.html"><img src="{{=iconurl}}" width="16" height="16" class="ui-li-icon"/>{{=category}}</a>
-        </li>
-        {{/each}}
-    </ul>
-</script>
 
-<script id="CategoryErrorTemplate" type="text/x-jquery-tmpl">
-    <p>An error occured while loading, please <a href="category.html">reload</a> to try again or go <a href="javascript:history.back()">back</a>.</p>
-</script>
-
-<script id="CategoryEmptyTemplate" type="text/x-jquery-tmpl">
-    <p>There are no categories found. Click <a href="javascript:history.back()">here</a> to go back.</p>
-</script>
 </body>
 </html>

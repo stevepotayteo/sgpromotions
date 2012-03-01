@@ -11,10 +11,10 @@ var promotion_parameters = ["category","distance","contact_number", "contact_num
 var location_parameters = ["lat", "lng"];
 
 $(document).bind("mobileinit", function() {
-    $.mobile.loadingMessage = "Getting Current Location..."
-    $.mobile.ajaxEnabled = false;
-//                $.support.cors = true;
-//                $.mobile.allowCrossDomainPages = true;
+    //$.mobile.ajaxEnabled = false;
+    $.support.cors = true;
+    $.mobile.allowCrossDomainPages = true;
+    $.mobile.pushStateEnabled = false;
 //
 //              $.mobile.page.prototype.options.addBackBtn = true; // back button doesn't work for pages on different files when using phonegap
 //				$.mobile.page.prototype.options.backBtnText = "Back";
@@ -312,30 +312,29 @@ function displayLocationResults(data) {
 
 // Application Barf
 function appbar_home() {
-    window.location.href="index.html";
+    $.mobile.changePage("index.html");
 }
 
 function appbar_nearby() {
-    $.mobile.loadingMessage = "Getting Current Location..."
     startProgressBar();
-    $.mobile.showPageLoadingMsg();
+    $.mobile.showPageLoadingMsg("a", "Getting Current Location...", true);
     SetCurrentLocation();
 }
 
 function appbar_location() {
-    window.location.href="location.html";
+    $.mobile.changePage("location.html");
 }
 
 function appbar_mrt() {
-    window.location.href="mrt.html";
+    $.mobile.changePage("mrt.html");
 }
 
 function appbar_fav() {
-    window.location.href="fav.html";
+    $.mobile.changePage("fav.html");
 }
 
 function appbar_about() {
-    window.location.href = "about.html";
+    $.mobile.changePage("about.html");
 }
 //
 //
@@ -352,14 +351,16 @@ function appbar_about() {
 //}
 
 function startProgressBar() {
-    $('#progress').css('opacity', 1);
+    $("#" + $.mobile.activePage.attr('id') + " > div > div.progress").css('opacity', 1);
+
     startAnimation();
     var tid = setInterval(startAnimation, 3500);
 }
 
 function stopProgressBar() {
-    $('#progress').css('opacity', 0);
-    $(".pip").each(function () {
+    $("#" + $.mobile.activePage.attr('id') + " > div > div.progress").css('opacity', 0);
+
+    $("#" + $.mobile.activePage.attr('id') + " > div > div.progress > div.pip").each(function () {
         $(this).stop(true);
     });
 }
@@ -367,7 +368,7 @@ function stopProgressBar() {
 // progress bar
 function startAnimation() {
     var delay = 200;
-    $(".pip").each(function () {
+    $("#" + $.mobile.activePage.attr('id') + " > div > div.progress > div.pip").each(function () {
         animatePip($(this), delay);
         delay += 200;
     });
@@ -397,7 +398,7 @@ function dream(){
     drawingpix = $('<span>').attr({class: 'drawingpix'}).hide();
 
     //appending it to body
-    $(document.body).append(drawingpix);
+    $('#home').append(drawingpix);
 
     //styling dream.. filling colors.. positioning.. showing.. growing..fading
     drawingpix.css({

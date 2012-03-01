@@ -6,70 +6,64 @@
 
     <title>SG Promotions</title>
     <link rel="stylesheet" href="css/sg.promotions.css" />
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
     <link rel="stylesheet" href="css/sg.promotions.custom.css" type="text/css" />
     <link href="css/sg.promotions.restpages.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="jquery.jsonp-2.2.1.js"></script>
     <script type="text/javascript" src="jsrender.js"></script>
     <script type="text/javascript" src="promotions.js"></script>
     <!--<script type="text/javascript">-->
         <!--$(document).bind("mobileinit", function() {-->
-            <!--$.mobile.loadingMessage = "Searching Location..."-->
         <!--});-->
     <!--</script>-->
+    <script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+    <!--<script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>-->
+</head>
+<body>
+
+<div data-role="page" id="location" data-theme="c">
     <script type="text/javascript">
-        $(document).bind("mobileinit", function() {
-			$(window).keydown(function(event){
-				if(event.keyCode == 13) {
-					event.preventDefault();
+        $('#location').live('pagebeforehide', function(event) {
+            stopProgressBar();
+        });
+
+        $('#location').live('pagebeforeshow', function(event) {
+            stopProgressBar();
+            $('#search-form').hide();
+        });
+
+        $('#location').live('pageshow', function(event) {
+            $('#search-form').fadeIn(600);
+        });
+
+        $('#location').live('pageinit', function(event) {
+            $(window).keydown(function(event){
+                if(event.keyCode == 13) {
+                    event.preventDefault();
                     var location = $.trim($('#search_location').val());
                     if(location != '') {
-                        $('#location').focus(); // this is needed so the textbox loses focus and the keyboard doesn't block the screen
+                        $('#location-content').focus(); // this is needed so the textbox loses focus and the keyboard doesn't block the screen
                         $('html,body').delay("slow").animate({scrollTop: $('#location-content').offset().top});
-                        $.mobile.loadingMessage = "Searching Location..."
-                        $.mobile.showPageLoadingMsg();
+                        $.mobile.showPageLoadingMsg("a", "Searching Location...", true);
                         startProgressBar();
                         geocodeLocation(location);
                     }
 
-			  		return false;
-				}
-			});
-			
-
-        });
-
-        $('#location').live('pageinit', function(event) {
-            $('#search-form').hide().fadeIn(400);
+                    return false;
+                }
+            });
 
             $('#retry').click(function() {
                 var e = jQuery.Event("keydown");
                 e.which = 13; // enter key code
                 $('#retry').trigger(e);
             });
-
-
-            stopProgressBar();
         });
     </script>
-    <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 
-    <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
-    <!--<script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>-->
-
-    <script type="text/javascript">
-        document.addEventListener("deviceready",onDeviceReady,false);
-        function onDeviceReady() {
-
-        }
-    </script>
-</head>
-<body>
-
-<div data-role="page" id="location" data-theme="c">
-	<div data-role="content" id="location-content">
+    <div data-role="content" id="location-content">
         <div class="progress" id="progress">
             <div class="pip"></div>
             <div class="pip"></div>
@@ -87,31 +81,30 @@
         </div>
         <div id="location-result"></div>
 	</div>
+
+    <script id="LocationTemplate" type="text/x-jquery-tmpl">
+        <br/><h3><span id="count"></span> location(s) found: </h3>
+        <ul data-role="listview" id="location-list" data-inset="true" data-filter="false">
+            {{#each results}}
+            <li data-address="{{=formatted_address}}" data-lat="{{=geometry.location.lat}}" data-lng="{{=geometry.location.lng}}">
+                <a href="category.html">
+                    {{=formatted_address}}
+                    <!--<p>{{=geometry.location.lat}}, {{=geometry.location.lng}}</p> -->
+                </a>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+
+    <script id="LocationEmptyTemplate" type="text/x-jquery-tmpl">
+        <!--<br/><h3>no locations found: </h3>-->
+        <p>There are no results. Please define your search more clearly.</p>
+    </script>
+
+    <script id="LocationErrorTemplate" type="text/x-jquery-tmpl">
+        <!--<br/><h3>error while searching: </h3>-->
+        <p>An error occurred while search. Please try <a href="" id="retry">again</a>.</p>
+    </script>
 </div>
-
-<script id="LocationTemplate" type="text/x-jquery-tmpl">
-    <br/><h3><span id="count"></span> location(s) found: </h3>
-	<ul data-role="listview" id="location-list" data-inset="true" data-filter="false">
-        {{#each results}}
-        <li data-address="{{=formatted_address}}" data-lat="{{=geometry.location.lat}}" data-lng="{{=geometry.location.lng}}">
-            <a href="category.html">
-                {{=formatted_address}}
-                <!--<p>{{=geometry.location.lat}}, {{=geometry.location.lng}}</p> -->
-            </a>
-        </li>
-        {{/each}}
-    </ul>
-</script>
-
-<script id="LocationEmptyTemplate" type="text/x-jquery-tmpl">
-    <!--<br/><h3>no locations found: </h3>-->
-	<p>There are no results. Please define your search more clearly.</p>
-</script>
-
-<script id="LocationErrorTemplate" type="text/x-jquery-tmpl">
-    <!--<br/><h3>error while searching: </h3>-->
-	<p>An error occurred while search. Please try <a href="" id="retry">again</a>.</p>
-</script>
-
 </body>
 </html>
