@@ -11,7 +11,7 @@ var promotion_parameters = ["category","distance","contact_number", "contact_num
 var location_parameters = ["lat", "lng"];
 
 $(document).bind("mobileinit", function() {
-    //$.mobile.ajaxEnabled = false;
+    $.mobile.ajaxEnabled = false;
     $.support.cors = true;
     $.mobile.allowCrossDomainPages = true;
     $.mobile.pushStateEnabled = false;
@@ -312,7 +312,8 @@ function displayLocationResults(data) {
 
 // Application Barf
 function appbar_home() {
-    $.mobile.changePage("index.html");
+    window.location.href="index.html";
+    // $.mobile.changePage("index.html");
 }
 
 function appbar_nearby() {
@@ -322,15 +323,17 @@ function appbar_nearby() {
 }
 
 function appbar_location() {
-    $.mobile.changePage("location.html");
+    window.location.href="location.html";
+    // $.mobile.changePage("location.html");
 }
 
 function appbar_mrt() {
-    $.mobile.changePage("mrt.html");
+    window.location.href="mrt.html";
+    // $.mobile.changePage("mrt.html"); - lagfest
 }
 
 function appbar_fav() {
-    $.mobile.changePage("fav.html");
+    // $.mobile.changePage("fav.html");
 }
 
 function appbar_about() {
