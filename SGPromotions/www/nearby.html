@@ -13,6 +13,7 @@
         <script type="text/javascript" src="jquery.easing.1.3.js"></script>
         <script type="text/javascript" src="jquery.jsonp-2.2.1.js"></script>
         <script type="text/javascript" src="jsrender.js"></script>
+
         <script type="text/javascript" src="promotions.js"></script>
         <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
         <!--<script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>-->
@@ -51,7 +52,8 @@
         <ul data-role="listview" id="nearby-list" data-inset="true" data-filter="true">
             {{#each results}}
             <li data-category="{{=category}}" data-distance="{{=distance}}" data-contact_number="{{=contact_number}}" data-contact_number_link="{{=contact_number_link}}" data-name="{{=name}}" data-promo="{{=promo}}" data-pic="{{=pic}}" data-operating_hours="{{=operating_hours}}" data-url="{{=url}}" data-expiry_date="{{=expiry_date}}" data-address="{{=address}}" data-lat="{{=lat}}" data-lng="{{=lng}}">
-                <a href="promotion.html"><img src="{{=pic}}" width="24" height="24" class="ui-li-icon" style="top: 25px"/>
+                <a href="promotion.html">
+                    <img src="{{=pic}}" width="24" height="24" class="ui-li-icon" style="top: 25px"/>
                     <h3 class="black">{{=name}}</h3>
                     <p class="black">{{=promo}}</p>
                     <span class="ui-li-count">{{=distance}}m</span>

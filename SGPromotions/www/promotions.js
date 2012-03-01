@@ -58,6 +58,39 @@ function getNearby() {
     });
 }
 
+function displayNearby(data) {
+    var nearby = data.query.results.json;
+    stopProgressBar();
+    $("#nearby-result").hide();
+    if(nearby != null){
+        $("#nearby-result").delay("slow").html($("#NearbyTemplate").render(nearby));
+        $('#nearby-result > ul').listview();
+        var count = nearby.results.length;
+        if(count == undefined) {
+            count = 1;
+        }
+        $("#count").text(count);
+
+        $('#nearby-list').delegate("li", "click", function (event) {
+            var $item = $(this);
+
+            $.each(promotion_parameters, function(index, value) {
+//                if(value == "url" || value == "pic" || value == "promo") { // to fix some fuck-ed up bug with storing urls in IE sessionstorage. wasted my time
+//                    sessionStorage.setItem(value, encodeURIComponent($item.jqmData(value)));
+//                } else {
+//                    sessionStorage.setItem(value, $item.jqmData(value));
+//                }
+
+                sessionStorage.setItem(value, encodeURIComponent($item.jqmData(value)));
+                //$('#nearby').jqmData(value, $item.jqmData(value)); // all external links now so jqmData is pointless
+            });
+        });
+    } else {
+        $("#nearby-result").delay("slow").html($("#NearbyEmptyTemplate").render());
+    }
+    $("#nearby-result").fadeIn();
+}
+
 /* GPS Section */
 // onSuccess Geolocation
 //
@@ -100,41 +133,6 @@ function onGeolocationError(error) {
     navigator.notification.beep(1);
     navigator.notification.vibrate(1000);
     navigator.notification.alert(sErrMsg);
-}
-
-function displayNearby(data) {
-    var nearby = data.query.results.json;
-    stopProgressBar();
-    $("#nearby-result").hide();
-    if(nearby != null){
-		$("#nearby-result").delay("slow").html($("#NearbyTemplate").render(nearby));
-		$('#nearby-result > ul').listview();
-        var count = nearby.results.length;
-        if(count == undefined) {
-            count = 1;
-        }
-        $("#count").text(count);
-
-		$('#nearby-list').delegate("li", "click", function (event) {
-			var $item = $(this);
-		
-			$.each(promotion_parameters, function(index, value) {
-//                if(value == "url" || value == "pic" || value == "promo") { // to fix some fuck-ed up bug with storing urls in IE sessionstorage. wasted my time
-//                    sessionStorage.setItem(value, encodeURIComponent($item.jqmData(value)));
-//                } else {
-//                    sessionStorage.setItem(value, $item.jqmData(value));
-//                }
-
-                sessionStorage.setItem(value, encodeURIComponent($item.jqmData(value)));
-				// $('#promotion').jqmData(value, $item.jqmData(value)); // all external links now so jqmData is pointless
-			});
-		    
-		    // $.mobile.changePage('#promotion');
-		});
-	} else {
-        $("#nearby-result").delay("slow").html($("#NearbyEmptyTemplate").render());
-    }
-    $("#nearby-result").fadeIn();
 }
 
 //function getMRT() {
