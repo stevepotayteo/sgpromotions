@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;"/>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+
+    <title>SG Promotions</title>
+    <link rel="stylesheet" href="css/sg.promotions.css"/>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
+    <link rel="stylesheet" href="css/sg.promotions.custom.css" type="text/css"/>
+    <link href="css/sg.promotions.restpages.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="jsrender.js"></script>
+
+    <script type="text/javascript" src="promotions.js"></script>
+    <script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+    <!--<script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script>-->
+</head>
+<body>
+<div data-role="page" id="settings" data-position="fixed" data-theme="c">
+    <script type="text/javascript">
+        $('#settings').live('pagebeforehide', function(event) {
+            stopProgressBar();
+        });
+
+        $('#settings').live('pagebeforeshow', function(event) {
+            stopProgressBar();
+        });
+    </script>
+    <div data-role="content" id="settings-content">
+        <div class="progress" id="progress">
+            <div class="pip"></div>
+            <div class="pip"></div>
+            <div class="pip"></div>
+            <div class="pip"></div>
+            <div class="pip"></div>
+        </div>
+        <h1>settings</h1>
+        <div data-role="fieldcontain">
+            <fieldset data-role="controlgroup">
+                <legend>Agree to the terms:</legend>
+                <input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+                <label for="checkbox-1">I agree</label>
+            </fieldset>
+        </div>
+        <label for="flip-a">Select slider:</label>
+        <select name="slider" id="flip-a" data-role="slider">
+            <option value="off">Off</option>
+            <option value="on">On</option>
+        </select>
+    </div>
+</div>
+</body>
+</html>

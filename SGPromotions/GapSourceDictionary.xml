@@ -20,7 +20,7 @@
     <FilePath Value="www\phonegapMock.js"/>
     <FilePath Value="www\promotion.html"/>
     <FilePath Value="www\promotions.js"/>
-    <FilePath Value="www\sessionstorage.1.4.js"/>
+    <FilePath Value="www\settings.html"/>
     <FilePath Value="www\.idea\.name"/>
     <FilePath Value="www\.idea\encodings.xml"/>
     <FilePath Value="www\.idea\misc.xml"/>
@@ -43,5 +43,6 @@
     <FilePath Value="www\images\mrt-NE.png"/>
     <FilePath Value="www\images\mrt-NS.png"/>
     <FilePath Value="www\images\nearby.png"/>
+    <FilePath Value="www\images\settings.png"/>
     <FilePath Value="www\images\train.png"/>
 </GapSourceDictionary>

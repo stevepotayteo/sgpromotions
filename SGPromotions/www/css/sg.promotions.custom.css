@@ -55,6 +55,12 @@ div.favimg {
 	background-position: 5px 0px;
 }
 
+div.settingsimg {
+    background-image: url(../images/settings.png);
+    background-repeat: no-repeat;
+    background-position: 5px 0px;
+}
+
 h3.textinbox {
 	margin: 0px;
 	padding: 0px;

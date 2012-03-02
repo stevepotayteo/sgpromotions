@@ -54,13 +54,14 @@
                     window.location.href="mrt.html";
                     // $.mobile.changePage("mrt.html"); - lagfest
                 });
-//                $('#fav').click(function (e) {
-//                    e.preventDefault();
+                $('#settings').click(function (e) {
+                    e.preventDefault();
+                    window.location.href="settings.html";
 //                     $.mobile.changePage("fav.html");
-//                });
+                });
             });
 
-            $(document.body).live('pagebeforehide', function(event) {
+            $('#home').live('pagebeforehide', function(event) {
                 stopProgressBar();
 //                $('span[class="drawingpix"]').each(function () {
 //                    $(this).stop(true).remove();
@@ -72,13 +73,15 @@
                 $('#nearby').hide();
                 $('#location').hide();
                 $('#mrt').hide();
+                $('#settings').hide();
             });
 
             $('#home').live('pageshow', function(event) {
                 $('#nearby').fadeIn(600);
                 $('#location').delay(600).fadeIn(600);
                 $('#mrt').delay(1200).fadeIn(600);
-                // window.setTimeout('dream()',2000); // loading dream animation after 2 seconds
+                $('#settings').delay(1800).fadeIn(600);
+                window.setTimeout('dream()',2500); // loading dream animation after 2 seconds
             });
         </script>
         <div data-role="content">
@@ -101,7 +104,7 @@
             <br />
             <div class="ui-grid-a" style="margin-top:-10px">
                 <div align="center" class="ui-block-a"><div class="box trainimg" id="mrt"><h3 class="textinbox">search by<br/>mrt station</h3></div></div>
-                <!--<div align="center" class="ui-block-b"><div class="box favimg" id="fav"><h3 class="textinbox">favorite promotion</h3></div></div>-->
+                <div align="center" class="ui-block-b"><div class="box settingsimg" id="settings"><h3 class="textinbox">settings</h3></div></div>
             </div>
         </div>
     </div>

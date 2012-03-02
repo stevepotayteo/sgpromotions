@@ -130,6 +130,7 @@
     <Content Include="www\images\nearby.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="www\images\settings.png" />
     <Content Include="www\images\train.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -143,6 +144,7 @@
     <Content Include="www\phonegapMock.js" />
     <Content Include="www\promotion.html" />
     <Content Include="www\promotions.js" />
+    <Content Include="www\settings.html" />
     <None Include="ManifestProcessor.js" />
     <Content Include="www\index.html">
       <SubType>Designer</SubType>
