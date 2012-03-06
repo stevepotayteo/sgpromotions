@@ -106,12 +106,12 @@ p.black {
 	color: #000000;
 }
 
-#promotion-content h3{
+#promotion-content h3, #about-content h3 {
     font-size: 24px;
     margin-bottom: 0px;
 }
 
-#promotion-content p {
+#promotion-content p, #about-content p {
     margin-top: 0px;
     font-size: 13px;
     color: #F1C9C9;

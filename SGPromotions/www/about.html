@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/sg.promotions.custom.css" type="text/css" />
     <link rel="stylesheet" href="css/sg.promotions.restpages.css" type="text/css" />
     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="jquery.jsonp-2.2.1.js"></script>
+    <script type="text/javascript" src="jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="jsrender.js"></script>
 
     <script type="text/javascript" src="promotions.js"></script>
@@ -21,26 +21,33 @@
     <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
     <!-- <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script> -->
 
-    <script type="text/javascript">
-        document.addEventListener("deviceready",onDeviceReady,false);
-        // once the device ready event fires, you can safely do your thing! -jm
-        function onDeviceReady() {
-            //document.getElementById("welcomeMsg").innerHTML += "PhoneGap is ready! version=" + window.device.phonegap;
-            //console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
-        }
-    </script>
     <script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
 </head>
 <body>
 
 <div data-role="page" id="about" data-theme="c">
-    <div data-role="header" data-position="fixed">
-        <h1>Not Yet Implemented</h1>
-        <!-- <a href="index.html" data-role="button" data-icon="home" data-iconpos="notext" data-theme="c" class="ui-btn-right jqm-home" data-iconshadow="false"></a> -->
-    </div>
+    <script type="text/javascript">
+        $('#about').live('pagebeforehide', function(event) {
+            stopProgressBar();
+        });
 
+        $('#about').live('pagebeforeshow', function(event) {
+            stopProgressBar();
+        });
+    </script>
     <div data-role="content" id="about-content">
-        <p>Not Yet Implemented...</p>
+        <div class="progress" id="progress">
+            <div class="pip"></div>
+            <div class="pip"></div>
+            <div class="pip"></div>
+            <div class="pip"></div>
+            <div class="pip"></div>
+        </div>
+        <h1>about</h1>
+        <div id="about-section">
+        	<h3>What</h3>
+        	<p>Test</p>
+        </div>
     </div>
 </div>
 </body>
