@@ -6,7 +6,7 @@ using LinqToVisualTree;
 using Microsoft.Phone.Controls;
 using System.Diagnostics;
 
-namespace SGPromotions.Util
+namespace sgpromotions.Util
 {
     /// <summary>
     /// Captures mouse left button up events, triggering an immediate

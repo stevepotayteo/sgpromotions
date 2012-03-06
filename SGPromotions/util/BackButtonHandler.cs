@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using WP7GapClassLib;
+using WP7CordovaClassLib;
 using Microsoft.Phone.Controls;
 using System.ComponentModel;
 using System.Windows.Navigation;
 
-namespace SGPromotions.Util
+namespace sgpromotions.Util
 {
     /// <summary>
     /// Handles the back-button for a PhoneGap application. When the back-button
@@ -17,7 +17,7 @@ namespace SGPromotions.Util
 
         private List<string> _backStack = new List<string>();
 
-        public BackButtonHandler(PhoneApplicationPage page, PGView phoneGapView)
+        public BackButtonHandler(PhoneApplicationPage page, CordovaView phoneGapView)
         {
             // subscribe to the hardware back-button
             page.BackKeyPress += Page_BackKeyPress;

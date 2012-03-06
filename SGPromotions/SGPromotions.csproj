@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3A197BF4-5337-478E-B7AC-ECCC3804CECB}</ProjectGuid>
+    <ProjectGuid>{6A89D321-B2AA-4CAB-9C15-BB9DFEF40900}</ProjectGuid>
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SGPromotions</RootNamespace>
-    <AssemblyName>SGPromotions</AssemblyName>
+    <RootNamespace>sgpromotions</RootNamespace>
+    <AssemblyName>sg.promotions</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
@@ -20,9 +20,9 @@
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-    <XapFilename>sgPromotions.xap</XapFilename>
+    <XapFilename>sgpromotions.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>SGPromotions.App</SilverlightAppEntry>
+    <SilverlightAppEntry>sgpromotions.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
   </PropertyGroup>
@@ -56,10 +56,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
-    <Reference Include="WP7GapClassLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Users\Jesse\Documents\Visual Studio 2010\Projects\TwitterPluginTest\GapLib\WP7GapClassLib.dll</HintPath>
-    </Reference>
+    <Reference Include="WP7CordovaClassLib, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -85,67 +82,42 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GapLib\WP7GapClassLib.dll" />
-    <Content Include="GapSourceDictionary.xml" />
-    <Content Include="icons\appbar.home.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="icons\appbar.location.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="icons\appbar.train.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="icons\appbar.nearby.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="CordovaSourceDictionary.xml" />
+    <Content Include="icons\appbar.home.png" />
+    <Content Include="icons\appbar.location.png" />
+    <Content Include="icons\appbar.nearby.png" />
+    <Content Include="icons\appbar.train.png" />
+    <Content Include="GapLib\WP7CordovaClassLib.dll" />
     <Content Include="www\about.html" />
     <Content Include="www\category.html" />
-    <Content Include="www\css\sg.promotions.css">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="www\css\sg.promotions.custom.css" />
-    <Content Include="www\css\sg.promotions.mainpage.css" />
-    <Content Include="www\css\sg.promotions.restpages.css" />
     <Content Include="www\fav.html" />
-    <Content Include="www\images\all.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="www\images\app-header.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="www\images\fav.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="www\images\location.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="www\images\logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="www\images\mrt-CC.png" />
-    <Content Include="www\images\mrt-EW.png" />
-    <Content Include="www\images\mrt-NE.png" />
-    <Content Include="www\images\mrt-NS.png" />
-    <Content Include="www\images\nearby.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="www\images\settings.png" />
-    <Content Include="www\images\train.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="www\jquery.easing.1.3.js" />
-    <Content Include="www\jquery.ui.bmap.min.js" />
     <Content Include="www\jsrender.js" />
     <Content Include="www\location.html" />
     <Content Include="www\mrt.html" />
     <Content Include="www\nearby.html" />
-    <Content Include="www\phonegap-1.4.1.js" />
     <Content Include="www\phonegapMock.js" />
     <Content Include="www\promotion.html" />
     <Content Include="www\promotions.js" />
     <Content Include="www\settings.html" />
-    <None Include="ManifestProcessor.js" />
+    <None Include="BuildManifestProcessor.js" />
+    <Content Include="www\cordova-1.5.0.js" />
+    <Content Include="www\css\sg.promotions.css" />
+    <Content Include="www\css\sg.promotions.custom.css" />
+    <Content Include="www\css\sg.promotions.mainpage.css" />
+    <Content Include="www\css\sg.promotions.restpages.css" />
+    <Content Include="www\images\all.png" />
+    <Content Include="www\images\app-header.png" />
+    <Content Include="www\images\fav.png" />
+    <Content Include="www\images\location.png" />
+    <Content Include="www\images\logo.png" />
+    <Content Include="www\images\mrt-CC.png" />
+    <Content Include="www\images\mrt-EW.png" />
+    <Content Include="www\images\mrt-NE.png" />
+    <Content Include="www\images\mrt-NS.png" />
+    <Content Include="www\images\nearby.png" />
+    <Content Include="www\images\settings.png" />
+    <Content Include="www\images\train.png" />
     <Content Include="www\index.html">
       <SubType>Designer</SubType>
     </Content>
@@ -155,9 +127,6 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="www\mrt.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationIcon.png">
@@ -188,7 +157,7 @@
   -->
   <ProjectExtensions />
   <PropertyGroup>
-    <PreBuildEvent>CScript "$(ProjectDir)/ManifestProcessor.js" "$(ProjectPath)"</PreBuildEvent>
+    <PreBuildEvent>CScript "$(ProjectDir)/BuildManifestProcessor.js" "$(ProjectPath)"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>

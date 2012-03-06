@@ -14,17 +14,17 @@ using Microsoft.Phone.Controls;
 using System.IO;
 using System.Windows.Media.Imaging;
 using System.Windows.Resources;
-using SGPromotions.Util;
+using sgpromotions.Util;
 using Microsoft.Phone.Shell;
 using System.Threading;
 
-namespace SGPromotions
+
+namespace sgpromotions
 {
     public partial class MainPage : PhoneApplicationPage
     {
         private WebBrowserHelper _browserHelper;
         private readonly object syncLock = new object();
-
         // Constructor
         public MainPage()
         {
@@ -44,6 +44,11 @@ namespace SGPromotions
                 PGView.Browser.Navigated -= hideSplashScreen;
             };
             PGView.Browser.Navigated += hideSplashScreen;
+        }
+
+        private void GapBrowser_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void Browser_Navigated(object sender, NavigationEventArgs e)
@@ -71,11 +76,6 @@ namespace SGPromotions
             ApplicationBar = ((ApplicationBar) this.Resources["MainAppBar"]);
             ApplicationBar.IsVisible = true;
             SystemTray.IsVisible = true;
-        }
-
-        private void GapBrowser_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
 
         // Appbar section

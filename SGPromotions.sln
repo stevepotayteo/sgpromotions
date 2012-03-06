@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGPromotions", "SGPromotions\SGPromotions.csproj", "{3A197BF4-5337-478E-B7AC-ECCC3804CECB}"
+# Visual Studio 2010 Express for Windows Phone
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sgpromotions", "sgpromotions\sgpromotions.csproj", "{6A89D321-B2AA-4CAB-9C15-BB9DFEF40900}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3A197BF4-5337-478E-B7AC-ECCC3804CECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3A197BF4-5337-478E-B7AC-ECCC3804CECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3A197BF4-5337-478E-B7AC-ECCC3804CECB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{3A197BF4-5337-478E-B7AC-ECCC3804CECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3A197BF4-5337-478E-B7AC-ECCC3804CECB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3A197BF4-5337-478E-B7AC-ECCC3804CECB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{6A89D321-B2AA-4CAB-9C15-BB9DFEF40900}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A89D321-B2AA-4CAB-9C15-BB9DFEF40900}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A89D321-B2AA-4CAB-9C15-BB9DFEF40900}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6A89D321-B2AA-4CAB-9C15-BB9DFEF40900}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A89D321-B2AA-4CAB-9C15-BB9DFEF40900}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A89D321-B2AA-4CAB-9C15-BB9DFEF40900}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

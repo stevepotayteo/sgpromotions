@@ -5,7 +5,7 @@ using System.Windows.Input;
 using LinqToVisualTree;
 using Microsoft.Phone.Controls;
 
-namespace SGPromotions.Util
+namespace sgpromotions.Util
 {
     /// <summary>
     /// Suppresses pinch and double-tap zoom and optionally scrolling of the WebBrowser control
