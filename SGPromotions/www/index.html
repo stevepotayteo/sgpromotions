@@ -33,6 +33,22 @@
                     navigator.notification.vibrate(1000);
                     navigator.notification.alert("Data connection is currently disabled or unknown. Please ensure that you enable your data connection before using sg.promotions.");
                 }
+
+                if(localStorage.getItem("setting_appOpenedBefore") == undefined) {
+                    navigator.notification.confirm(
+                            'sg.promotions will use your location to find promotions around you. Your location information will be sent to yourchalkboard.com, where your location will be used to list all nearby promotions.',  // message
+                            onConfirmLocation,              // callback to invoke with index of button pressed
+                            'Allow sg.promotions to access and use your location?',            // title
+                            'Allow,Deny'          // buttonLabels
+                    );
+                    localStorage.setItem("setting_appOpenedBefore", true);
+                }
+
+                function onConfirmLocation(button) {
+                    if(button == "1") {
+                        localStorage.setItem("setting_uselocation", true);
+                    }
+                }
 			}
 		</script>
     </head>

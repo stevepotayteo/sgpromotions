@@ -32,6 +32,7 @@
         var directionsManager;
         var promoCoordinates;
         var currentCoordinates;
+        var isMapHidden = true;
 
         $('#promotion').live('pageshow', function(event, ui) {
             stopProgressBar();
@@ -115,9 +116,6 @@
 //            }
 
             $('#map_canvas').hide();
-
-            var isMapHidden = true;
-
             $('#showdirection').click(function () {
                 displayMap();
             });

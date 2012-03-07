@@ -33,7 +33,7 @@ function getNearby() {
         additionalParameters += '&lat=' + current_lat + '&lng=' + current_lng;
     } else {
         // return;
-        additionalParameters += '&lat=' + default_lat + '&lng=' + default_lng; // for debug purposes
+        //additionalParameters += '&lat=' + default_lat + '&lng=' + default_lng; // for debug purposes
     }
 
     var category_selection = sessionStorage.getItem("categorySelect");
@@ -318,9 +318,15 @@ function appbar_home() {
 }
 
 function appbar_nearby() {
-    startProgressBar();
-    $.mobile.showPageLoadingMsg("a", "Getting Current Location...", true);
-    SetCurrentLocation();
+    if(localStorage.getItem("setting_uselocation") == undefined) {
+        navigator.notification.beep(1);
+        navigator.notification.vibrate(1000);
+        navigator.notification.alert("sg.promotions is currently not allowed to use your location data. To allow sg.promotions to use your data, please go to settings and change it.");
+    } else {
+        startProgressBar();
+        $.mobile.showPageLoadingMsg("a", "Getting Current Location...", true);
+        SetCurrentLocation();
+    }
 }
 
 function appbar_location() {
@@ -339,6 +345,10 @@ function appbar_fav() {
 
 function appbar_about() {
     window.location.href="about.html";
+}
+
+function appbar_settings() {
+    window.location.href="settings.html";
 }
 //
 //

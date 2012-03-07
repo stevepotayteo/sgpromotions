@@ -32,6 +32,14 @@
                     localStorage.setItem("setting_allcategory", "checked");
                 }
             });
+
+            $("select").bind( "change", function(event, ui) {
+                if($("select[id=flip-location]").val() == "on") {
+                    localStorage.setItem("setting_uselocation", true);
+                } else {
+                    localStorage.removeItem("setting_uselocation");
+                }
+            });
         });
 
         $('#settings').live('pagebeforehide', function(event) {
@@ -40,10 +48,18 @@
 
         $('#settings').live('pagebeforeshow', function(event) {
             var allCategorySetting = localStorage.getItem("setting_allcategory");
+            var useLocationSetting = localStorage.getItem("setting_uselocation");
+
             if(allCategorySetting == undefined) {
                 $("input:checkbox[id=view]").attr("checked",false).checkboxradio("refresh");
             } else {
                 $("input:checkbox[id=view]").attr("checked",true).checkboxradio("refresh");
+            }
+
+            if(useLocationSetting == undefined) {
+                $("select[id=flip-location]").attr("value","off").slider("refresh");
+            } else {
+                $("select[id=flip-location]").attr("value","on").slider("refresh");
             }
 
             stopProgressBar();
@@ -65,8 +81,8 @@
             <label for="view">Enable</label>
         </fieldset>
         <!--</div>-->
-        <label for="flip-c">Use my location</label>
-        <select name="slider" id="flip-c" data-role="slider">
+        <label for="flip-location">Use my location</label>
+        <select name="slider" id="flip-location" data-role="slider">
             <option value="off">Off</option>
             <option value="on">On</option>
         </select>

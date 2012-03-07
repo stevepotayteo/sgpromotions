@@ -47,6 +47,7 @@
         Text="MRT" Click="AppbarButtonMRT_Click"/>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Click="AppBarMenuItemAbout_Click" Text="About sg.promotions" />
+                <shell:ApplicationBarMenuItem Click="AppBarMenuItemSettings_Click" Text="Settings" />
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
         <shell:ApplicationBar x:Key="MainAppBar2" IsVisible="False" IsMenuEnabled="True" Opacity="1">

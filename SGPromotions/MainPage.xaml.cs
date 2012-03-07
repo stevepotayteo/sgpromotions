@@ -187,6 +187,19 @@ namespace sgpromotions
             }
         }
 
+        private void AppBarMenuItemSettings_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lock (syncLock)
+                {
+                    PGView.Browser.InvokeScript("appbar_settings");
+                }
+            }
+            catch (System.Exception ex)
+            {
+            }
+        }
 
     }
 }
