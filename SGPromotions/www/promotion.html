@@ -29,6 +29,9 @@
     <script type="text/javascript">
         var map = null;
         var pinInfobox = null;
+        var directionsManager;
+        var promoCoordinates;
+        var currentCoordinates;
 
         $('#promotion').live('pageshow', function(event, ui) {
             stopProgressBar();
@@ -48,7 +51,9 @@
                     'address': decodeURIComponent(sessionStorage.getItem(promotion_parameters[10])),
                     'lat': decodeURIComponent(sessionStorage.getItem(promotion_parameters[11])),
                     'lng': decodeURIComponent(sessionStorage.getItem(promotion_parameters[12])),
-                    'current_position': sessionStorage.getItem("current_position")
+                    'current_position': sessionStorage.getItem("current_position"),
+                    'current_lat': sessionStorage.getItem("current_lat"),
+                    'current_lng': sessionStorage.getItem("current_lng")
                 };
 
                 $("#promotion-result").hide().html($("#PromotionTemplate").render(promo));
@@ -71,10 +76,11 @@
         });
 
         function createMap(promo) {
-            var coordinates = new Microsoft.Maps.Location(promo.lat, promo.lng);
+            promoCoordinates = new Microsoft.Maps.Location(promo.lat, promo.lng);
+            currentCoordinates = new Microsoft.Maps.Location(promo.current_lat, promo.current_lng);
             var mapOptions = {
                 credentials:bing_credentials,
-                center:coordinates,
+                center:promoCoordinates,
                 mapTypeId:Microsoft.Maps.MapTypeId.road,
                 zoom:14,
                 showScalebar:false,
@@ -87,7 +93,7 @@
             var center = map.getCenter();
             var pin = new Microsoft.Maps.Pushpin(center, {text:'P'});
             pinInfobox = new Microsoft.Maps.Infobox(pin.getLocation(),
-                    {   title:'My Pushpin',
+                    {   title:'Promotion',
                         description:promo.name,
                         height:100,
                         width:150,
@@ -102,8 +108,32 @@
             $('#map_canvas').hide();
 
             var isMapHidden = true;
+
+            $('#showdirection').click(function () {
+                if (!directionsManager)
+                {
+                    Microsoft.Maps.loadModule('Microsoft.Maps.Directions', { callback: createDrivingRoute });
+                }
+                else
+                {
+                    createDrivingRoute();
+                }
+
+                $('#map_canvas').animate({
+                    height:"toggle", opacity:"toggle"
+                }, "slow");
+
+                if (isMapHidden) {
+                    $('html,body').delay('slow').animate({scrollTop:$('#where').offset().top});
+                    isMapHidden = false;
+                } else {
+                    $('html,body').delay('slow').animate({scrollTop:$('#promotion-content').offset().top});
+                    isMapHidden = true;
+                }
+            });
+
             $('#showmap').click(function () {
-                centerMap(coordinates);
+                centerMap(promoCoordinates);
 
                 $('#map_canvas').animate({
                     height:"toggle", opacity:"toggle"
@@ -119,11 +149,41 @@
             });
         }
 
+        function createDirectionsManager() {
+            var displayMessage = "";
+            if (!directionsManager) {
+                directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
+                // displayMessage = 'Directions Module loaded<BR>';
+                // displayMessage += 'Directions Manager loaded';
+            }
+            // displayAlert(displayMessage);
+            directionsManager.resetDirections();
+            directionsErrorEventObj = Microsoft.Maps.Events.addHandler(directionsManager, 'directionsError', function (arg) {  });
+            directionsUpdatedEventObj = Microsoft.Maps.Events.addHandler(directionsManager, 'directionsUpdated', function() {  });
+        }
+
+        function createDrivingRoute()
+        {
+            if (!directionsManager) { createDirectionsManager(); }
+            directionsManager.resetDirections();
+            // Set Route Mode to driving
+            directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.walking });
+            var currentWaypoint = new Microsoft.Maps.Directions.Waypoint({ location: currentCoordinates });
+            directionsManager.addWaypoint(currentWaypoint);
+            var promoWaypoint = new Microsoft.Maps.Directions.Waypoint({ location: promoCoordinates });
+            directionsManager.addWaypoint(promoWaypoint);
+            // Set the element in which the itinerary will be rendered
+            directionsManager.setRequestOptions({ distanceUnit:
+                    Microsoft.Maps.Directions.DistanceUnit.kilometers, routeOptimization:
+                    Microsoft.Maps.Directions.RouteOptimization.shortestDistance });
+            // directionsManager.setRenderOptions({ itineraryContainer: document.getElementById('map_canvas') });
+            directionsManager.calculateDirections();
+            map.setView({center: promoCoordinates, bounds: new Microsoft.Maps.LocationRect.fromLocation(map.getCenter())})
+        }
+
         function centerMap(coordinates) {
             map.setView({center:coordinates, zoom:14});
         }
-
-        ;
 
         function displayInfobox(e) {
             pinInfobox.setOptions({ visible:true });
