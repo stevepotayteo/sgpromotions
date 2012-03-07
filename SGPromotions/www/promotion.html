@@ -105,81 +105,74 @@
             map.entities.push(pin);
             map.entities.push(pinInfobox);
 
+//            if (!directionsManager)
+//            {
+//                Microsoft.Maps.loadModule('Microsoft.Maps.Directions', { callback: createRoute });
+//            }
+//            else
+//            {
+//                createRoute();
+//            }
+
             $('#map_canvas').hide();
 
             var isMapHidden = true;
 
             $('#showdirection').click(function () {
-                if (!directionsManager)
-                {
-                    Microsoft.Maps.loadModule('Microsoft.Maps.Directions', { callback: createDrivingRoute });
-                }
-                else
-                {
-                    createDrivingRoute();
-                }
-
-                $('#map_canvas').animate({
-                    height:"toggle", opacity:"toggle"
-                }, "slow");
-
-                if (isMapHidden) {
-                    $('html,body').delay('slow').animate({scrollTop:$('#where').offset().top});
-                    isMapHidden = false;
-                } else {
-                    $('html,body').delay('slow').animate({scrollTop:$('#promotion-content').offset().top});
-                    isMapHidden = true;
-                }
+                displayMap();
             });
 
             $('#showmap').click(function () {
-                centerMap(promoCoordinates);
-
-                $('#map_canvas').animate({
-                    height:"toggle", opacity:"toggle"
-                }, "slow");
-
-                if (isMapHidden) {
-                    $('html,body').delay('slow').animate({scrollTop:$('#where').offset().top});
-                    isMapHidden = false;
-                } else {
-                    $('html,body').delay('slow').animate({scrollTop:$('#promotion-content').offset().top});
-                    isMapHidden = true;
-                }
+                displayMap();
             });
         }
 
-        function createDirectionsManager() {
-            var displayMessage = "";
-            if (!directionsManager) {
-                directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
-                // displayMessage = 'Directions Module loaded<BR>';
-                // displayMessage += 'Directions Manager loaded';
+        function displayMap() {
+            centerMap(promoCoordinates);
+
+            $('#map_canvas').animate({
+                height:"toggle", opacity:"toggle"
+            }, "slow");
+
+            if (isMapHidden) {
+                $('html,body').delay('slow').animate({scrollTop:$('#where').offset().top});
+                isMapHidden = false;
+            } else {
+                $('html,body').delay('slow').animate({scrollTop:$('#promotion-content').offset().top});
+                isMapHidden = true;
             }
-            // displayAlert(displayMessage);
-            directionsManager.resetDirections();
-            directionsErrorEventObj = Microsoft.Maps.Events.addHandler(directionsManager, 'directionsError', function (arg) {  });
-            directionsUpdatedEventObj = Microsoft.Maps.Events.addHandler(directionsManager, 'directionsUpdated', function() {  });
         }
 
-        function createDrivingRoute()
-        {
-            if (!directionsManager) { createDirectionsManager(); }
-            directionsManager.resetDirections();
-            // Set Route Mode to driving
-            directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.walking });
-            var currentWaypoint = new Microsoft.Maps.Directions.Waypoint({ location: currentCoordinates });
-            directionsManager.addWaypoint(currentWaypoint);
-            var promoWaypoint = new Microsoft.Maps.Directions.Waypoint({ location: promoCoordinates });
-            directionsManager.addWaypoint(promoWaypoint);
-            // Set the element in which the itinerary will be rendered
-            directionsManager.setRequestOptions({ distanceUnit:
-                    Microsoft.Maps.Directions.DistanceUnit.kilometers, routeOptimization:
-                    Microsoft.Maps.Directions.RouteOptimization.shortestDistance });
-            // directionsManager.setRenderOptions({ itineraryContainer: document.getElementById('map_canvas') });
-            directionsManager.calculateDirections();
-            map.setView({center: promoCoordinates, bounds: new Microsoft.Maps.LocationRect.fromLocation(map.getCenter())})
-        }
+//        function createDirectionsManager() {
+//            var displayMessage = "";
+//            if (!directionsManager) {
+//                directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
+//                // displayMessage = 'Directions Module loaded<BR>';
+//                // displayMessage += 'Directions Manager loaded';
+//            }
+//            // displayAlert(displayMessage);
+//            directionsManager.resetDirections();
+//            directionsErrorEventObj = Microsoft.Maps.Events.addHandler(directionsManager, 'directionsError', function (arg) {  });
+//            directionsUpdatedEventObj = Microsoft.Maps.Events.addHandler(directionsManager, 'directionsUpdated', function() {  });
+//        }
+//
+//        function createRoute()
+//        {
+//            if (!directionsManager) { createDirectionsManager(); }
+//            directionsManager.resetDirections();
+//            directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.walking });
+//            var currentWaypoint = new Microsoft.Maps.Directions.Waypoint({ location: currentCoordinates });
+//            directionsManager.addWaypoint(currentWaypoint);
+//            var promoWaypoint = new Microsoft.Maps.Directions.Waypoint({ location: promoCoordinates });
+//            directionsManager.addWaypoint(promoWaypoint);
+//            // Set the element in which the itinerary will be rendered
+//            directionsManager.setRequestOptions({ distanceUnit:
+//                    Microsoft.Maps.Directions.DistanceUnit.kilometers, routeOptimization:
+//                    Microsoft.Maps.Directions.RouteOptimization.shortestDistance });
+//            // directionsManager.setRenderOptions({ itineraryContainer: document.getElementById('map_canvas') });
+//            directionsManager.calculateDirections();
+//            map.setView({center: promoCoordinates, bounds: new Microsoft.Maps.LocationRect.fromLocation(map.getCenter())})
+//        }
 
         function centerMap(coordinates) {
             map.setView({center:coordinates, zoom:14});

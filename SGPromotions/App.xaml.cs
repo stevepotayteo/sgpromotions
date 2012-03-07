@@ -89,6 +89,9 @@ namespace sgpromotions
         // Code to execute on Unhandled Exceptions
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
         {
+            if (e.ExceptionObject.Message == "An unknown error has occurred. Error: 80020101.")
+                e.Handled = true;
+
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 // An unhandled exception has occurred; break into the debugger
