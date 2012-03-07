@@ -105,7 +105,8 @@ function onGeolocationSuccess(position) {
     sessionStorage.setItem("current_position", "Current Location");
     $.mobile.hidePageLoadingMsg();
 
-    window.location.href="category.html";
+    autoSelectAllCategory();
+    //window.location.href="category.html";
 }
 
 // onError Callback receives a PositionError object
@@ -249,6 +250,8 @@ function displayLocationResults(data) {
             sessionStorage.setItem("current_lat", $item.jqmData('lat'));
             sessionStorage.setItem("current_lng", $item.jqmData('lng'));
             sessionStorage.setItem("current_position", $item.jqmData('address'));
+
+            autoSelectAllCategory();
         });
     } else {
         $("#location-result").html($("#LocationEmptyTemplate").render());
@@ -422,4 +425,13 @@ function dream(){
 
     //Every dream's end starts a new dream
     window.setTimeout('dream()',900);
+}
+
+function autoSelectAllCategory() {
+    if(localStorage.getItem("setting_allcategory") == undefined) {
+        window.location.href = "category.html";
+    } else {
+        sessionStorage.removeItem("categorySelect");
+        window.location.href = "nearby.html";
+    }
 }

@@ -147,6 +147,8 @@
                     sessionStorage.setItem("current_lat", $item.jqmData('lat'));
                     sessionStorage.setItem("current_lng", $item.jqmData('lng'));
                     sessionStorage.setItem("current_position", $item.jqmData('name') + " MRT");
+
+                    autoSelectAllCategory();
                 }
             });
         });
@@ -173,7 +175,7 @@
 
             {{#if name}}
             <li data-name="{{=name}}" data-lat="{{=lat}}" data-lng="{{=lng}}" >
-                <a href="category.html">
+                <a href="">
                     {{#if line == 'NS'}}
                     <img src="images/mrt-NS.png" class="ui-li-icon" style="margin-top:-1px"/>
                     {{/if}}

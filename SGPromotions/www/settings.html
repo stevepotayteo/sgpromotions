@@ -22,11 +22,30 @@
 <body>
 <div data-role="page" id="settings" data-position="fixed" data-theme="c">
     <script type="text/javascript">
+        $('#settings').live('pageinit', function(event) {
+            $("input[type='checkbox']").bind( "change", function(event, ui) {
+                // alert($('input:checkbox[id=view]:checked').val());
+
+                if($("input:checkbox[id=view]").attr("checked") == undefined) {
+                    localStorage.removeItem("setting_allcategory");
+                } else {
+                    localStorage.setItem("setting_allcategory", "checked");
+                }
+            });
+        });
+
         $('#settings').live('pagebeforehide', function(event) {
             stopProgressBar();
         });
 
         $('#settings').live('pagebeforeshow', function(event) {
+            var allCategorySetting = localStorage.getItem("setting_allcategory");
+            if(allCategorySetting == undefined) {
+                $("input:checkbox[id=view]").attr("checked",false).checkboxradio("refresh");
+            } else {
+                $("input:checkbox[id=view]").attr("checked",true).checkboxradio("refresh");
+            }
+
             stopProgressBar();
         });
     </script>
@@ -39,15 +58,15 @@
             <div class="pip"></div>
         </div>
         <h1>settings</h1>
-        <div data-role="fieldcontain">
-            <fieldset data-role="controlgroup">
-                <legend>Agree to the terms:</legend>
-                <input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
-                <label for="checkbox-1">I agree</label>
-            </fieldset>
-        </div>
-        <label for="flip-a">Select slider:</label>
-        <select name="slider" id="flip-a" data-role="slider">
+        <!--<div data-role="fieldcontain">-->
+        <fieldset data-role="controlgroup">
+            <legend>Always choose to view promotions from all categories</legend>
+            <input type="checkbox" name="checkbox-view" id="view" />
+            <label for="view">Enable</label>
+        </fieldset>
+        <!--</div>-->
+        <label for="flip-c">Use my location</label>
+        <select name="slider" id="flip-c" data-role="slider">
             <option value="off">Off</option>
             <option value="on">On</option>
         </select>
