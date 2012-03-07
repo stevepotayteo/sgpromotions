@@ -117,16 +117,26 @@ p.black {
     color: #F1C9C9;
 }
 
+#about-content ul {
+    margin-top: -10px;
+    font-size: 13px;
+    color: #F1C9C9;
+    margin-left: 30px;
+    padding-left: 0px;
+    margin-right:0px;
+    list-style:square;
+}
+
 #location-content p {
     margin-top: 0px;
     font-size: 13px;
     color: #F1C9C9;
 }
 
-a:link {color:#360D0D; text-decoration: none;}
-a:active {color:#360D0D; text-decoration: none;}
-a:visited {color:#360D0D; text-decoration: none;}
-a:hover {color:#360D0D; text-decoration: none; }
+a:link, #about-content a:link {color:#360D0D; text-decoration: none; font-weight: normal}
+a:active, #about-content a:active {color:#360D0D; text-decoration: none; font-weight: normal}
+a:visited, #about-content a:visited {color:#360D0D; text-decoration: none; font-weight: normal}
+a:hover, #about-content a:hover {color:#360D0D; text-decoration: none; font-weight: normal}
 
 #promotion-name {
     display: inline;

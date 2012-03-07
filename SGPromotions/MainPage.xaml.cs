@@ -17,6 +17,7 @@ using System.Windows.Resources;
 using sgpromotions.Util;
 using Microsoft.Phone.Shell;
 using System.Threading;
+using Microsoft.Phone.Tasks;
 
 
 namespace sgpromotions
@@ -61,10 +62,46 @@ namespace sgpromotions
         {
             // if a page notifies that it should not be scrollable, disable
             // scrolling.
-            if (e.Value == "noScroll")
+            string commandStr = e.Value;
+
+            if(commandStr == "noScroll")
             {
                 _browserHelper.ScrollDisabled = true;
+            } 
+            else if(commandStr == "phoneTaskEmail")
+            {
+                EmailComposeTask emailComposeTask = new EmailComposeTask();
+
+                emailComposeTask.Subject = "Regarding sg.promotions";
+                emailComposeTask.Body = "";
+                emailComposeTask.To = "kelltainer@live.com.sg";
+                emailComposeTask.Cc = "";
+                emailComposeTask.Bcc = "";
+
+                emailComposeTask.Show();
             }
+            else if (commandStr == "phoneTaskRate")
+            {
+                MarketplaceReviewTask marketplaceReviewTask = new MarketplaceReviewTask();
+
+                marketplaceReviewTask.Show();
+            }
+            //else if (commandStr == "phoneTaskWebsite")
+            //{
+            //    WebBrowserTask webBrowserTask = new WebBrowserTask();
+
+            //    webBrowserTask.Uri = new Uri("http://www.kaosfoundry.com", UriKind.Absolute);
+
+            //    webBrowserTask.Show();
+            //}
+            //else if(commandStr == "phoneTaskTwitter")
+            //{
+            //    WebBrowserTask webBrowserTask = new WebBrowserTask();
+
+            //    webBrowserTask.Uri = new Uri("http://twitter.com/kelltainer", UriKind.Absolute);
+
+            //    webBrowserTask.Show();
+            //}
 
             // <button onclick="window.external.Notify('clearTextBox');">clear textbox</button> <- can do real shit here.
             // app bar code
@@ -149,5 +186,7 @@ namespace sgpromotions
             {
             }
         }
+
+
     }
 }

@@ -335,7 +335,7 @@ function appbar_fav() {
 }
 
 function appbar_about() {
-    $.mobile.changePage("about.html");
+    window.location.href="about.html";
 }
 //
 //

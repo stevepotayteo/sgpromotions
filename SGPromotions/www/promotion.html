@@ -34,7 +34,6 @@
             stopProgressBar();
 
             if (sessionStorage.getItem(promotion_parameters[0]) != null) {
-                alert(decodeURIComponent(sessionStorage.getItem(promotion_parameters[5])));
                 var promo = {
                     'category': decodeURIComponent(sessionStorage.getItem(promotion_parameters[0])),
                     'distance': decodeURIComponent(sessionStorage.getItem(promotion_parameters[1])),

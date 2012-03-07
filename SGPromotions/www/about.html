@@ -27,6 +27,28 @@
 
 <div data-role="page" id="about" data-theme="c">
     <script type="text/javascript">
+        $('#about').live('pageinit', function(event) {
+            $('#email').click(function (e) {
+                e.preventDefault();
+                window.external.Notify('phoneTaskEmail');
+            });
+
+            $('#rate').click(function (e) {
+                e.preventDefault();
+                window.external.Notify('phoneTaskRate');
+            });
+
+//            $('#website').click(function (e) {
+//                e.preventDefault();
+//                window.external.Notify('phoneTaskWebsite');
+//            });
+//
+//            $('#twitter').click(function (e) {
+//                e.preventDefault();
+//                window.external.Notify('phoneTaskTwitter');
+//            });
+        });
+
         $('#about').live('pagebeforehide', function(event) {
             stopProgressBar();
         });
@@ -43,16 +65,23 @@
             <div class="pip"></div>
             <div class="pip"></div>
         </div>
-        <h1>about sg.promotions</h1>
+        <h1>about this app</h1>
+
         <div id="about-section">
         	<h3>what</h3>
-        	<p>sg.promotions is a promotions locator that allows you to find nearby promotions including:</p>
+        	<p>sg.promotions is a locator that allows bargain-hunters to find promotions in Singapore and includes features such as:</p>
             <ul>
+                <li>search promotions around current location</li>
                 <li>search promotions around an address</li>
                 <li>search promotions around an mrt station</li>
-                <li>select only certain promotions by category</li>
-                <li>view address of promotion on bing maps</li>
+                <li>select promotions by category</li>
+                <li>view the promotion on the map</li>
             </ul>
+
+            <h3>contact</h3>
+            <p>Check out more projects @ <a href="http://www.kaosfoundry.com" id="website">kaosfoundry.com</a> or follow me on <a href="http://twitter.com/kelltainer" id="twitter">twitter</a>.</p>
+            <p>If you have any issues with the application, feel free to <a href="" id="email">contact me</a>.</p>
+            <p>If you like my application, please kindly <a href="" id="rate">rate</a> it here here.</p>
         </div>
     </div>
 </div>
