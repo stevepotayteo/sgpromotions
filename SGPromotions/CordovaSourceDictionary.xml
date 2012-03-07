@@ -12,6 +12,8 @@
     <FilePath Value="www\jquery.mobile-1.1.0-rc.1.css"/>
     <FilePath Value="www\jquery.mobile-1.1.0-rc.1.js"/>
     <FilePath Value="www\jsrender.js"/>
+    <FilePath Value="www\jsShare.css"/>
+    <FilePath Value="www\jsShare.js"/>
     <FilePath Value="www\location.html"/>
     <FilePath Value="www\mrt.html"/>
     <FilePath Value="www\mrt.json"/>
@@ -34,14 +36,27 @@
     <FilePath Value="www\css\sg.promotions.restpages.css"/>
     <FilePath Value="www\images\all.png"/>
     <FilePath Value="www\images\app-header.png"/>
+    <FilePath Value="www\images\bg.jpg"/>
+    <FilePath Value="www\images\buzz.png"/>
+    <FilePath Value="www\images\delicious.png"/>
+    <FilePath Value="www\images\digg.png"/>
+    <FilePath Value="www\images\facebook.png"/>
     <FilePath Value="www\images\fav.png"/>
+    <FilePath Value="www\images\linkedin.png"/>
     <FilePath Value="www\images\location.png"/>
     <FilePath Value="www\images\logo.png"/>
+    <FilePath Value="www\images\messenger.png"/>
     <FilePath Value="www\images\mrt-CC.png"/>
     <FilePath Value="www\images\mrt-EW.png"/>
     <FilePath Value="www\images\mrt-NE.png"/>
     <FilePath Value="www\images\mrt-NS.png"/>
     <FilePath Value="www\images\nearby.png"/>
+    <FilePath Value="www\images\orkut.png"/>
+    <FilePath Value="www\images\pixel.jpg"/>
+    <FilePath Value="www\images\plus.png"/>
+    <FilePath Value="www\images\reddit.png"/>
     <FilePath Value="www\images\settings.png"/>
+    <FilePath Value="www\images\stumbleupon.png"/>
     <FilePath Value="www\images\train.png"/>
+    <FilePath Value="www\images\twitter.png"/>
 </CordovaSourceDictionary>
