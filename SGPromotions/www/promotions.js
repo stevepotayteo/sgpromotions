@@ -54,7 +54,7 @@ function getNearby() {
 
     req.error(function() {
         stopProgressBar();
-        $("#nearby-result").delay("slow").html($("#NearbyErrorTemplate").render());
+        $("#nearby-result").delay("slow").html($("#NearbyErrorTemplate").render({}));
     });
 }
 
@@ -62,7 +62,7 @@ function displayNearby(data) {
     var nearby = data.query.results.json;
     stopProgressBar();
     $("#nearby-result").hide();
-    if(nearby != null){
+    if(nearby != null) {
         $("#nearby-result").delay("slow").html($("#NearbyTemplate").render(nearby));
         $('#nearby-result > ul').listview();
         var count = nearby.results.length;
@@ -86,7 +86,7 @@ function displayNearby(data) {
             });
         });
     } else {
-        $("#nearby-result").delay("slow").html($("#NearbyEmptyTemplate").render());
+        $("#nearby-result").delay("slow").html($("#NearbyEmptyTemplate").render({}));
     }
     $("#nearby-result").fadeIn();
 }
@@ -163,7 +163,7 @@ function onGeolocationError(error) {
 //
 //        });
 //    } else {
-//        $("#mrt-result").delay("slow").html($("#MRTEmptyTemplate").render());
+//        $("#mrt-result").delay("slow").html($("#MRTEmptyTemplate").render({}));
 //    }
 //
 //    $("#mrt-result").fadeIn();
@@ -183,7 +183,7 @@ function getCategory() {
 
     req.error(function() {
         stopProgressBar();
-        $("#category-result").delay("slow").hide().html($("#CategoryErrorTemplate").render()).fadeIn();
+        $("#category-result").delay("slow").hide().html($("#CategoryErrorTemplate").render({})).fadeIn();
     });
 }
 
@@ -203,7 +203,7 @@ function displayCategory(data) {
             sessionStorage.setItem("categorySelect", $(this).jqmData("category_tag"));
         });
 	} else {
-        $("#category-result").delay("slow").html($("#CategoryEmptyTemplate").render());
+        $("#category-result").delay("slow").html($("#CategoryEmptyTemplate").render({}));
     }
 
     $("#category-result").fadeIn();
@@ -225,7 +225,7 @@ function geocodeLocation(location) {
     req.error(function() {
         $.mobile.hidePageLoadingMsg();
         stopProgressBar();
-        $("#location-result").hide().html($("#LocationErrorTemplate").render()).fadeIn();
+        $("#location-result").hide().html($("#LocationErrorTemplate").render({})).fadeIn();
     });
 }
 
@@ -254,7 +254,7 @@ function displayLocationResults(data) {
             autoSelectAllCategory();
         });
     } else {
-        $("#location-result").html($("#LocationEmptyTemplate").render());
+        $("#location-result").html($("#LocationEmptyTemplate").render({}));
     }
 
     $("#location-result").fadeIn();

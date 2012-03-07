@@ -169,42 +169,42 @@
             <p>Stations are currently loading...</p>
         </div>
     </div>
-    <script id="MRTTemplate" type="text/x-jquery-tmpl">
+    <script id="MRTTemplate" type="text/x-jsrender">
         <ul data-role="listview" id="mrt-list" data-inset="true" data-filter="true" data-theme="c" data-dividertheme="a">
-            {{#each MRT}}
+            {{for MRT}}
 
-            {{#if name}}
-            <li data-name="{{=name}}" data-lat="{{=lat}}" data-lng="{{=lng}}" >
+            {{if name}}
+            <li data-name="{{:name}}" data-lat="{{:lat}}" data-lng="{{:lng}}" >
                 <a href="">
-                    {{#if line == 'NS'}}
+                    {{if line == 'NS'}}
                     <img src="images/mrt-NS.png" class="ui-li-icon" style="margin-top:-1px"/>
                     {{/if}}
-                    {{#if line == 'EW'}}
+                    {{if line == 'EW'}}
                     <img src="images/mrt-EW.png" class="ui-li-icon" style="margin-top:-1px"/>
                     {{/if}}
-                    {{#if line == 'CG'}}
+                    {{if line == 'CG'}}
                     <img src="images/mrt-EW.png" class="ui-li-icon" style="margin-top:-1px"/>
                     {{/if}}
-                    {{#if line == 'CC'}}
+                    {{if line == 'CC'}}
                     <img src="images/mrt-CC.png" class="ui-li-icon" style="margin-top:-1px"/>
                     {{/if}}
-                    {{#if line == 'CE'}}
+                    {{if line == 'CE'}}
                     <img src="images/mrt-CC.png" class="ui-li-icon" style="margin-top:-1px"/>
                     {{/if}}
-                    {{#if line == 'NE'}}
+                    {{if line == 'NE'}}
                     <img src="images/mrt-NE.png" class="ui-li-icon" style="margin-top:-1px"/>
                     {{/if}}
-                    ({{=lineno}}) - {{=name}}
+                    ({{:lineno}}) - {{:name}}
                 </a>
             </li>
             {{else}}
-            <li data-role="list-divider">{{=lineno}}</li>
+            <li data-role="list-divider">{{:lineno}}</li>
             {{/if}}
-            {{/each}}
+            {{/for}}
         </ul>
     </script>
 
-    <script id="MRTEmptyTemplate" type="text/x-jquery-tmpl">
+    <script id="MRTEmptyTemplate" type="text/x-jsrender">
         <p>There are no results.</p>
     </script>
 </div>

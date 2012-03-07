@@ -47,27 +47,27 @@
         </div>
 	</div>
 
-    <script id="NearbyTemplate" type="text/x-jquery-tmpl">
+    <script id="NearbyTemplate" type="text/x-jsrender">
         <h3><span id="count"></span> promotion(s) found: </h3><p/>
         <ul data-role="listview" id="nearby-list" data-inset="true" data-filter="true">
-            {{#each results}}
-            <li data-category="{{=category}}" data-distance="{{=distance}}" data-contact_number="{{=contact_number}}" data-contact_number_link="{{=contact_number_link}}" data-name="{{=name}}" data-promo="{{=promo}}" data-pic="{{=pic}}" data-operating_hours="{{=operating_hours}}" data-url="{{=url}}" data-expiry_date="{{=expiry_date}}" data-address="{{=address}}" data-lat="{{=lat}}" data-lng="{{=lng}}">
+            {{for results}}
+            <li data-category="{{:category}}" data-distance="{{:distance}}" data-contact_number="{{:contact_number}}" data-contact_number_link="{{:contact_number_link}}" data-name="{{:name}}" data-promo="{{:promo}}" data-pic="{{:pic}}" data-operating_hours="{{:operating_hours}}" data-url="{{:url}}" data-expiry_date="{{:expiry_date}}" data-address="{{:address}}" data-lat="{{:lat}}" data-lng="{{:lng}}">
                 <a href="promotion.html">
-                    <img src="{{=pic}}" width="24" height="24" class="ui-li-icon" style="top: 25px"/>
-                    <h3 class="black">{{=name}}</h3>
-                    <p class="black">{{=promo}}</p>
-                    <span class="ui-li-count">{{=distance}}m</span>
+                    <img src="{{:pic}}" width="24" height="24" class="ui-li-icon" style="top: 25px"/>
+                    <h3 class="black">{{:name}}</h3>
+                    <p class="black">{{:promo}}</p>
+                    <span class="ui-li-count">{{:distance}}m</span>
                 </a>
             </li>
-            {{/each}}
+            {{/for}}
         </ul>
     </script>
 
-    <script id="NearbyEmptyTemplate" type="text/x-jquery-tmpl">
+    <script id="NearbyEmptyTemplate" type="text/x-jsrender">
         <p>There are no results. Please choose another <a href="javascript:history.back()">category</a>.</p>
     </script>
 
-    <script id="NearbyErrorTemplate" type="text/x-jquery-tmpl">
+    <script id="NearbyErrorTemplate" type="text/x-jsrender">
         <p>An error occured while loading, please <a href="nearby.html">reload</a> to try again or go <a href="javascript:history.back()">back</a>.</p>
     </script>
 </div>

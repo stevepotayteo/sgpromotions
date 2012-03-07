@@ -50,21 +50,21 @@
     	</div>
     </div>
 
-    <script id="CategoryTemplate" type="text/x-jquery-tmpl">
+    <script id="CategoryTemplate" type="text/x-jsrender">
         <ul data-role="listview" id="category-list" data-inset="true" data-filter="false" data-theme="c">
-            {{#each results}}
-            <li data-category_tag="{{=categorytag}}" data-theme="c">
-                <a href="nearby.html" rel="ext"><img src="{{=iconurl}}" width="16" height="16" class="ui-li-icon"/>{{=category}}</a>
+            {{for results}}
+            <li data-category_tag="{{:categorytag}}" data-theme="c">
+                <a href="nearby.html" rel="ext"><img src="{{:iconurl}}" width="16" height="16" class="ui-li-icon"/>{{:category}}</a>
             </li>
-            {{/each}}
+            {{/for}}
         </ul>
     </script>
 
-    <script id="CategoryErrorTemplate" type="text/x-jquery-tmpl">
+    <script id="CategoryErrorTemplate" type="text/x-jsrender">
         <p>An error occured while loading, please <a href="category.html">reload</a> to try again or go <a href="javascript:history.back()">back</a>.</p>
     </script>
 
-    <script id="CategoryEmptyTemplate" type="text/x-jquery-tmpl">
+    <script id="CategoryEmptyTemplate" type="text/x-jsrender">
         <p>There are no categories found. Click <a href="javascript:history.back()">here</a> to go back.</p>
     </script>
 </div>

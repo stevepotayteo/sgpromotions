@@ -82,26 +82,26 @@
         <div id="location-result"></div>
 	</div>
 
-    <script id="LocationTemplate" type="text/x-jquery-tmpl">
+    <script id="LocationTemplate" type="text/x-jsrender">
         <br/><h3><span id="count"></span> location(s) found: </h3>
         <ul data-role="listview" id="location-list" data-inset="true" data-filter="false">
-            {{#each results}}
-            <li data-address="{{=formatted_address}}" data-lat="{{=geometry.location.lat}}" data-lng="{{=geometry.location.lng}}">
+            {{for results}}
+            <li data-address="{{:formatted_address}}" data-lat="{{:geometry.location.lat}}" data-lng="{{:geometry.location.lng}}">
                 <a href="">
-                    {{=formatted_address}}
-                    <!--<p>{{=geometry.location.lat}}, {{=geometry.location.lng}}</p> -->
+                    {{:formatted_address}}
+                    <!--<p>{{:geometry.location.lat}}, {{:geometry.location.lng}}</p> -->
                 </a>
             </li>
-            {{/each}}
+            {{/for}}
         </ul>
     </script>
 
-    <script id="LocationEmptyTemplate" type="text/x-jquery-tmpl">
+    <script id="LocationEmptyTemplate" type="text/x-jsrender">
         <!--<br/><h3>no locations found: </h3>-->
         <p>There are no results. Please define your search more clearly.</p>
     </script>
 
-    <script id="LocationErrorTemplate" type="text/x-jquery-tmpl">
+    <script id="LocationErrorTemplate" type="text/x-jsrender">
         <!--<br/><h3>error while searching: </h3>-->
         <p>An error occurred while search. Please try <a href="" id="retry">again</a>.</p>
     </script>
