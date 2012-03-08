@@ -43,7 +43,7 @@
                                      "http://profile.live.com/badge?url={ADDRESS}"];
 
                 function getButton(index, button, title) {
-                    var link = mediaSource[index].replace('{ADDRESS}', encodeURIComponent(settings.href))
+                    var link = mediaSource[index].replace('{ADDRESS}', encodeURIComponent(settings.address))
                                                 .replace('{TITLE}', encodeURIComponent(settings.title))
                                                 .replace('{SDESCRIPTION}', encodeURIComponent(settings.desc))
                                                 .replace('{BLOGURL}', encodeURIComponent(settings.yoursiteurl))

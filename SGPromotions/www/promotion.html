@@ -60,7 +60,7 @@
                 };
 
                 $("#promotion-result").hide().html($("#PromotionTemplate").render(promo));
-                $('#socialmedia').jsShare({ maxwidth: 370, initialdisplay: "expanded", animate: false, title: "hello world2", address: "add", desc: "hello world", yoursitetitle: "1", yoursiteurl: "2", yoursitename: "3"});
+                $('#socialmedia').jsShare({ maxwidth: 370, googlebuzz: false, linkedin: false, initialdisplay: "expanded", animate: false, title: promo.name + ": " + promo.promo + " ", address: promo.url});
 
                 createMap(promo);
             }
