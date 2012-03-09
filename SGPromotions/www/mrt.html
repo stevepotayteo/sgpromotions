@@ -149,9 +149,9 @@
             $('#mrt-list').delegate("li", "click", function (event) {
                 var $item = $(this);
                 if($item.jqmData('name') != undefined) {
-                    sessionStorage.setItem("current_lat", $item.jqmData('lat'));
-                    sessionStorage.setItem("current_lng", $item.jqmData('lng'));
-                    sessionStorage.setItem("current_position", $item.jqmData('name') + " MRT");
+                    localStorage.setItem("current_lat", $item.jqmData('lat'));
+                    localStorage.setItem("current_lng", $item.jqmData('lng'));
+                    localStorage.setItem("current_position", $item.jqmData('name') + " MRT");
 
                     autoSelectAllCategory();
                 }

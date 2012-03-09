@@ -85,7 +85,7 @@ namespace sgpromotions
 
                 bw.DoWork += delegate
                                  {
-                                     Thread.Sleep(TimeSpan.FromMilliseconds(2000));
+                                     Thread.Sleep(TimeSpan.FromMilliseconds(2300));
                                  };
                 bw.RunWorkerCompleted += delegate
                                              {

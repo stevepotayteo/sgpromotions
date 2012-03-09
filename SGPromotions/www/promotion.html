@@ -46,24 +46,24 @@
         $('#promotion').live('pageshow', function(event, ui) {
             stopProgressBar();
 
-            if (sessionStorage.getItem(promotion_parameters[0]) != null) {
+            if (localStorage.getItem(promotion_parameters[0]) != null) {
                 var promo = {
-                    'category': decodeURIComponent(sessionStorage.getItem(promotion_parameters[0])),
-                    'distance': decodeURIComponent(sessionStorage.getItem(promotion_parameters[1])),
-                    'contact_number': decodeURIComponent(sessionStorage.getItem(promotion_parameters[2])),
-                    'contact_number_link': decodeURIComponent(sessionStorage.getItem(promotion_parameters[3])),
-                    'name': decodeURIComponent(sessionStorage.getItem(promotion_parameters[4])).toLowerCase(),
-                    'promo': decodeURIComponent(sessionStorage.getItem(promotion_parameters[5])).replace(/<(?:.|\n)*?>/gm, ''),
-                    'pic': decodeURIComponent(sessionStorage.getItem(promotion_parameters[6])),
-                    'operating_hours': decodeURIComponent(sessionStorage.getItem(promotion_parameters[7])),
-                    'url': decodeURIComponent(sessionStorage.getItem(promotion_parameters[8])),
-                    'expiry_date': decodeURIComponent(sessionStorage.getItem(promotion_parameters[9])),
-                    'address': decodeURIComponent(sessionStorage.getItem(promotion_parameters[10])),
-                    'lat': decodeURIComponent(sessionStorage.getItem(promotion_parameters[11])),
-                    'lng': decodeURIComponent(sessionStorage.getItem(promotion_parameters[12])),
-                    'current_position': sessionStorage.getItem("current_position"),
-                    'current_lat': sessionStorage.getItem("current_lat"),
-                    'current_lng': sessionStorage.getItem("current_lng")
+                    'category': decodeURIComponent(localStorage.getItem(promotion_parameters[0])),
+                    'distance': decodeURIComponent(localStorage.getItem(promotion_parameters[1])),
+                    'contact_number': decodeURIComponent(localStorage.getItem(promotion_parameters[2])),
+                    'contact_number_link': decodeURIComponent(localStorage.getItem(promotion_parameters[3])),
+                    'name': decodeURIComponent(localStorage.getItem(promotion_parameters[4])).toLowerCase(),
+                    'promo': decodeURIComponent(localStorage.getItem(promotion_parameters[5])).replace(/<(?:.|\n)*?>/gm, ''),
+                    'pic': decodeURIComponent(localStorage.getItem(promotion_parameters[6])),
+                    'operating_hours': decodeURIComponent(localStorage.getItem(promotion_parameters[7])),
+                    'url': decodeURIComponent(localStorage.getItem(promotion_parameters[8])),
+                    'expiry_date': decodeURIComponent(localStorage.getItem(promotion_parameters[9])),
+                    'address': decodeURIComponent(localStorage.getItem(promotion_parameters[10])),
+                    'lat': decodeURIComponent(localStorage.getItem(promotion_parameters[11])),
+                    'lng': decodeURIComponent(localStorage.getItem(promotion_parameters[12])),
+                    'current_position': localStorage.getItem("current_position"),
+                    'current_lat': localStorage.getItem("current_lat"),
+                    'current_lng': localStorage.getItem("current_lng")
                 };
 
                 $("#promotion-result").hide().html($("#PromotionTemplate").render(promo));

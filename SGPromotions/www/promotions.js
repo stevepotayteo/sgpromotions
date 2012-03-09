@@ -26,8 +26,8 @@ $(document).bind("mobileinit", function() {
 });
 
 function getNearby() {
-    var current_lat = sessionStorage.getItem("current_lat");
-    var current_lng = sessionStorage.getItem("current_lng");
+    var current_lat = localStorage.getItem("current_lat");
+    var current_lng = localStorage.getItem("current_lng");
     var additionalParameters = '';
     if(current_lat != null && current_lng != null) {
         additionalParameters += '&lat=' + current_lat + '&lng=' + current_lng;
@@ -36,7 +36,7 @@ function getNearby() {
         //additionalParameters += '&lat=' + default_lat + '&lng=' + default_lng; // for debug purposes
     }
 
-    var category_selection = sessionStorage.getItem("categorySelect");
+    var category_selection = localStorage.getItem("categorySelect");
     if(category_selection != null && category_selection != "all") {
         additionalParameters += '&category=' + category_selection;
     }
@@ -75,13 +75,13 @@ function displayNearby(data) {
             var $item = $(this);
 
             $.each(promotion_parameters, function(index, value) {
-//                if(value == "url" || value == "pic" || value == "promo") { // to fix some fuck-ed up bug with storing urls in IE sessionstorage. wasted my time
-//                    sessionStorage.setItem(value, encodeURIComponent($item.jqmData(value)));
+//                if(value == "url" || value == "pic" || value == "promo") { // to fix some fuck-ed up bug with storing urls in IE localStorage. wasted my time
+//                    localStorage.setItem(value, encodeURIComponent($item.jqmData(value)));
 //                } else {
-//                    sessionStorage.setItem(value, $item.jqmData(value));
+//                    localStorage.setItem(value, $item.jqmData(value));
 //                }
 
-                sessionStorage.setItem(value, encodeURIComponent($item.jqmData(value)));
+                localStorage.setItem(value, encodeURIComponent($item.jqmData(value)));
                 //$('#nearby').jqmData(value, $item.jqmData(value)); // all external links now so jqmData is pointless
             });
         });
@@ -100,9 +100,9 @@ function SetCurrentLocation() {
 
 function onGeolocationSuccess(position) {
     // navigator.notification.alert('GPS Found: ' + position.coords.latitude + ' ' + position.coords.longitude);
-    sessionStorage.setItem("current_lat", position.coords.latitude);
-    sessionStorage.setItem("current_lng", position.coords.longitude);
-    sessionStorage.setItem("current_position", "Current Location");
+    localStorage.setItem("current_lat", position.coords.latitude);
+    localStorage.setItem("current_lng", position.coords.longitude);
+    localStorage.setItem("current_position", "Current Location");
     $.mobile.hidePageLoadingMsg();
 
     autoSelectAllCategory();
@@ -156,9 +156,9 @@ function onGeolocationError(error) {
 //        $('#mrt-list').delegate("li", "click", function (event) {
 //            var $item = $(this);
 //            if($item.jqmData('name') != undefined) {
-//                sessionStorage.setItem("current_lat", $item.jqmData('lat'));
-//                sessionStorage.setItem("current_lng", $item.jqmData('lng'));
-//                sessionStorage.setItem("current_position", $item.jqmData('name') + " MRT");
+//                localStorage.setItem("current_lat", $item.jqmData('lat'));
+//                localStorage.setItem("current_lng", $item.jqmData('lng'));
+//                localStorage.setItem("current_position", $item.jqmData('name') + " MRT");
 //            }
 //
 //        });
@@ -200,7 +200,7 @@ function displayCategory(data) {
 		$('#category-result > ul').listview();
 
         $('#category-list').delegate("li", "click", function (event) {
-            sessionStorage.setItem("categorySelect", $(this).jqmData("category_tag"));
+            localStorage.setItem("categorySelect", $(this).jqmData("category_tag"));
         });
 	} else {
         $("#category-result").delay("slow").html($("#CategoryEmptyTemplate").render({}));
@@ -247,9 +247,9 @@ function displayLocationResults(data) {
         $('#location-list').delegate("li", "click", function (event) {
             var $item = $(this);
             // alert($item.jqmData('lat'), $item.jqmData('lng'));
-            sessionStorage.setItem("current_lat", $item.jqmData('lat'));
-            sessionStorage.setItem("current_lng", $item.jqmData('lng'));
-            sessionStorage.setItem("current_position", $item.jqmData('address'));
+            localStorage.setItem("current_lat", $item.jqmData('lat'));
+            localStorage.setItem("current_lng", $item.jqmData('lng'));
+            localStorage.setItem("current_position", $item.jqmData('address'));
 
             autoSelectAllCategory();
         });
@@ -441,7 +441,7 @@ function autoSelectAllCategory() {
     if(localStorage.getItem("setting_allcategory") == undefined) {
         window.location.href = "category.html";
     } else {
-        sessionStorage.removeItem("categorySelect");
+        localStorage.removeItem("categorySelect");
         window.location.href = "nearby.html";
     }
 }
