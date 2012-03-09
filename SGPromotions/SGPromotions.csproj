@@ -48,11 +48,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AdDuplex.AdControl.Silverlight, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="AdRotator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Google.AdMob.Ads.WindowsPhone7, Version=4.0.1.27070, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="InneractiveAdSDK, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="SOMAWP7, Version=1.7.4369.37811, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
