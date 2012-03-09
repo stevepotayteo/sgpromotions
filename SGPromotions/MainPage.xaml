@@ -36,16 +36,19 @@
 
         <adRotator:AdRotatorControl x:Name="AdRotatorControl" 
 xmlns:adRotator="clr-namespace:AdRotator;assembly=AdRotator"
-Width="480" Height="80"
+Width="480" Height="80" VerticalAlignment="Bottom"
     SettingsUrl="http://www.kaosfoundry.com/infrastructure/sgpromotions/myAdSettings.xml"
     DefaultAdType="None"
     DefaultSettingsFileUri="/AppAssemblyName;component/defaultAdSettings.xml"
-    AdDuplexAppId="9255"
     AdMobAdUnitId="a14f4d83b79860e"
-    SlidingAdDirection="Left"
-    SlidingAdDisplaySeconds="10"
-    SlidingAdHiddenSeconds="20"/>
+    SmaatoPublisherId ="923859723"
+    SmaatoAppId="65760020"
+    InneractiveAppId="KaosFoundry_sgpromotions_WP7"
+    SlidingAdDirection="Bottom"
+    SlidingAdDisplaySeconds="30"
+    SlidingAdHiddenSeconds="2"/>
     </Grid>
+    <!-- AdDuplexAppId="9255" -->
 
     <phone:PhoneApplicationPage.Resources>
         <shell:ApplicationBar x:Key="MainAppBar" IsVisible="False" IsMenuEnabled="True" Opacity="1">

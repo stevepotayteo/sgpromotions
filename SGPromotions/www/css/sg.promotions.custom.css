@@ -157,3 +157,10 @@ a:hover, #about-content a:hover {color:#360D0D; text-decoration: none; font-weig
     position: relative;
     height:10px;
 }
+
+#space
+{
+    background-color:transparent;
+    height:40px;
+    display:block;
+}
