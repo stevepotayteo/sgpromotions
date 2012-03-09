@@ -33,6 +33,18 @@
                 </Storyboard>
             </Image.Resources>
         </Image>
+
+        <adRotator:AdRotatorControl x:Name="AdRotatorControl" 
+xmlns:adRotator="clr-namespace:AdRotator;assembly=AdRotator"
+Width="480" Height="80"
+    SettingsUrl="http://www.kaosfoundry.com/infrastructure/sgpromotions/myAdSettings.xml"
+    DefaultAdType="None"
+    DefaultSettingsFileUri="/AppAssemblyName;component/defaultAdSettings.xml"
+    AdDuplexAppId="9255"
+    AdMobAdUnitId="a14f4d83b79860e"
+    SlidingAdDirection="Left"
+    SlidingAdDisplaySeconds="10"
+    SlidingAdHiddenSeconds="20"/>
     </Grid>
 
     <phone:PhoneApplicationPage.Resources>

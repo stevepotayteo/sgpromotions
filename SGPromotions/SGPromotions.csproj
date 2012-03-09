@@ -48,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AdDuplex.AdControl.Silverlight, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="AdRotator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Google.AdMob.Ads.WindowsPhone7, Version=4.0.1.27070, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="System.Runtime.Serialization" />
@@ -82,7 +85,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdRotator\AdDuplex.AdControl.Silverlight.dll" />
+    <Content Include="AdRotator\AdRotator.dll" />
+    <Content Include="AdRotator\defaultAdSettings.xml" />
+    <Content Include="AdRotator\Google.AdMob.Ads.WindowsPhone7.dll" />
+    <Content Include="AdRotator\InneractiveAdSDK.dll" />
+    <Content Include="AdRotator\MobFox.Ads.dll" />
+    <Content Include="AdRotator\SOMAWP7.dll" />
     <Content Include="CordovaSourceDictionary.xml" />
+    <Content Include="defaultAdSettings.xml" />
     <Content Include="icons\appbar.home.png" />
     <Content Include="icons\appbar.location.png" />
     <Content Include="icons\appbar.nearby.png" />

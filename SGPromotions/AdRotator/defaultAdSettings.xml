@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AdSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<CultureDescriptors>
+	<AdCultureDescriptor CultureName="default">
+      <Probabilities Probability="16" AdType="Smaato" AppID="" SecondaryID=""/>
+      <Probabilities Probability="16" AdType="AdMob" AppID=""/>
+      <Probabilities Probability="16" AdType="InnerActive" AppID="" />
+      <Probabilities Probability="16" AdType="MobFox" AppID="" IsTest="false"/>
+      <Probabilities Probability="16" AdType="PubCenter" AppID="" SecondaryID="" />
+      <Probabilities Probability="16" AdType="AdDuplex" AppID=""/>
+      <Probabilities AdType="DefaultHouseAd"/>
+    </AdCultureDescriptor>
+	</CultureDescriptors>
+</AdSettings>
