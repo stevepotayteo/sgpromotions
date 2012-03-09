@@ -6,10 +6,10 @@
 
     <title>SG Promotions</title>
     <link rel="stylesheet" href="css/sg.promotions.css" />
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
+    <link rel="stylesheet" href="jquery.mobile-1.1.0-rc.1.min.css" />
     <link rel="stylesheet" href="css/sg.promotions.custom.css" type="text/css" />
     <link rel="stylesheet" href="css/sg.promotions.restpages.css" type="text/css" />
-    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="jsrender.js"></script>
 
@@ -19,9 +19,16 @@
         });
     </script>
     <script type="text/javascript" charset="utf-8" src="cordova-1.5.0.js"></script>
+    <script type="text/javascript">
+        document.addEventListener("deviceready",onDeviceReady,false);
+        // once the device ready event fires, you can safely do your thing! -jm
+        function onDeviceReady() {
+            tombstoneSave();
+        }
+    </script>
     <!-- <script type="text/javascript" charset="utf-8" src="phonegapMock.js"></script> -->
 
-    <script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
+    <script src="jquery.mobile-1.1.0-rc.1.min.js"></script>
 </head>
 <body>
 
@@ -71,20 +78,21 @@
         	<h3>what</h3>
         	<p>sg.promotions is a locator that allows bargain-hunters to find promotions in Singapore and includes features such as:</p>
             <ul>
-                <li>search promotions around current location</li>
+                <li>search promotions around your current location</li>
                 <li>search promotions around an address</li>
                 <li>search promotions around an mrt station</li>
-                <li>select promotions by category</li>
-                <li>view the promotion on the map</li>
+                <li>view promotions by category</li>
+                <li>locate the promotion on a map</li>
+                <li>share the promotions with your friends</li>
             </ul>
 
             <h3>contact</h3>
-            <p>Check out more projects @ <a href="http://www.kaosfoundry.com" id="website">kaosfoundry.com</a> or follow me on twitter at <a href="http://twitter.com/kelltainer" id="twitter">@kelltainer</a>.</p>
-            <p>If you have any issues with the application, feel free to <a href="" id="email">contact me</a>.</p>
+            <p>Check out more projects @ <a href="http://www.kaosfoundry.com" id="website">kaosfoundry.com</a> or follow me on twitter <a href="http://twitter.com/kelltainer" id="twitter">@kelltainer</a>.</p>
+            <p>If you have any requests/questions/issues with the application, feel free to <a href="" id="email">contact me</a>.</p>
             <p>If you like my application, please kindly <a href="" id="rate">rate</a> it here here.</p>
 
             <h3>privacy</h3>
-            <p>sg.promotions will in no way store or use any of your personal information. Only the bare minimum necessary information such as current location will be sent to yourchalkboard.com, which is the data provider for promotions.</p>
+            <p>sg.promotions will in no way store or use any personal information. Your current location will however be sent to yourchalkboard.com, should you choose to, so that nearby promotion data can be served to you.</p>
         </div>
     </div>
 </div>

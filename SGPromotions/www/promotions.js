@@ -445,3 +445,22 @@ function autoSelectAllCategory() {
         window.location.href = "nearby.html";
     }
 }
+
+function tombstoneResume() {
+    var pageBeforeTombstone = localStorage.getItem("PageBeforeTombstone");
+    if(pageBeforeTombstone) {
+        if(window.location.href != pageBeforeTombstone) {
+            window.location.href = pageBeforeTombstone;
+        }
+    }
+}
+
+function tombstoneSave() {
+    localStorage.setItem("PageBeforeTombstone", getCurrentPage());
+}
+
+function getCurrentPage() {
+    var pathArray = window.location.pathname.split( '/' );
+    var currentPage = pathArray[pathArray.length - 1];
+    return currentPage;
+}

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -12,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using WP7CordovaClassLib;
 
 namespace sgpromotions
 {
@@ -22,6 +25,17 @@ namespace sgpromotions
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
+
+        /// <summary>
+        /// Gets the phone gap browser host
+        /// </summary>
+        private CordovaView PhoneGapView
+        {
+            get
+            {
+                return (((App)Application.Current).RootFrame.Content as MainPage).PGView;
+            }
+        }
 
         /// <summary>
         /// Constructor for the Application object.
@@ -62,12 +76,30 @@ namespace sgpromotions
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            if (!e.IsApplicationInstancePreserved)
+            {
+                Uri uri = new Uri("/MainPage.xaml", UriKind.Relative);
+                ((App)Application.Current).RootFrame.Navigate(uri);
+
+                BackgroundWorker bw = new BackgroundWorker();
+
+                bw.DoWork += delegate
+                                 {
+                                     Thread.Sleep(TimeSpan.FromMilliseconds(2000));
+                                 };
+                bw.RunWorkerCompleted += delegate
+                                             {
+                                                 PhoneGapView.Browser.InvokeScript("tombstoneResume");
+                                             };
+                bw.RunWorkerAsync();
+            }
         }
 
         // Code to execute when the application is deactivated (sent to background)
         // This code will not execute when the application is closing
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
+            //PhoneGapView.Browser.InvokeScript("tombstonePause");
         }
 
         // Code to execute when the application is closing (eg, user hit Back)
