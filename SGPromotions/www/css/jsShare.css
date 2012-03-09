@@ -32,7 +32,7 @@
 	/*-moz-border-radius: 6px;*/
 	margin: 3px;
 	text-align: center;
-	background-image: url(images/plus.png);
+	background-image: url(../images/plus.png);
 	background-repeat: no-repeat;
 	background-position: center;
     visibility: hidden;
