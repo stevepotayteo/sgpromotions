@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Device.Location;
 using System.Linq;
 using System.Net;
 using System.Threading;
@@ -20,6 +21,8 @@ namespace sgpromotions
 {
     public partial class App : Application
     {
+        public const string ApiKeyValue = "GQFHSWNB1KBDW8PK238T";
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -70,12 +73,15 @@ namespace sgpromotions
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            initializeFlurry();
         }
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            initializeFlurry();
+
             if (!e.IsApplicationInstancePreserved)
             {
                 Uri uri = new Uri("/MainPage.xaml", UriKind.Relative);
@@ -92,6 +98,20 @@ namespace sgpromotions
                                                  PhoneGapView.Browser.InvokeScript("tombstoneResume");
                                              };
                 bw.RunWorkerAsync();
+            }
+        }
+
+        private void initializeFlurry()
+        {
+            FlurryWP7SDK.Api.StartSession(ApiKeyValue);
+            GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
+            var position = watcher.Position;
+
+            if (!position.Location.IsUnknown)
+            {
+                FlurryWP7SDK.Api.SetLocation(position.Location.Latitude,
+                    position.Location.Longitude,
+                    Convert.ToSingle(position.Location.HorizontalAccuracy));
             }
         }
 
@@ -122,7 +142,13 @@ namespace sgpromotions
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
         {
             if (e.ExceptionObject.Message == "An unknown error has occurred. Error: 80020101.")
+            {
                 e.Handled = true;
+            } else
+            {
+                FlurryWP7SDK.Api.LogError("Uncaught", e.ExceptionObject);
+            }
+                
 
             if (System.Diagnostics.Debugger.IsAttached)
             {

@@ -48,8 +48,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FlurryWP7SDK, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -82,6 +84,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Analytics\FlurryWP7SDK.dll" />
     <Content Include="CordovaSourceDictionary.xml" />
     <Content Include="icons\appbar.home.png" />
     <Content Include="icons\appbar.location.png" />
