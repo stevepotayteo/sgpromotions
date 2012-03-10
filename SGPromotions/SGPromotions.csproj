@@ -94,7 +94,9 @@
     <Content Include="AdRotator\MobFox.Ads.dll" />
     <Content Include="AdRotator\SOMAWP7.dll" />
     <Content Include="CordovaSourceDictionary.xml" />
-    <Content Include="defaultAdSettings.xml" />
+    <Content Include="defaultAdSettings.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="icons\appbar.home.png" />
     <Content Include="icons\appbar.location.png" />
     <Content Include="icons\appbar.nearby.png" />
