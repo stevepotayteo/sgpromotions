@@ -49,11 +49,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdRotator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="FlurryWP7SDK, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Google.AdMob.Ads.WindowsPhone7, Version=4.0.1.27070, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="InneractiveAdSDK, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="SOMAWP7, Version=1.7.4369.37811, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -93,6 +95,7 @@
     <Content Include="AdRotator\InneractiveAdSDK.dll" />
     <Content Include="AdRotator\MobFox.Ads.dll" />
     <Content Include="AdRotator\SOMAWP7.dll" />
+    <Content Include="Analytics\FlurryWP7SDK.dll" />
     <Content Include="CordovaSourceDictionary.xml" />
     <Content Include="defaultAdSettings.xml">
       <SubType>Designer</SubType>
