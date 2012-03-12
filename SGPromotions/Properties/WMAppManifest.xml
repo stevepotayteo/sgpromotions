@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{940bfd15-247d-4c52-ad6c-1d755dc920b1}" Title="sg.promotions" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Steve Teo" Description="sg.promotions is an application that locates all nearby promotions in Singapore." Publisher="Kaos Foundry">
+  <App xmlns="" ProductID="{a55ae9e0-7563-45f6-940b-3e2fa72e9e88}" Title="sg.promotions" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Steve Teo" Description="sg.promotions is an application that locates all nearby promotions in Singapore." Publisher="Kaos Foundry">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_IDENTITY_DEVICE" />
