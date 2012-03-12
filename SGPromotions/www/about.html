@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
@@ -39,15 +39,20 @@
                 window.external.Notify('phoneTaskRate');
             });
 
-//            $('#website').click(function (e) {
-//                e.preventDefault();
-//                window.external.Notify('phoneTaskWebsite');
-//            });
-//
-//            $('#twitter').click(function (e) {
-//                e.preventDefault();
-//                window.external.Notify('phoneTaskTwitter');
-//            });
+            $('#website').click(function (e) {
+                e.preventDefault();
+                window.external.Notify('phoneTaskBrowser:http://www.kaosfoundry.com');
+            });
+
+            $('#twitter').click(function (e) {
+                e.preventDefault();
+                window.external.Notify('phoneTaskBrowser:http://twitter.com/kelltainer');
+            });
+
+            $('#chalkboard').click(function (e) {
+                e.preventDefault();
+                window.external.Notify('phoneTaskBrowser:http://yourchalkboard.com');
+            });
         });
 
         $('#about').live('pagebeforehide', function(event) {
@@ -81,7 +86,7 @@
             </ul>
 
             <h3>contact</h3>
-            <p>Check out more projects @ <a href="http://www.kaosfoundry.com" id="website">kaosfoundry.com</a> or follow me on twitter <a href="http://twitter.com/kelltainer" id="twitter">@kelltainer</a>.</p>
+            <p>Check out more projects @ <a href="" id="website">kaosfoundry.com</a> or follow me on twitter <a href="" id="twitter">@kelltainer</a>.</p>
             <p>If you have any requests/questions/issues with the application, feel free to <a href="" id="email">contact me</a>.</p>
             <p>If you like my application, please kindly <a href="" id="rate">rate</a> it here here.</p>
 
@@ -92,7 +97,7 @@
             <p>Always check that the promotion is valid before making a consumer decision. You can call the promotion vendor to enquire or check on the spot.</p>
 
             <h3>privacy</h3>
-            <p>sg.promotions will in no way store or use any personal information. Your current location will be sent to the data provider, yourchalkboard.com, should you choose to, so that nearby promotion data can be served to you.</p>
+            <p>sg.promotions will in no way store or use any personal information. Your current location will be sent to the data provider, <a href="" id="chalkboard">yourchalkboard.com</a>, should you choose to, so that nearby promotion data can be served to you.</p>
 
             <h3>version 1.0.0</h3>
         </div>

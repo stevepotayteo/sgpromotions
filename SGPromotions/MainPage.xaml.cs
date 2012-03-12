@@ -26,6 +26,8 @@ namespace sgpromotions
     {
         private WebBrowserHelper _browserHelper;
         private readonly object syncLock = new object();
+        private const string browserTaskCommand = "phoneTaskBrowser:";
+
         // Constructor
         public MainPage()
         {
@@ -85,6 +87,14 @@ namespace sgpromotions
                 MarketplaceReviewTask marketplaceReviewTask = new MarketplaceReviewTask();
 
                 marketplaceReviewTask.Show();
+            }
+            else if (commandStr.StartsWith(browserTaskCommand))
+            {
+                string url = commandStr.Substring(browserTaskCommand.Length);
+
+                WebBrowserTask webBrowserTask = new WebBrowserTask();
+                webBrowserTask.Uri = new Uri(url, UriKind.Absolute);
+                webBrowserTask.Show();
             }
             //else if (commandStr == "phoneTaskWebsite")
             //{

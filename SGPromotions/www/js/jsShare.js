@@ -51,7 +51,8 @@
                                                 .replace('{BLOGNAME}', encodeURIComponent(settings.yoursitename));
 
                     return $('<li/>').append($('<a/>')
-                                                    .attr('href', link)
+                                                    .attr('href', '')
+                                                    .attr('onclick', 'window.external.notify(' + '"phoneTaskBrowser:' + link + '")')
                                                     .attr('title', title)
                                                     .attr('target', '_blank')
                                                     .append($('<img/>')
