@@ -88,14 +88,14 @@
             promoCoordinates = new Microsoft.Maps.Location(promo.lat, promo.lng);
             currentCoordinates = new Microsoft.Maps.Location(promo.current_lat, promo.current_lng);
             var mapOptions = {
-                credentials:bing_credentials,
-                center:promoCoordinates,
-                mapTypeId:Microsoft.Maps.MapTypeId.road,
-                zoom:14,
-                showScalebar:false,
-                enableClickableLogo:false,
-                enableSearchLogo:false
-            }
+                credentials: bing_credentials,
+                center: promoCoordinates,
+                mapTypeId: Microsoft.Maps.MapTypeId.road,
+                zoom: 14,
+                showScalebar: false,
+                enableClickableLogo: false,
+                enableSearchLogo: false
+            };
 
             map = new Microsoft.Maps.Map(document.getElementById("map_canvas"), mapOptions);
 
